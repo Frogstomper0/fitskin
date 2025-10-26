@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Split Section Mockup V2 — Tight Alternating + Splash Buttons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#21c7c9;
+      --brandDark:#17a5a7;
+      --ink:#171717;
+      --muted:#555;
+      --line:#e6e6e6;
+      --edge: clamp(12px, 4vw, 100px);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#fff}
+
+    /* Frame */
+    .wrap{max-width:1400px;margin:0 auto;padding:0 var(--edge)}
+    h3{font-family:"Playfair Display", Georgia, serif;margin:0 0 10px;font-weight:600;line-height:1.12}
+
+    /* === Alternating Split (tight, no gaps top/bottom, edges kiss) === */
+    .split{
+      display:grid;
+      grid-template-columns:1fr;
+      margin:0;                 /* no outer gaps between rows */
+    }
+    .split+.split{margin-top:0} /* rows touch */
+    .visual{
+      background-size:cover;background-position:center;
+      min-height:320px;         /* steady height on mobile */
+    }
+    .copy{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:clamp(18px,3.4vw,44px) clamp(18px,5vw,56px);
+      background:#fff;
+    }
+    .copy p{margin:0 0 14px;color:#333;max-width:62ch}
+    .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+
+    /* Desktop: two columns, edges nearly touching (no gap) */
+    @media (min-width: 960px){
+      .split{grid-template-columns:1fr 1fr}
+      .visual{min-height:520px}
+    }
+    /* Alternate (image right) */
+    .split.reverse .copy{order:1}
+    .split.reverse .visual{order:2}
+    @media (max-width:959px){
+      .split.reverse .visual{order:-1}
+    }
+
+    /* Thin separators just to show section edges (optional; remove if undesired) */
+    .sep{height:1px;background:linear-gradient(90deg, rgba(0,0,0,0), #e9e9e9 18%, #e9e9e9 82%, rgba(0,0,0,0));}
+
+    /* === Splash Buttons (invert on hover) === */
+    .btn{
+      position:relative;display:inline-flex;align-items:center;justify-content:center;
+      height:44px;padding:0 18px;border-radius:6px;overflow:hidden;
+      font-weight:700;letter-spacing:.01em;text-decoration:none;transition:color .25s ease, border-color .25s ease, background .25s ease;
+      border:1px solid #d0d0d0;background:#fff;color:#111;
+    }
+    .btn::before{
+      content:"";position:absolute;inset:0;transform:scaleX(0);transform-origin:left;
+      transition:transform .3s ease-in-out;z-index:0;
+    }
+    .btn > span{position:relative;z-index:1}
+
+    /* Ghost (white) → turquoise on hover */
+    .btn-ghost{border-color:#d0d0d0;background:#fff;color:#111}
+    .btn-ghost::before{background:var(--brand)}
+    .btn-ghost:hover{color:#fff;border-color:var(--brandDark)}
+    .btn-ghost:hover::before{transform:scaleX(1)}
+
+    /* Solid turquoise → white on hover */
+    .btn-solid{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn-solid::before{background:#fff}
+    .btn-solid:hover{color:#111;border-color:#d0d0d0}
+    .btn-solid:hover::before{transform:scaleX(1)}
+
+    /* Small helper */
+    .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#6b6b6b;margin-bottom:8px}
+  </style>
+</head>
+<body>
+  <div class="wrap" style="padding-top:24px;padding-bottom:24px">
+    <!-- Row 1: Image Left -->
+    <div class="split">
+      <div class="visual" role="img" aria-label="Therapist room"
+        style="background-image:url('https://images.unsplash.com/photo-1556228578-8a3e7a4a2b5f?q=80&w=1600&auto=format&fit=crop');"></div>
+      <div class="copy">
+        <div class="eyebrow">Targeted Care</div>
+        <h3>medSPA</h3>
+        <p>Subtle, natural results guided by licensed professionals. Dermapen needling, disciplined peel protocols, and LED therapy refine tone and texture while keeping skin calm.</p>
+        <div class="cta">
+          <a class="btn btn-ghost" href="#"><span>Learn more</span></a>
+          <a class="btn btn-solid" href="#"><span>Book medspa</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- Row 2: Image Right -->
+    <div class="split reverse">
+      <div class="copy">
+        <div class="eyebrow">Unwind</div>
+        <h3>Spa</h3>
+        <p>From quick radiance boosts to the full Fit Skin ritual—micro, enzyme, or dermaplaning—plus soothing hydration and optional LED for a calm, healthy complexion.</p>
+        <div class="cta">
+          <a class="btn btn-ghost" href="#"><span>Explore spa services</span></a>
+        </div>
+      </div>
+      <div class="visual" role="img" aria-label="Relaxing spa"
+        style="background-image:url('https://images.unsplash.com/photo-1541534401786-2077eed87a74?q=80&w=1600&auto=format&fit=crop');"></div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- Row 3: Image Left -->
+    <div class="split">
+      <div class="visual" role="img" aria-label="Salon services"
+        style="background-image:url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1600&auto=format&fit=crop');"></div>
+      <div class="copy">
+        <div class="eyebrow">Polish</div>
+        <h3>Salon</h3>
+        <p>Wake-up-and-go definition with lifted lashes, custom tints, and precise brow shaping—finished with gentle, targeted waxing where you want it.</p>
+        <div class="cta">
+          <a class="btn btn-ghost" href="#"><span>Explore salon services</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- Row 4: Image Right -->
+    <div class="split reverse">
+      <div class="copy">
+        <div class="eyebrow">Shop</div>
+        <h3>Clean Beauty</h3>
+        <p>Therapist-picked, barrier-friendly care from Pelactiv and Circadia. High performance without the harshness.</p>
+        <div class="cta">
+          <a class="btn btn-solid" href="#"><span>Shop now</span></a>
+          <a class="btn btn-ghost" href="#"><span>Our brands</span></a>
+        </div>
+      </div>
+      <div class="visual" role="img" aria-label="Products"
+        style="background-image:url('https://images.unsplash.com/photo-1585386959984-a4155223168f?q=80&w=1600&auto=format&fit=crop');"></div>
+    </div>
+  </div>
+</body>
+</html>

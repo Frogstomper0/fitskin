@@ -1,0 +1,47 @@
+{
+  "source": "Fit Skin Clinic website (client testimonials section)",
+  "reviews": [
+    {
+      "author": "Emily Walker",
+      "rating": 5,
+      "text": "I’ve tried many facials in the past, but nothing compares to the customised chemical peel treatment at Fit Skin Clinic. My skin looks glowing and youthful. I’m definitely coming back!",
+      "service_mentions": ["Chemical Peel"],
+      "platform": "site"
+    },
+    {
+      "author": "Daisy Willson",
+      "rating": 5,
+      "text": "I was a bit unsure about LED therapy, but after just a few sessions, my acne cleared up, and my skin looks radiant. Highly recommend this clinic to anyone looking for quality skin care treatments.",
+      "service_mentions": ["LED Therapy"],
+      "platform": "site"
+    },
+    {
+      "author": "Olivia Brown",
+      "rating": 5,
+      "text": "The epidermal levelling treatment was fantastic! It removed the dead skin and peach fuzz, leaving my face feeling incredibly soft and smooth. Amanda’s expertise really shines through.",
+      "service_mentions": ["Epidermal Levelling"],
+      "platform": "site"
+    },
+    {
+      "author": "Lia Harris",
+      "rating": 5,
+      "text": "I’ve struggled with uneven skin tone for years, but after my skin needling session at Fit Skin Clinic, I noticed a huge difference. My skin is finally smooth and radiant!",
+      "service_mentions": ["Skin Needling"],
+      "platform": "site"
+    },
+    {
+      "author": "Sarah Johnson",
+      "rating": 5,
+      "text": "I had a wonderful experience at Fit Skin Clinic! Amanda’s expertise in skin needling transformed my skin, and I noticed a significant improvement in texture and brightness. I highly recommend this skin care clinic!",
+      "service_mentions": ["Skin Needling"],
+      "platform": "site"
+    },
+    {
+      "author": "Julia Stevens",
+      "rating": 5,
+      "text": "The microdermabrasion treatment was amazing! My skin feels smoother and fresher than ever. The staff is friendly, and Amanda is an absolute professional. I’m so happy with my results!",
+      "service_mentions": ["Microdermabrasion"],
+      "platform": "site"
+    }
+  ]
+}

@@ -1,0 +1,314 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services — Fit Skin Clinic</title>
+  <meta name="description" content="Explore all treatments at Fit Skin Clinic. Spa facials, MedSpa, salon services and add-ons. Book online." />
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/fitskin.js"></script>
+
+  <style>
+    :root{ --brand:#21c7c9; --brandDark:#17a5a7; --ink:#2b2b2b; --muted:#666; --line:#e6e6e6; --radius:16px; --maxw:1100px; }
+    body{
+      color:var(--ink);
+      background: linear-gradient(135deg, rgba(255,255,255,.98) 0%, rgba(33,199,201,.12) 100%);
+    }
+    .container{max-width:var(--maxw);margin:0 auto;padding:clamp(16px,4vw,40px);}
+
+    .mini-header{border-bottom:1px solid var(--line);background:#fff;}
+    .mini-header .bar{max-width:var(--maxw);margin:0 auto;padding:10px clamp(16px,4vw,40px);display:flex;align-items:center;gap:10px;}
+    .home-link{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
+    .home-link img{height:28px;width:auto;display:block}
+    .home-link span{border-left:1px solid var(--line);padding-left:10px}
+
+    .hero{
+      border-radius:16px;
+      background: linear-gradient(135deg, rgba(33,199,201,.55), rgba(23,165,167,.35), rgba(0,0,0,.10));
+      color:#fff;
+      padding:clamp(36px,6vw,72px);
+      margin: 18px 0 26px;
+    }
+    .hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px}
+    .hero p{margin:0 0 14px}
+    .quick{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.7); background:#fff; color:#000; text-decoration:none; font-weight:600;
+    }
+
+    .section{margin:26px 0}
+    .section h2{margin:0 0 12px}
+    .tiles{display:grid;gap:14px;grid-template-columns:repeat(3, 1fr)}
+    @media (max-width:900px){ .tiles{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:600px){ .tiles{grid-template-columns:1fr} }
+
+    .tile{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;text-decoration:none;color:inherit;display:grid;gap:6px}
+    .tile:hover{box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .tile .kicker{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .tile strong{font-size:16px}
+    .note{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header class="mini-header">
+    <div class="bar">
+      <a class="home-link" href="/index.html">
+        <img src="/assets/logo-fit-skin-black.png" alt="Fit Skin Clinic logo" onerror="this.style.display='none'">
+        <span>Home</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>Services</h1>
+        <p>Browse everything in one place. Jump to a category below, then tap into a page for full details and booking.</p>
+        <div class="quick">
+          <a class="chip" href="#spa">Spa Treatments</a>
+          <a class="chip" href="#medspa">MedSpa Treatments</a>
+          <a class="chip" href="#salon">Salon Services</a>
+          <a class="chip" href="#addons">Add-ons</a>
+        </div>
+      </section>
+
+      <!-- SPA -->
+      <section id="spa" class="section">
+        <h2>SPA TREATMENTS</h2>
+        <div class="tiles">
+          <a class="tile" href="/service-page-fit-skin-facial.html">
+            <span class="kicker">Facial</span><strong>Fit Skin Facial</strong>
+            <span class="note">Customised results + relaxation</span>
+          </a>
+          <a class="tile" href="/service-page-hydrabrasion-facial.html">
+            <span class="kicker">Facial</span><strong>Hydrabrasion Facial</strong>
+            <span class="note">Deep cleanse + hydration</span>
+          </a>
+          <a class="tile" href="/service-page-microdermabrasion-facial.html">
+            <span class="kicker">Facial</span><strong>Microdermabrasion Facial</strong>
+            <span class="note">Refine texture + brighten</span>
+          </a>
+          <a class="tile" href="/service-page-epidermal-levelling.html">
+            <span class="kicker">Exfoliation</span><strong>Epidermal Levelling</strong>
+            <span class="note">Smooth + de‑fuzz</span>
+          </a>
+          <a class="tile" href="/service-page-skin-consultation.html">
+            <span class="kicker">Consultation</span><strong>Skin Consultation</strong>
+            <span class="note">Plan your best next steps</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- MEDSPA -->
+      <section id="medspa" class="section">
+        <h2>MEDSPA TREATMENTS</h2>
+        <div class="tiles">
+          <a class="tile" href="/service-page-skin-needling.html">
+            <span class="kicker">Treatment</span><strong>Skin Needling</strong>
+            <span class="note">Boost collagen, smooth texture</span>
+          </a>
+          <a class="tile" href="/service-page-led-therapy.html">
+            <span class="kicker">Treatment</span><strong>LED Therapy</strong>
+            <span class="note">Calm + support recovery</span>
+          </a>
+          <a class="tile" href="/service-page-enzymatic-peel.html">
+            <span class="kicker">Peel</span><strong>Enzymatic Peel</strong>
+            <span class="note">Gentle resurfacing</span>
+          </a>
+          <a class="tile" href="/service-page-chemical-peel.html">
+            <span class="kicker">Peel</span><strong>Chemical Peel</strong>
+            <span class="note">Targeted resurfacing</span>
+          </a>
+          <a class="tile" href="/service-page-advanced-consultation.html">
+            <span class="kicker">Consultation</span><strong>Advanced Consultation</strong>
+            <span class="note">Complex concerns</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- SALON -->
+      <section id="salon" class="section">
+        <h2>SALON SERVICES</h2>
+        <div class="tiles">
+          <a class="tile" href="/service-page-lash-lift-and-tint.html">
+            <span class="kicker">Lashes</span><strong>Lash Lift + Tint</strong>
+            <span class="note">Lifted, defined lashes</span>
+          </a>
+          <a class="tile" href="/service-page-brow-wax-and-tint.html">
+            <span class="kicker">Brows</span><strong>Brow Wax &amp; Tint</strong>
+            <span class="note">Shape + colour match</span>
+          </a>
+          <a class="tile" href="/service-page-lash-tint.html">
+            <span class="kicker">Lashes</span><strong>Lash Tint</strong>
+            <span class="note">Deeper, darker finish</span>
+          </a>
+          <a class="tile" href="/service-page-brow-tint.html">
+            <span class="kicker">Brows</span><strong>Brow Tint</strong>
+            <span class="note">Soft, natural colour</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ADD-ONS -->
+      <section id="addons" class="section">
+        <h2>ADD-ONS</h2>
+        <div class="tiles">
+          <a class="tile" href="/service-page-addon-led.html">
+            <span class="kicker">Add-on</span><strong>Add-on LED</strong>
+            <span class="note">Calm + speed recovery</span>
+          </a>
+          <a class="tile" href="/service-page-addon-peel.html">
+            <span class="kicker">Add-on</span><strong>Add-on Peel</strong>
+            <span class="note">Extra clarity + glow</span>
+          </a>
+          <a class="tile" href="/service-page-addon-hands.html">
+            <span class="kicker">Add-on</span><strong>Add-on Hands</strong>
+            <span class="note">Smooth + hydrate</span>
+          </a>
+          <a class="tile" href="/service-page-addon-neck-decolletage.html">
+            <span class="kicker">Add-on</span><strong>Add-on Neck &amp; Décolletage</strong>
+            <span class="note">Even results beyond face</span>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+<section id="faq" class="card" style="margin-top:22px">
+  <h2>FAQs</h2>
+
+  <details class="qa">
+    <summary>How do I know if this treatment is right for me?</summary>
+    <div>
+      We assess your skin and goals in-clinic before we begin. If something isn’t the best fit, we’ll suggest safer or more effective alternatives for your skin at this time of year.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Does it hurt?</summary>
+    <div>
+      Discomfort is minimal and short-lived. Needling feels like a warm, scratchy sensation; peels feel tingly; LED is gently warm and relaxing. We can tailor intensity to keep you comfortable.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>How many sessions will I need?</summary>
+    <div>
+      You’ll see glow from one session, but best results come with a series. Most plans are <b>3–6 treatments</b>, spaced <b>2–4 weeks</b> apart, depending on your skin and the treatment type.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>What’s the downtime?</summary>
+    <div>
+      Needling: <b>1–3 days</b> of pinkness/dryness. Enzyme/dermaceutical peels: light flaking for <b>2–4 days</b>. LED: <b>no downtime</b>. We’ll give you aftercare and what to expect before you leave.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>What aftercare do I follow?</summary>
+    <div>
+      Keep it simple and hydrating; avoid active exfoliants for <b>3–5 days</b>. SPF 30+ daily. Skip heat, heavy exercise and saunas for <b>24 hours</b>. LED within 48 hours is a great add-on to calm and speed recovery.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Who is this not suitable for?</summary>
+    <div>
+      Active infection, open lesions, recent isotretinoin, and pregnancy are not suitable for needling or medium peels. Photosensitising medication and epilepsy can limit LED. We’ll check all of this with you in consultation.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Can I combine treatments?</summary>
+    <div>
+      Yes—LED pairs beautifully with needling, peels and facials to reduce redness and support repair. We’ll advise the best order and spacing for your plan.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>When will I see results?</summary>
+    <div>
+      You’ll notice immediate glow and smoothness. Collagen-related changes (texture, firmness and scars) improve steadily over <b>4–12 weeks</b> with a consistent series and home care.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Do I need a patch test?</summary>
+    <div>
+      For tinting and some wax areas we recommend a patch test at least <b>24–48 hours</b> prior, especially if you’re new or sensitive. Ask us when you book.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>How should I prepare?</summary>
+    <div>
+      Arrive with clean skin. Avoid active exfoliants/retinoids for <b>48 hours</b> pre-appointment. For lash/brow tinting, skip mascara and oil around the eye area on the day.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Packages and pricing</summary>
+    <div>
+      We offer value courses for series treatments (e.g., 3 or 6 sessions). See pricing on this page or ask in-clinic and we’ll tailor a plan for your goals and budget.
+    </div>
+  </details>
+
+  <details class="qa">
+    <summary>Cancellation window</summary>
+    <div>
+      If you need to reschedule, please give us as much notice as possible so we can offer the time to someone on our waitlist.
+    </div>
+  </details>
+</section>
+
+  <footer class="sitefoot">
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="word">Fit Skin Clinic</div>
+          <div class="cta">
+            <a class="book" href="#book"><span>BOOK NOW</span></a>
+          </div>
+          <ul aria-label="Contact" class="contact" style="margin-top:14px">
+            <li>E : <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a></li>
+            <li>P : <a href="tel:0437460557">0437 460 557</a></li>
+            <li>18 Steel St, Redhead NSW 2290</li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Opening Hours</h4>
+          <ul aria-label="Opening hours" class="hours">
+            <li><b>Monday</b><span>9:00am – 6:00pm</span></li>
+            <li><b>Tuesday</b><span>9:00am – 6:00pm</span></li>
+            <li><b>Wednesday</b><span>3:30pm – 7:30pm</span></li>
+            <li><b>Thursday</b><span>3:30pm – 7:30pm</span></li>
+            <li><b>Friday</b><span>3:30pm – 5:30pm</span></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <ul class="navlist">
+            <li><a href="#location">Location</a></li>
+            <li><a href="#">Gift Certificates</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>More</h4>
+          <ul class="navlist">
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <div>© 2025 Fit Skin Clinic. All rights reserved.</div>
+        <div><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

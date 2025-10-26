@@ -1,0 +1,467 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fit Skin Clinic — Demo</title>
+
+  <!-- Typography: editorial serif + modern UI sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <a href="#">USD</a>
+      <a href="#">Help</a>
+      <a href="#">Store Locator</a>
+    </div>
+  </div>
+
+  <header class="site">
+    <div class="container">
+      <!-- Row 1 -->
+      <div class="row-1">
+        <nav class="left-tabs">
+          <div class="menu">
+            <div class="tab is-active">TREATMENTS</div>
+            <div class="dropdown simple">
+              <ul>
+                <li><a href="/service-page-fit-skin-facial.html">Fit Skin Facial</a></li>
+                <li><a href="/service-page-hydrabrasion-facial.html">Hydrabrasion Facial</a></li>
+                <li><a href="/service-page-microdermabrasion-facial.html">Microdermabrasion Facial</a></li>
+                <li><a href="/service-page-epidermal-levelling.html">Epidermal Levelling</a></li>
+                <li><a href="/service-page-lash-lift-and-tint.html">Lash Lift + Tint</a></li>
+                <li><a href="#">Spray Tan</a></li>
+                <li><a href="#">Waxing (Chin / Lip)</a></li>
+                <li><a href="/service-page-skin-consultation.html">Skin Consultation</a></li>
+                <li><a href="/service-page-skin-consultation.html#book">Book Appointment</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="menu">
+            <div class="tab">ADVANCED SKIN</div>
+            <div class="dropdown simple">
+              <ul>
+                <li><a href="/service-page-skin-needling.html">Dermarolling (Skin Needling)</a></li>
+                <li><a href="/service-page-led-therapy.html">LED Therapy</a></li>
+                <li><a href="/service-page-enzymatic-peel.html">Enzymatic Peel</a></li>
+                <li><a href="/service-page-chemical-peel.html">Dermaceuticals Peel</a></li>
+                <li><a href="/service-page-advanced-consultation.html">Advanced Consultation</a></li>
+                <li><a href="/service-page-advanced-consultation.html#book">Book Med Spa</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRODUCTS (2-brand hub -> /products.html, Circadia preview default) -->
+          <div class="menu" id="productsMenu">
+            <div class="tab">PRODUCTS</div>
+            <div class="dropdown mega">
+              <div class="mega-products">
+                <!-- Left column: brands -->
+                <div class="mega-products__col">
+                  <a class="brand" data-brand="pelactiv" href="/products.html">
+                    <span>Pelactiv</span>
+                    <small>Range available in store</small>
+                  </a>
+                  <a class="brand" data-brand="circadia" href="/products.html">
+                    <span>Circadia</span>
+                    <small>Range available in store</small>
+                  </a>
+                </div>
+
+                <!-- Right column: preview (default = Circadia) -->
+                <a class="mega-products__preview" id="productsPreviewBox" href="/products.html" title="View brands">
+                  <img id="productsPreview" src="/assets/brands/circadia-preview.jpg" alt="Circadia products">
+                  <div class="caption">
+                    <strong id="productsCaption">Circadia</strong>
+                    <span>Range available in store</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Center logo -->
+        <div class="logo" aria-label="Fit Skin Clinic">
+          <span class="wordmark">FIT SKIN CLINIC</span>
+          <span class="tagline">For stressed, healthy, glowing skin</span>
+        </div>
+
+        <!-- Right actions -->
+        <div class="actions">
+          <a class="btn primary" href="/service-page-skin-consultation.html#book">BOOK NOW</a>
+          <a class="btn" style="border-color:var(--brand);color:var(--brandDark)" href="/products.html">GIFT CERTIFICATES</a>
+          <button class="iconbtn" aria-label="Account">👤</button>
+          <button class="iconbtn" aria-label="Search">🔍</button>
+          <button class="iconbtn" aria-label="Cart">🛍️</button>
+        </div>
+      </div>
+
+      <!-- Row 2: Upper tabs -->
+      <div class="row-2">
+        <div class="container">
+          <nav class="upper">
+            <div class="upper-menu"><a href="/services.html#spa">SPA TREATMENTS</a>
+              <div class="dropdown simple">
+                <ul>
+                  <li><a href="/service-page-fit-skin-facial.html">Fit Skin Facial</a></li>
+                  <li><a href="/service-page-hydrabrasion-facial.html">Hydrabrasion Facial</a></li>
+                  <li><a href="/service-page-microdermabrasion-facial.html">Microdermabrasion Facial</a></li>
+                  <li><a href="/service-page-epidermal-levelling.html">Epidermal Levelling</a></li>
+                  <li><a href="/service-page-skin-consultation.html">Skin Consultation</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="upper-menu"><a href="/services.html#medspa">MEDSPA TREATMENTS</a>
+              <div class="dropdown simple">
+                <ul>
+                  <li><a href="/service-page-skin-needling.html">Skin Needling</a></li>
+                  <li><a href="/service-page-led-therapy.html">LED Therapy</a></li>
+                  <li><a href="/service-page-enzymatic-peel.html">Enzymatic Peel</a></li>
+                  <li><a href="/service-page-chemical-peel.html">Dermaceuticals Peel</a></li>
+                  <li><a href="/service-page-advanced-consultation.html">Advanced Consultation</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="upper-menu"><a href="/services.html#salon">SALON SERVICES</a>
+              <div class="dropdown simple">
+                <ul>
+                  <li><a href="/service-page-lash-lift-and-tint.html">Lash Lift + Tint</a></li>
+                  <li><a href="/service-page-brow-wax-and-tint.html">Brow Wax &amp; Tint</a></li>
+                  <li><a href="/service-page-lash-tint.html">Lash Tint</a></li>
+                  <li><a href="/service-page-brow-tint.html">Brow Tint</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="upper-menu"><a href="/services.html#addons">ADD-ONS</a>
+              <div class="dropdown simple">
+                <ul>
+                  <li><a href="/service-page-led-therapy.html#book">Add-on LED</a></li>
+                  <li><a href="/service-page-enzymatic-peel.html#book">Add-on Peel</a></li>
+                  <li><a href="/services.html#addons">Add-on Hands</a></li>
+                  <li><a href="/services.html#addons">Add-on Neck &amp; Décolletage</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="upper-menu"><a href="#">MORE</a>
+              <div class="dropdown simple">
+                <ul>
+                  <li><a href="#location">Locations</a></li>
+                  <li><a href="/products.html">Rewards</a></li>
+                  <li><a href="#">Careers</a></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="upper-menu"><a href="#">FALL OFFERS</a>
+              <div class="dropdown simple">
+                <ul>
+                  <li><a href="#">Seasonal Packages</a></li>
+                  <li><a href="#">Limited-Time Deals</a></li>
+                  <li><a href="#">Gift Set Specials</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-box" id="hero">
+        <div class="hero-jar"><div style="width:96px;height:96px;border-radius:50%;border:1px solid var(--line)"></div></div>
+
+        <div class="hero-copy">
+          <div class="hero-panel" id="heroPanel">
+            <div class="badge">NEW</div>
+            <h1 id="heroTitle">Five-minute glow facial</h1>
+            <p class="sub" id="heroSub">new treatments, scents, and offers to help you slow down</p>
+            <p id="heroCopy">With our comprehensive line of wellness services, we offer everything you need for complete self-care—all in one place. Your escape awaits.</p>
+            <div class="cta">
+              <a class="pill primary" href="/service-page-skin-consultation.html#book">BOOK NOW</a>
+              <a class="pill" href="/services.html">FIND OUT MORE</a>
+            </div>
+          </div>
+        </div>
+
+        <button class="navbtn prev" id="prevBtn" aria-label="Previous">‹</button>
+        <button class="navbtn next" id="nextBtn" aria-label="Next">›</button>
+        <div class="dots"><div class="dot active"></div><div class="dot"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="cards">
+    <div class="container">
+      <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:28px;margin:0 0 16px 0">Explore by category</h2>
+      <div class="grid">
+        <a href="/products.html" class="card">
+          <div class="img" style="background-image:url('/assets/skincare.JPG');"></div>
+          <div class="body">
+            <h3>Skincare</h3>
+            <div class="muted">Cleansers, serums, masks, and everyday SPF.</div>
+            <div class="cta"><span class="pill">Learn more</span></div>
+          </div>
+        </a>
+        <a href="/products.html" class="card">
+          <div class="img" style="background-image:url('/assets/spa.jpg');"></div>
+          <div class="body">
+            <h3>Bath + Body</h3>
+            <div class="muted">Elevated daily rituals from shower to sleep.</div>
+            <div class="cta"><span class="pill">Shop now</span></div>
+          </div>
+        </a>
+        <a href="/products.html" class="card">
+          <div class="img" style="background-image:url('/assets/giftsets.JPG');"></div>
+          <div class="body">
+            <h3>Gift Sets</h3>
+            <div class="muted">Curated self-care for any occasion.</div>
+            <div class="cta"><span class="pill primary">View brands</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Split features section (TIGHT) -->
+  <section class="features tighter">
+    <div class="container">
+      <!-- Row 1: Image Left -->
+      <div class="split">
+        <div class="visual" role="img" aria-label="Therapist room"
+          style="background-image:url('https://images.unsplash.com/photo-1556228578-8a3e7a4a2b5f?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="copy">
+          <div class="eyebrow">Targeted Care</div>
+          <h3>medSPA</h3>
+          <p>Subtle, natural results guided by licensed professionals. Dermapen needling, disciplined peel protocols, and LED therapy refine tone and texture while keeping skin calm.</p>
+          <div class="cta">
+            <a class="pill" href="/services.html#medspa"><span>Learn more</span></a>
+            <a class="pill primary" href="/service-page-advanced-consultation.html#book"><span>Book medspa</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sep"></div>
+
+      <!-- Row 2: Image Right -->
+      <div class="split reverse">
+        <div class="copy">
+          <div class="eyebrow">Unwind</div>
+          <h3>Spa</h3>
+          <p>From quick radiance boosts to the full Fit Skin ritual—micro, enzyme, or dermaplaning—plus soothing hydration and optional LED for a calm, healthy complexion.</p>
+          <div class="cta">
+            <a class="pill" href="/services.html#spa"><span>Explore spa services</span></a>
+          </div>
+        </div>
+        <div class="visual" role="img" aria-label="Relaxing spa"
+          style="background-image:url('https://images.unsplash.com/photo-1541534401786-2077eed87a74?q=80&w=1600&auto=format&fit=crop');"></div>
+      </div>
+
+      <div class="sep"></div>
+
+      <!-- Row 3: Image Left -->
+      <div class="split">
+        <div class="visual" role="img" aria-label="Salon services"
+          style="background-image:url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1600&auto=format&fit=crop');"></div>
+        <div class="copy">
+          <div class="eyebrow">Polish</div>
+          <h3>Salon</h3>
+          <p>Wake-up-and-go definition with lifted lashes, custom tints, and precise brow shaping—finished with gentle, targeted waxing where you want it.</p>
+          <div class="cta">
+            <a class="pill" href="/services.html#salon"><span>Explore salon services</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sep"></div>
+
+      <!-- Row 4: Image Right -->
+      <div class="split reverse">
+        <div class="copy">
+          <div class="eyebrow">Shop</div>
+          <h3>Clean Beauty</h3>
+          <p>Therapist-picked, barrier-friendly care from Pelactiv and Circadia. High performance without the harshness.</p>
+          <div class="cta">
+            <a class="pill primary" href="/products.html"><span>Shop now</span></a>
+            <a class="pill" href="/products.html"><span>Our brands</span></a>
+          </div>
+        </div>
+        <div class="visual" role="img" aria-label="Products"
+          style="background-image:url('https://images.unsplash.com/photo-1585386959984-a4155223168f?q=80&w=1600&auto=format&fit=crop');"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+<section class="location" id="location">
+  <div class="container">
+    <div class="loc-grid">
+      <div class="loc-copy">
+        <div class="loc-eyebrow">REDHEAD • LAKE MACQUARIE • NEWCASTLE</div>
+        <h2>Your oasis in Redhead</h2>
+        <p>At Fit Skin Clinic, no detail goes unnoticed. Our space is designed to help you relax, and our experiences are crafted to soothe the senses and feel like an escape.</p>
+        <p class="muted">18 Steel St, Redhead NSW 2290 • By appointment</p>
+        <div class="loc-cta">
+          <a class="pill primary" href="https://www.google.com/maps?q=18%20Steel%20St,%20Redhead%20NSW%202290&output=embed" target="_blank" rel="noopener">Get directions</a>
+          <a class="pill" href="tel:0437460557">Call</a>
+          <a class="pill" href="/service-page-skin-consultation.html#book">Book</a>
+        </div>
+      </div>
+      <div class="mapwrap" aria-label="Map to Fit Skin Clinic">
+        <iframe src="https://www.google.com/maps?q=18%20Steel%20St,%20Redhead%20NSW%202290&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-photo" style="background-image:url('https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=1400&auto=format&fit=crop');" aria-label="Clinic exterior photo"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- ENGAGE STRIP -->
+  <section class="engage" id="engage">
+    <div class="container">
+      <div class="tiles">
+
+        <!-- Left: Free Skin Consultation -->
+        <article class="tile" aria-labelledby="consultTitle">
+          <div class="eyebrow">Complimentary</div>
+          <div class="thumb" style="background-image:url('/assets/skin-consultation-hero.jpg');" role="img" aria-label="Therapist speaking with client"></div>
+          <h3 id="consultTitle">Free Skin Consultation</h3>
+          <p class="sub">15 minutes to map your best skin.</p>
+          <div class="cta">
+            <a class="pill primary" id="consultLink" href="/service-page-skin-consultation.html#book" aria-label="Book a free skin consultation">Book consult</a>
+            <a class="pill" href="tel:0437460557" aria-label="Call to book consultation">Call</a>
+          </div>
+        </article>
+
+        <!-- Middle: Reviews Carousel -->
+        <article class="tile reviews" aria-labelledby="reviewsTitle" aria-roledescription="carousel" aria-label="Client reviews">
+          <h3 id="reviewsTitle" style="margin-bottom:10px">What clients say</h3>
+          <div class="rev-viewport" role="region" aria-live="polite">
+            <div class="rev-track" id="revTrack"></div>
+            <div class="rev-badge" id="revBadge" aria-hidden="true">Reviews</div>
+          </div>
+          <div class="rev-nav" aria-label="carousel controls">
+            <button class="revbtn" id="revPrev" aria-label="Previous review">‹</button>
+            <div class="revdots" id="revDots" role="tablist" aria-label="Review slides"></div>
+            <button class="revbtn" id="revNext" aria-label="Next review">›</button>
+          </div>
+        </article>
+
+        <!-- Right: Meet Your Therapist -->
+        <article class="tile" aria-labelledby="meetTitle">
+          <div class="eyebrow">Our team</div>
+          <h3 id="meetTitle">Meet Your Therapist</h3>
+
+          <!-- Amanda -->
+          <div class="team" style="margin:8px 0 6px">
+            <div class="portrait" style="background-image:url('/assets/amanda.JPG');" role="img" aria-label="Amanda — skin therapist"></div>
+            <div>
+              <div class="bio"><strong>Amanda</strong> — clinic lead. Specialties: LED therapy, Dermapen needling, enzymatic peels.</div>
+              <div class="micro">CIDESCO • 8+ yrs experience</div>
+            </div>
+          </div>
+
+          <!-- Sophie -->
+          <div class="team" style="margin:8px 0 6px">
+            <div class="portrait" style="background-image:url('/assets/sophie.JPG');" role="img" aria-label="Sophie — lashes & waxing specialist"></div>
+            <div>
+              <div class="bio"><strong>Sophie</strong> — specialist in <em>lashes &amp; waxing</em>. Precise brow shaping, tints, and gentle targeted waxing.</div>
+              <div class="micro">Beauty therapist • Lashes &amp; Waxing</div>
+            </div>
+          </div>
+
+          <div class="cta">
+            <a class="pill" href="/service-page-skin-consultation.html" id="teamLink">Say hello</a>
+            <a class="pill primary" href="/service-page-skin-consultation.html#book" id="bookAmanda">Book with Amanda</a>
+            <a class="pill primary" href="/service-page-skin-consultation.html#book" id="bookSophie">Book with Sophie</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="sitefoot">
+    <div class="container">
+      <div class="foot-grid">
+        <!-- Brand + Book + Contact underneath -->
+        <div class="foot-brand">
+          <div class="word">Fit Skin Clinic</div>
+          <div class="cta">
+            <a class="book" href="/service-page-skin-consultation.html#book"><span>BOOK NOW</span></a>
+          </div>
+          <ul class="contact" style="margin-top:14px" aria-label="Contact">
+            <li>E : <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a></li>
+            <li>P : <a href="tel:0437460557">0437 460 557</a></li>
+            <li>18 Steel St, Redhead NSW 2290</li>
+          </ul>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="foot-col">
+          <h4>Opening Hours</h4>
+          <ul class="hours" aria-label="Opening hours">
+            <li><b>Monday</b><span>9:00am – 6:00pm</span></li>
+            <li><b>Tuesday</b><span>9:00am – 6:00pm</span></li>
+            <li><b>Wednesday</b><span>3:30pm – 7:30pm</span></li>
+            <li><b>Thursday</b><span>3:30pm – 7:30pm</span></li>
+            <li><b>Friday</b><span>3:30pm – 5:30pm</span></li>
+          </ul>
+        </div>
+
+        <!-- Links -->
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <ul class="navlist">
+            <li><a href="#location">Location</a></li>
+            <li><a href="/products.html">Gift Certificates</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+
+          <!-- Brand badges (Pelactiv & Circadia) -->
+          <div class="brand-badges">
+            <a class="brand-badge" href="/products.html" aria-label="Pelactiv">
+              <img src="/assets/brands/pelactiv.png" alt="Pelactiv logo">
+            </a>
+            <a class="brand-badge" href="/products.html" aria-label="Circadia">
+              <img src="/assets/brands/circadia.png" alt="Circadia logo">
+            </a>
+          </div>
+        </div>
+
+        <div class="foot-col">
+          <h4>More</h4>
+          <ul class="navlist">
+            <li><a href="#">Careers</a></li>
+            <li><a href="mailto:thefitskinclinic@gmail.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot-legal">
+        <div>© 2025 Fit Skin Clinic. All rights reserved.</div>
+        <div><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="fitskin.js"></script>
+</body>
+</html>

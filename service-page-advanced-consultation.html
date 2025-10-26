@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Advanced Consultation — Fit Skin Clinic</title>
+  <meta name="description" content="Advanced skin consultation to deep-dive concerns, ingredients, and treatment planning. Ideal for complex skin or when you want a precise, step-by-step plan." />
+  <!-- root-absolute so it loads from any folder -->
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/fitskin.js"></script>
+
+  <!-- JSON-LD: Service schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Advanced Consultation",
+    "serviceType": "Aesthetic Skin Treatment Consultation",
+    "provider": { "@type": "LocalBusiness", "name": "Fit Skin Clinic" },
+    "areaServed": "Redhead, Lake Macquarie",
+    "description": "Extended, in-depth consultation including skin history, ingredient audit, tolerance mapping and a staged plan for treatments and home care."
+  }
+  </script>
+
+  <style>
+    /* Page-local helpers */
+    :root{ --brand:#21c7c9; --brandDark:#17a5a7; --ink:#2b2b2b; --muted:#666; --line:#e6e6e6; --bg:#fff; --radius:16px; --maxw:1100px; }
+    /* Full-page brand gradient background */
+    body{
+       color:var(--ink);
+       background:
+         linear-gradient(135deg,
+           rgba(255,255,255,0.98) 0%,
+           rgba(33,199,201,0.12) 100%
+         );
+    }
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:clamp(16px,4vw,40px);}
+
+    /* Simple top header with Home link */
+    .mini-header{border-bottom:1px solid var(--line);background:#fff;}
+    .mini-header .bar{max-width:var(--maxw);margin:0 auto;padding:10px clamp(16px,4vw,40px);display:flex;align-items:center;gap:10px;}
+    .home-link{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
+    .home-link img{height:28px;width:auto;display:block}
+    .home-link span{border-left:1px solid var(--line);padding-left:10px}
+
+    /* Breadcrumbs: clearer */
+    .crumbs{font:600 14px/1.6 ui-sans-serif,system-ui,sans-serif;color:#2b2b2b;margin:14px 0 18px;}
+    .crumbs a{color:#2b2b2b;text-decoration:none;border-bottom:1px dotted #999}
+    .crumbs a:hover{color:var(--brand);border-bottom-color:var(--brand)}
+
+    /* HERO — brand blue gradient overlay */
+    .hero{
+      border-radius:var(--radius);
+      /* Image mapping hint:
+         → /assets/services/advanced-consultation-hero.jpg
+      */
+      background:
+        linear-gradient(135deg, rgba(33,199,201,.55), rgba(23,165,167,.35), rgba(0,0,0,.15)),
+        url('/assets/services/advanced-consultation-hero.jpg') center/cover no-repeat;
+      color:#fff;
+      padding:clamp(40px,8vw,80px);
+      margin-bottom:28px;
+      position:relative;
+      min-height:340px;
+      display:flex;align-items:flex-end;
+    }
+    .hero h1{font-size:clamp(28px,5vw,48px);margin:0 0 6px}
+    .hero p.lead{font-size:clamp(16px,2.2vw,20px);margin:0 0 16px;opacity:.95}
+    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 18px;border:1px solid #fff;background:#fff;color:#000;text-decoration:none;font-weight:600}
+    .btn.brand{background:var(--brand);border-color:var(--brand);color:#fff}
+    .btn:hover{opacity:.9}
+
+    .grid{display:grid;gap:22px;grid-template-columns:repeat(12,1fr)}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+    .span-8{grid-column:span 8}
+    .span-4{grid-column:span 4}
+    @media (max-width:900px){.span-8,.span-4{grid-column:1 / -1}}
+
+    h2{font-size:clamp(20px,2.6vw,28px);margin:0 0 12px}
+    ul.bullets{margin:0;padding-left:20px}
+    .note{font-size:14px;color:var(--muted)}
+
+    /* Booking iframe (responsive) */
+    #book .embed-16x9{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+    #book iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    /* Related services */
+    .tiles{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
+    .tile{border:1px solid var(--line);border-radius:14px;padding:16px;text-decoration:none;color:inherit;display:grid;gap:8px}
+    .tile:hover{box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .tile .kicker{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+    .tile strong{font-size:16px}
+
+    /* SERVICE PAGES ONLY: Hide the footer's big Book Now button */
+    .sitefoot .cta{display:none !important}
+  </style>
+</head>
+<body>
+  <!-- Simple header with Home link -->
+  <header class="mini-header">
+    <div class="bar">
+      <a class="home-link" href="/index.html">
+        <img src="/assets/logo-fit-skin-black.png" alt="Fit Skin Clinic logo" onerror="this.style.display='none'">
+        <span>Home</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <nav class="crumbs"><a href="/index.html">Home</a> › <a href="/services.html">Services</a> › MedSpa › <strong>Advanced Consultation</strong></nav>
+
+      <section class="hero" role="img" aria-label="Advanced skin consultation">
+        <div>
+          <h1>Advanced Consultation</h1>
+          <p class="lead">A deeper, longer consult to decode triggers, ingredients and tolerance—then map a staged treatment + home‑care plan.</p>
+          <div class="cta-row">
+            <a class="btn brand" href="#book" id="bookNow">Book now</a>
+            <a class="btn" href="#details">See details</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="details" class="grid">
+        <article class="card span-8">
+          <h2>What we cover</h2>
+          <ul class="bullets">
+            <li>Skin history, triggers and current routine (ingredient audit)</li>
+            <li>Tolerance mapping: actives you can/can’t use, seasonal adjustments</li>
+            <li>Staged plan: in‑clinic treatments and home care by weeks</li>
+          </ul>
+
+          <h2>Who it’s for</h2>
+          <ul class="bullets">
+            <li>Persistent breakouts, sensitivity or pigmentation</li>
+            <li>Complex history (e.g., prescription actives or frequent reactions)</li>
+            <li>Anyone who wants a precise, step‑by‑step plan</li>
+          </ul>
+
+          <h2>What to expect</h2>
+          <ul class="bullets">
+            <li>Appointment time: 40–50 minutes</li>
+            <li>Bring photos/products if possible</li>
+            <li>Option to begin treatment same day if suitable</li>
+          </ul>
+
+          <p class="note">You’ll leave with a clear, actionable plan. We can check‑in at set intervals to adjust as your skin adapts.</p>
+        </article>
+
+        <aside class="card span-4">
+          <h2>Pricing</h2>
+          <ul class="bullets">
+            <li>Advanced Consultation — <strong>From $X</strong></li>
+            <li class="note">Redeemable on the day when you start treatment or purchase home care.</li>
+          </ul>
+
+          <h2 style="margin-top:18px">Popular next steps</h2>
+          <ul class="bullets">
+            <li>Dermaceuticals Peel</li>
+            <li>LED Light Therapy</li>
+            <li>Skin Needling</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- Booking embed -->
+      <section id="book" class="card" style="margin-top:22px">
+        <h2>Book your appointment</h2>
+        <div class="embed-16x9">
+          <iframe src="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <!-- Related services -->
+      <section class="card" style="margin-top:22px">
+        <h2>Related services</h2>
+        <div class="tiles" style="margin-top:8px">
+          <a class="tile" href="/service-page-chemical-peel.html">
+            <span class="kicker">MedSpa</span>
+            <strong>Dermaceuticals Peel</strong>
+            <span class="note">Refine texture and even tone</span>
+          </a>
+          <a class="tile" href="/service-page-led-therapy.html">
+            <span class="kicker">Add-on</span>
+            <strong>LED Light Therapy</strong>
+            <span class="note">Calm, soothe and support recovery</span>
+          </a>
+        </div>
+      </section>
+
+      <section style="display:flex;gap:12px;justify-content:flex-end;margin-top:22px">
+        <a class="btn" href="/services.html">Back to Services</a>
+        <a class="btn brand" href="#book" id="bookNowBottom">Book Advanced Consultation</a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Exact site footer from index.html (book button hidden on service pages via CSS above) -->
+  <footer class="sitefoot">
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="word">Fit Skin Clinic</div>
+          <div class="cta"><a class="book" href="#book"><span>BOOK NOW</span></a></div>
+          <ul aria-label="Contact" class="contact" style="margin-top:14px">
+            <li>E : <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a></li>
+            <li>P : <a href="tel:0437460557">0437 460 557</a></li>
+            <li>18 Steel St, Redhead NSW 2290</li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Opening Hours</h4>
+          <ul aria-label="Opening hours" class="hours">
+            <li><b>Monday</b><span>9:00am – 6:00pm</span></li>
+            <li><b>Tuesday</b><span>9:00am – 6:00pm</span></li>
+            <li><b>Wednesday</b><span>3:30pm – 7:30pm</span></li>
+            <li><b>Thursday</b><span>3:30pm – 7:30pm</span></li>
+            <li><b>Friday</b><span>3:30pm – 5:30pm</span></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <ul class="navlist">
+            <li><a href="#location">Location</a></li>
+            <li><a href="#">Gift Certificates</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>More</h4>
+          <ul class="navlist">
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <div>© 2025 Fit Skin Clinic. All rights reserved.</div>
+        <div><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

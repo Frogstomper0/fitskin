@@ -1,0 +1,137 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products — Fit Skin Clinic</title>
+  <meta name="description" content="Professional skincare available in-clinic. Explore Pelactiv and Circadia ranges." />
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/fitskin.js"></script>
+
+  <style>
+    :root{ --brand:#21c7c9; --brandDark:#17a5a7; --ink:#2b2b2b; --muted:#666; --line:#e6e6e6; --radius:16px; --maxw:1100px; }
+    body{ color:var(--ink);
+      background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(33,199,201,0.12) 100%); }
+    .container{max-width:var(--maxw);margin:0 auto;padding:clamp(16px,4vw,40px);}
+    .mini-header{border-bottom:1px solid var(--line);background:#fff;}
+    .mini-header .bar{max-width:var(--maxw);margin:0 auto;padding:10px clamp(16px,4vw,40px);display:flex;align-items:center;gap:10px;}
+    .home-link{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700}
+    .home-link img{height:28px;width:auto;display:block}
+    .home-link span{border-left:1px solid var(--line);padding-left:10px}
+
+    .hero{border-radius:16px;background: linear-gradient(135deg, rgba(33,199,201,.55), rgba(23,165,167,.35), rgba(0,0,0,.10)); color:#fff;
+      padding:clamp(36px,6vw,72px); margin: 18px 0 26px;}
+    .hero h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px}
+    .hero p{margin:0}
+
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(12,1fr)}
+    .span-6{grid-column:span 6}
+    @media (max-width:900px){ .span-6{grid-column:1 / -1} }
+
+    .brandcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:10px}
+    .brandcard .row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .brandcard img{height:42px;width:auto;display:block}
+    .brandcard h2{margin:0;font-size:22px}
+    .brandcard p{margin:4px 0 10px;color:var(--muted)}
+    .brandcard .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;
+      border:1px solid var(--line);background:#fff;color:#000;text-decoration:none;font-weight:600
+    }
+    .chip.brand{background:var(--brand);border-color:var(--brand);color:#fff}
+  </style>
+</head>
+<body>
+  <header class="mini-header">
+    <div class="bar">
+      <a class="home-link" href="/index.html">
+        <img src="/assets/logo-fit-skin-black.png" alt="Fit Skin Clinic logo" onerror="this.style.display='none'">
+        <span>Home</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>Products</h1>
+        <p>Professional skincare ranges available in-store. Ask us in-clinic for personalised recommendations.</p>
+      </section>
+
+      <section class="grid">
+        <article class="brandcard span-6">
+          <div class="row">
+            <img src="/assets/brands/pelactiv.png" alt="" onerror="this.style.display='none'">
+            <h2>Pelactiv</h2>
+          </div>
+          <p>Australian-made professional skincare focused on gentle efficacy.</p>
+          <div class="actions">
+            <a class="chip brand" href="https://pelactiv.com" target="_blank" rel="noopener noreferrer">Visit Pelactiv</a>
+            <span class="chip">Range available in store</span>
+          </div>
+        </article>
+
+        <article class="brandcard span-6">
+          <div class="row">
+            <img src="/assets/brands/circadia.png" alt="" onerror="this.style.display='none'">
+            <h2>Circadia</h2>
+          </div>
+          <p>Physiology-based, chronobiology-driven skincare for results.</p>
+          <div class="actions">
+            <a class="chip brand" href="https://circadia.com" target="_blank" rel="noopener noreferrer">Visit Circadia</a>
+            <span class="chip">Range available in store</span>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="sitefoot">
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="word">Fit Skin Clinic</div>
+          <div class="cta">
+            <a class="book" href="/service-page-skin-consultation.html#book"><span>BOOK NOW</span></a>
+          </div>
+          <ul aria-label="Contact" class="contact" style="margin-top:14px">
+            <li>E : <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a></li>
+            <li>P : <a href="tel:0437460557">0437 460 557</a></li>
+            <li>18 Steel St, Redhead NSW 2290</li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Opening Hours</h4>
+          <ul aria-label="Opening hours" class="hours">
+            <li><b>Monday</b><span>9:00am – 6:00pm</span></li>
+            <li><b>Tuesday</b><span>9:00am – 6:00pm</span></li>
+            <li><b>Wednesday</b><span>3:30pm – 7:30pm</span></li>
+            <li><b>Thursday</b><span>3:30pm – 7:30pm</span></li>
+            <li><b>Friday</b><span>3:30pm – 5:30pm</span></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>Explore</h4>
+          <ul class="navlist">
+            <li><a href="#location">Location</a></li>
+            <li><a href="#">Gift Certificates</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="foot-col">
+          <h4>More</h4>
+          <ul class="navlist">
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-legal">
+        <div>© 2025 Fit Skin Clinic. All rights reserved.</div>
+        <div><a href="#">Privacy Policy</a></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
