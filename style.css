@@ -500,3 +500,40 @@ footer.sitefoot{border-top:1px solid var(--line);background:#fafafa;margin-left:
   margin: 22px auto;
   padding: 20px;
 }
+/* ===== MOBILE-ONLY LAYOUT (≤900px) ===== */
+@media (max-width: 900px){
+  .row-1{height:auto; padding:6px 0; row-gap:8px;}
+  .left-tabs{
+    order:2; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none; padding:6px 0;
+  }
+  .left-tabs::-webkit-scrollbar{ display:none; }
+
+  .tab{
+    height:40px; padding:0 10px; font-size:13px; border-radius:8px;
+    background:#fff; border-color:#ddd;
+  }
+
+  /* Row-2: make the top nav scrollable chips */
+  .upper{ height:auto; gap:16px; overflow-x:auto; white-space:nowrap; padding:6px 0; }
+  .upper-menu{ flex:0 0 auto; }
+  .upper a{ font-size:12px; padding:6px 0; }
+
+  /* Tidy hero/cards on phones */
+  .hero{ padding:22px 16px; min-height:300px; }
+  .hero h1{ font-size:30px; }
+  .hero p.lead{ font-size:15px; }
+  .card .img{ height:220px; }
+
+  .logo .tagline{ display:none; }
+  .actions{ gap:8px; }
+  .btn{ padding:8px 12px; font-size:13px; }
+  .iconbtn{ width:32px; height:32px; }
+}
+
+/* ===== TOUCH-ONLY BEHAVIOR (phones/tablets) ===== */
+/* Prevent hover dropdowns from sticking on touch while keeping desktop hover intact */
+@media (hover:none) and (pointer:coarse){
+  .menu .dropdown{ display:none !important; }
+  .menu:hover > .tab{ margin-bottom:0; box-shadow:none; }
+}
