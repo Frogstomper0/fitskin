@@ -676,4 +676,44 @@ footer.sitefoot{border-top:1px solid var(--line);background:#fafafa;margin-left:
   #book .embed-16x9{ padding-bottom:180%; min-height:860px; }
 }
 
+/* ===== MOBILE TWEAKS: Engage section full-width + booking a touch shorter ===== */
+@media (max-width:820px){
+
+  /* A) Make “Free Skin Consultation”, “What clients say”, and “Our team”
+        as wide as the rest of the page (remove the big side padding). */
+  .engage{
+    /* was: padding: 44px 100px and negative margins */
+    padding: 24px var(--edge-pad);
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .engage .container{
+    /* match normal page gutters */
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+  }
+  .tiles{
+    grid-template-columns: 1fr; /* single column on phones */
+    gap: 12px;
+  }
+  .tile{
+    min-height: auto; /* prevent overly tall cards */
+    border-radius: 14px;
+  }
+
+  /* B) Booking selector: shorten slightly (was 160%) */
+  #book .embed-16x9{
+    padding-bottom:150%;
+    min-height:740px;
+  }
+}
+
+/* Extra-small phones: still a touch shorter than before (was 180%) */
+@media (max-width:380px){
+  #book .embed-16x9{
+    padding-bottom:170%;
+    min-height:820px;
+  }
+}
 
