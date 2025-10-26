@@ -390,3 +390,44 @@ document.addEventListener('DOMContentLoaded', () => {
   // default view
   show('pelactiv');
 });
+// === Mobile reviews: clamp long quotes with a toggle ===
+(function(){
+  const isMobile = () => window.matchMedia('(max-width:820px)').matches;
+
+  function addReviewToggles(){
+    if (!isMobile()) return;
+    const quotes = document.querySelectorAll('.reviews .rev-quote');
+    if (!quotes.length) return;
+
+    quotes.forEach(q => {
+      // don’t double-apply or clamp tiny blurbs
+      if (q.dataset.toggled === '1' || (q.textContent.trim().length < 160)) return;
+      q.classList.add('clamp');
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'more-toggle';
+      btn.textContent = 'Read more';
+      btn.addEventListener('click', () => {
+        const clamped = q.classList.toggle('clamp');
+        btn.textContent = clamped ? 'Read more' : 'Read less';
+      });
+      // put button after the quote
+      q.parentElement.appendChild(btn);
+      q.dataset.toggled = '1';
+    });
+  }
+
+  // run after the carousel has populated
+  function ensure(){
+    const track = document.querySelector('.reviews .rev-track');
+    const ready = track && track.children && track.children.length;
+    if (ready){ addReviewToggles(); }
+    else { setTimeout(ensure, 150); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensure);
+  } else {
+    ensure();
+  }
+})();
+
