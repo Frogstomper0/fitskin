@@ -587,4 +587,62 @@ footer.sitefoot{border-top:1px solid var(--line);background:#fafafa;margin-left:
   .hero .pill{ padding:10px 14px; font-size:14px; }
   .hero .cta{ gap:8px; flex-wrap:wrap; }
 }
+/* =========== MOBILE-ONLY TWEAKS (≤ 820px) =========== */
+@media (max-width: 820px){
+
+  /* A. turquoise sheen over the four feature visuals (medspa / spa / salon / clean beauty) */
+  .features.tighter .visual{ position:relative; }
+  .features.tighter .visual::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(33,199,201,.32), rgba(23,165,167,.20));
+    mix-blend:multiply;         /* keeps photo detail, adds brand tint */
+    pointer-events:none;
+  }
+
+  /* B. Reviews: keep slides compact by default */
+  .reviews .rev-slide{ padding:6px 12px 12px; }
+  .reviews .rev-quote{
+    margin:0 0 6px;
+    font-size:15px; line-height:1.5;
+  }
+  .reviews .rev-quote.clamp{
+    display:-webkit-box;
+    -webkit-line-clamp: 4;      /* ~4 lines then fade */
+    -webkit-box-orient: vertical;
+    overflow:hidden;
+  }
+  .reviews .more-toggle{
+    appearance:none;border:0;background:transparent;
+    color:var(--brand); font-weight:700; padding:0; cursor:pointer;
+  }
+
+  /* C. Meet your therapist: make tile shorter + buttons tucked under portraits */
+  .tile[aria-labelledby="meetTitle"]{ min-height:auto; padding:14px; }
+  .tile[aria-labelledby="meetTitle"] .team{ align-items:flex-start; gap:10px; }
+  .tile[aria-labelledby="meetTitle"] .portrait{ width:76px; border-radius:10px; }
+  .tile[aria-labelledby="meetTitle"] .bio{ font-size:13px; }
+  .tile[aria-labelledby="meetTitle"] .micro{ font-size:11px; }
+
+  /* smaller CTAs + layout under the bios */
+  .tile[aria-labelledby="meetTitle"] .cta{
+    margin-top:10px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:
+      "bookA bookS"
+      "hello hello";
+    gap:8px;
+  }
+  .tile[aria-labelledby="meetTitle"] .pill{
+    padding:8px 12px; font-size:12px; border-radius:8px;
+  }
+  .tile[aria-labelledby="meetTitle"] #bookAmanda{ grid-area:bookA; justify-self:start; }
+  .tile[aria-labelledby="meetTitle"] #bookSophie{ grid-area:bookS; justify-self:end; }
+  .tile[aria-labelledby="meetTitle"] #teamLink{ grid-area:hello; justify-self:center; }
+
+  /* keep the rest of the tiles from looking tall on phones */
+  .tile{ min-height:auto; }
+}
+
 
