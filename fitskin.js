@@ -19,10 +19,10 @@
 (function(){
   const slides = [
     { 
-      title: 'Microdermabrasion',
-      sub: 'polish + refine for smoother texture',
-      copy: 'Buff away dull surface build-up for instantly brighter, softer skin.',
-      img: 'assets/microderm.jpeg'
+      title: 'Signature Facial',
+      sub: 'deep cleanse + glow',
+      copy: 'Our signature facial combines deep cleansing, exfoliation and hydration for brighter, more balanced skin.',
+      img: 'assets/spa.jpg'
     },
     { 
       title: 'Chemical Peel Treatment',
@@ -31,16 +31,16 @@
       img: 'assets/chemicalpeels.jpg'
     },
     { 
-      title: 'Epidermal Levelling',
-      sub: 'silky-smooth, makeup-ready finish',
-      copy: 'Gentle exfoliation removes vellus hair and dead skin for a flawless base.',
-      img: 'assets/leveling.jpeg'
+      title: 'Lashes, Brows & Waxing',
+      sub: 'finishing touches between facials',
+      copy: 'Quick, low-fuss appointments for lash lifts, brow shaping and small-area waxing that keep you feeling groomed between skin treatments.',
+      img: 'assets/salon.jpg'
     },
     { 
-      title: 'Products',
-      sub: 'bestsellers for daily care',
-      copy: 'Shop skincare, bath + body, hair and wellness favorites curated by our experts.',
-      img: 'assets/products.jpeg'
+      title: 'Microdermabrasion',
+      sub: 'instant polish, longer-term clarity',
+      copy: 'Buff away dull surface build-up for instantly brighter, softer skin.',
+      img: 'assets/microderm.jpg'
     }
   ];
 
@@ -137,7 +137,7 @@
     const src = (revs.find(r => r.source)?.source || 'reviews').toLowerCase();
     badge.textContent = src.includes('google') ? 'Google reviews'
                      : src.includes('fresha') ? 'Fresha reviews'
-                     : 'Client reviews';
+                     : 'Reviews';
 
     track.innerHTML = revs.map(r => {
       const text = clampText(r.text || '', 200);
@@ -320,10 +320,10 @@
   (function attachHeroLinks() {
     // Map hero slide title → detail page
     const HERO_LINKS = {
-      'microdermabrasion': '/service-page-microdermabrasion-facial.html',
+      'signature facial': '/service-page-fit-skin-facial.html',
       'chemical peel treatment': '/service-page-chemical-peel.html',
-      'epidermal levelling': '/service-page-epidermal-levelling.html',
-      'products': '/#products'
+      'salon services': '/services.html#salon',
+      'microdermabrasion': '/service-page-microdermabrasion-facial.html'
     };
     const panel = document.getElementById('heroPanel');
     if (!panel) return;
@@ -390,3 +390,49 @@ document.addEventListener('DOMContentLoaded', () => {
   // default view
   show('pelactiv');
 });
+
+// ===== TREAT IT Learn-more reveal (cards section) =====
+(function(){
+  const cardsSection = document.querySelector('.cards');
+  if(!cardsSection) return;
+
+  const cards = cardsSection.querySelectorAll('.card');
+  if(!cards.length) return;
+
+  let openCard = null;
+
+  cards.forEach(card => {
+    const toggle = card.querySelector('.card-toggle');
+    const details = card.querySelector('.card-details');
+    if(!toggle || !details) return;
+
+    // Click on "Learn more" only toggles details (no navigation)
+    toggle.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const isOpen = card.classList.contains('is-open');
+
+      if(openCard && openCard !== card){
+        openCard.classList.remove('is-open');
+      }
+
+      if(!isOpen){
+        card.classList.add('is-open');
+        openCard = card;
+      }else{
+        card.classList.remove('is-open');
+        openCard = null;
+      }
+    });
+
+    // If author marked a card .is-open in HTML, respect that
+    if(card.classList.contains('is-open') && !openCard){
+      openCard = card;
+    }
+  });
+
+  // NOTE: removed the auto-open of the first card.
+  // If no card has .is-open in the HTML, they all start closed
+  // until "Learn more" is clicked.
+})();
