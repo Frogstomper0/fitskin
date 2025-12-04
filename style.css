@@ -1146,3 +1146,59 @@ footer.sitefoot{
   right: 24px;
   z-index: 2;
 }
+/* ───────── HERO V2 PATCH: more image, no spill on Microderm ───────── */
+
+
+/* 2) Mobile: let the hero breathe & stop long titles from spilling */
+@media (max-width: 900px){
+  /* Give the slide more vertical space so long titles + CTAs fit */
+  .hero-box{
+    height:auto;              /* let content drive height */
+    min-height:500px;         /* still feels "hero" */
+    padding:40px 0 60px;      /* some top/bottom breathing room */
+  }
+
+  /* Keep the image visible – softer vertical wash */
+  .hero-box::before{
+    background:linear-gradient(
+      180deg,
+      rgba(241,252,252,0.85) 0%,
+      rgba(255,255,255,0.96) 65%
+    );
+  }
+
+  /* Panel floats in the middle with some transparency, not a solid brick */
+  .hero-copy{
+    justify-content:center;
+    align-items:flex-end;
+    padding-left:var(--edge-pad);
+    padding-right:var(--edge-pad);
+    padding-bottom:32px;
+  }
+
+  .hero-panel{
+    max-width:520px;
+    margin:0;
+    padding:16px 14px;
+    background:rgba(255,255,255,0.90) !important;
+    border-radius:14px;
+    box-shadow:0 18px 40px rgba(0,0,0,.16);
+  }
+
+  /* Tame the huge headings so MICRODERMABRASION fits without crashing out */
+  .hero h1{
+    font-size:clamp(28px,7vw,34px);
+    letter-spacing:.04em;     /* slightly tighter tracking */
+    line-height:1.05;
+  }
+
+  .hero .sub,
+  .hero p{
+    font-size:14px;
+  }
+
+  .cta{
+    flex-wrap:wrap;
+    row-gap:8px;
+  }
+}
