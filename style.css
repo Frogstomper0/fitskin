@@ -1,4 +1,4 @@
-:root{    
+:root{     
   /* Brand & neutrals */
   --brand:#21c7c9;
   --brandDark:#17a5a7;
@@ -21,7 +21,7 @@
 
 /* Base */
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{height:100%;max-width:100%;overflow-x:hidden}
 body{
   margin:0;color:var(--ink);background:#fff;
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
@@ -167,7 +167,14 @@ header.site{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--
   z-index:1; /* sits above gradient, below hero-copy (z:2) */
 }
 
-.hero-track{position:absolute;inset:0;display:flex;transition:transform .6s ease;z-index:0}
+.hero-track{
+  position:absolute;
+  inset:0;
+  display:flex;
+  transition:transform .6s ease;
+  z-index:0;
+  will-change:transform; /* performance hint */
+}
 /* PATCH: move slide imagery focus towards the left */
 .hero-slide{min-width:100%;background-size:cover;background-position:left center}
 .hero-jar{
@@ -260,24 +267,64 @@ header.site{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--
 .dot{width:10px;height:10px;border-radius:50%;border:1px solid #cfcfcf;background:#fff}
 .dot.active{background:var(--brand);border-color:var(--brand)}
 
+/* ── MOBILE HERO PATCH ── */
 @media(max-width:900px){
+
+  /* Let hero grow on small screens so big words like MICRODERMABRASION fit */
+  .hero-box{
+    height:auto;
+    min-height:520px;
+    padding:32px 0 56px;
+  }
+
+  /* Put the hero card near the bottom, not dead-centre where it gets cropped */
   .hero-copy{
     justify-content:center;
+    align-items:flex-end;
+    padding-left:var(--edge-pad);
+    padding-right:var(--edge-pad);
+    padding-bottom:32px;
   }
+
+  /* Smaller, lighter hero card so you can SEE the image behind it */
   .hero-panel{
-    margin-right:0;
-    margin-left:0;
-    padding:18px 16px;
-    background:rgba(255,255,255,0.94) !important;
+    margin:0;
+    max-width:520px;
+    padding:16px 14px 18px;
+    background:rgba(255,255,255,0.9) !important;
     border-radius:14px;
-    box-shadow:0 18px 40px rgba(0,0,0,.18);
+    box-shadow:0 8px 24px rgba(0,0,0,.14);
   }
+
+  /* Tame heading so MICRODERMABRASION doesn’t spill off the sides */
+  .hero h1{
+    font-size:26px;
+    letter-spacing:.04em;
+    line-height:1.05;
+  }
+
+  .hero .sub,
+  .hero p{
+    font-size:14px;
+  }
+
+  /* Softer wash so hero photo actually shows through */
   .hero-box::before{
     background:linear-gradient(
       180deg,
-      rgba(241,252,252,0.96) 0%,
-      #ffffff 70%
+      rgba(241,252,252,0.60) 0%,
+      rgba(255,255,255,0.90) 65%,
+      #ffffff 95%
     );
+  }
+
+  /* Mobile: drop heavy text-shadow to reduce repaint cost */
+  .hero .badge,
+  .hero h1,
+  .hero .sub,
+  .hero p,
+  .hero .hero-meta{
+    text-shadow:none;
   }
 }
 
@@ -613,6 +660,53 @@ header.site{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--
   .actions{gap:10px}
 }
 
+/* ── MOBILE HEADER STACK: tabs → logo → book + phone ── */
+@media (max-width:768px){
+
+  .row-1{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    height:auto;
+    padding:8px var(--edge-pad);
+    row-gap:8px;
+  }
+
+  .left-tabs{
+    order:1;
+    margin:0 calc(-1 * var(--edge-pad));
+    padding:0 var(--edge-pad);
+    border-bottom:1px solid var(--line);
+  }
+
+  .logo{
+    order:2;
+    text-align:left;
+  }
+
+  .actions{
+    order:3;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .actions .btn.primary{
+    order:1;
+  }
+
+  .actions .btn.phone{
+    order:2;
+    padding:0;
+    justify-content:flex-start;
+  }
+
+  .btn.phone::before{
+    margin-right:8px;
+  }
+}
+
 /* ───────── Location ───────── */
 .location{
   --loc-pad-x:15px;--loc-pad-y:44px;--loc-h:clamp(380px,52vh,520px);--loc-gap:0;--loc-inset-x:22px;--loc-inset-y:18px;
@@ -645,6 +739,31 @@ header.site{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--
 .engage .container{max-width:100%;padding-left:clamp(8px,1.6vw,24px);padding-right:clamp(8px,1.6vw,24px)}
 .tiles{display:grid;gap:10px}
 @media(min-width:900px){.tiles{grid-template-columns:1fr 1.25fr 1fr}}
+
+/* MOBILE: reuse Treat Yourself scroller behaviour for bottom tiles */
+@media(max-width:900px){
+  .engage{
+    padding:32px 0 40px;
+  }
+  .engage .tiles{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:16px;
+    padding:0 var(--edge-pad) 8px;
+    margin:0;
+  }
+  .engage .tiles::-webkit-scrollbar{
+    display:none;
+  }
+  .engage .tile{
+    flex:0 0 calc(100% - 40px);
+    scroll-snap-align:start;
+    min-height:auto;
+  }
+}
+
 .tile{border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,0.95) 0%, rgba(33,199,201,0.08) 100%), #fff;display:flex;flex-direction:column;padding:18px;min-height:320px;position:relative;overflow:hidden;box-shadow:var(--elev-soft)}
 .tile h3{font-family:"Playfair Display",Georgia,serif;font-size:24px;line-height:1.2;margin:0 0 6px}
 .tile .sub{color:#333;margin:0 0 12px}
@@ -1067,7 +1186,7 @@ footer.sitefoot{
 .sitefoot .brand-badges{
   position:absolute;
   right:24px;        /* mobile/small: align with 24px padding */
-  bottom:52px;       /* sits above the © / Privacy row */
+  bottom:69px;       /* sits above the © / Privacy row */
   width:auto;        /* override width:100% */
   margin-top:0;      /* don’t add extra column height */
   transform:none;    /* cancel translateX(4px) */
@@ -1124,10 +1243,6 @@ footer.sitefoot{
   background: #ffffff;             /* flat white instead of semi-transparent */
 }
 
-/* 3. Keep repaints mostly inside this block while scrolling */
-.features{
-  contain: layout paint;
-}
 /* ───────── Client reviews badge anchor fix ───────── */
 
 /* Make the whole middle reviews tile the positioning context */
@@ -1146,59 +1261,414 @@ footer.sitefoot{
   right: 24px;
   z-index: 2;
 }
-/* ───────── HERO V2 PATCH: more image, no spill on Microderm ───────── */
 
+/* ───────── EXTRA MOBILE REFINEMENTS (appended) ───────── */
 
-/* 2) Mobile: let the hero breathe & stop long titles from spilling */
-@media (max-width: 900px){
-  /* Give the slide more vertical space so long titles + CTAs fit */
-  .hero-box{
-    height:auto;              /* let content drive height */
-    min-height:500px;         /* still feels "hero" */
-    padding:40px 0 60px;      /* some top/bottom breathing room */
+/* 1) Compact the step cards on mobile and make CTAs full width */
+@media (max-width:900px){
+  .features-step{
+    padding:14px 12px;
+    gap:12px;
   }
 
-  /* Keep the image visible – softer vertical wash */
-  .hero-box::before{
-    background:linear-gradient(
-      180deg,
-      rgba(241,252,252,0.85) 0%,
-      rgba(255,255,255,0.96) 65%
-    );
+  .features-step__body h3{
+    font-size:18px;
   }
 
-  /* Panel floats in the middle with some transparency, not a solid brick */
-  .hero-copy{
+  .features-step__body p{
+    font-size:13px;
+  }
+
+  .features-step__body .cta{
+    flex-direction:column;
+    align-items:stretch;
+    gap:8px;
+  }
+
+  .features-step__body .cta .pill{
+    width:100%;
     justify-content:center;
-    align-items:flex-end;
-    padding-left:var(--edge-pad);
-    padding-right:var(--edge-pad);
-    padding-bottom:32px;
+  }
+}
+
+/* 2) Location block: stack buttons + shrink map on phones */
+@media (max-width:600px){
+  .location{
+    --loc-pad-x:16px;
+    --loc-pad-y:32px;
   }
 
-  .hero-panel{
-    max-width:520px;
-    margin:0;
-    padding:16px 14px;
-    background:rgba(255,255,255,0.90) !important;
-    border-radius:14px;
-    box-shadow:0 18px 40px rgba(0,0,0,.16);
+  .loc-grid{
+    box-shadow:var(--elev-soft);
   }
 
-  /* Tame the huge headings so MICRODERMABRASION fits without crashing out */
-  .hero h1{
-    font-size:clamp(28px,7vw,34px);
-    letter-spacing:.04em;     /* slightly tighter tracking */
-    line-height:1.05;
+  .loc-copy{
+    padding:18px 16px 16px;
   }
 
-  .hero .sub,
-  .hero p{
-    font-size:14px;
+  .loc-cta{
+    flex-direction:column;
+    align-items:stretch;
   }
 
-  .cta{
+  .location .pill{
+    width:100%;
+    justify-content:center;
+  }
+
+  .mapwrap{
+    min-height:260px;
+  }
+}
+
+/* ───────── Tiny-phone header simplification (≤480px) ───────── */
+@media (max-width:480px){
+
+  header.site{
+    border-bottom:1px solid var(--line);
+  }
+
+  /* Turn the header into two wrapped rows:
+     row 1 = logo + CTAs
+     row 2 = left-tabs as a segmented nav */
+  .row-1{
+    display:flex;
     flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    padding:6px var(--edge-pad) 4px;
+    row-gap:6px;
+    column-gap:8px;
+    height:auto;
+  }
+
+  /* Row 1: wordmark */
+  .logo{
+    order:1;
+    flex:1 1 auto;
+    text-align:left;
+    font-size:18px;
+    letter-spacing:.12em;
+  }
+  .logo .tagline{
+    display:none;
+  }
+
+  /* Row 1: CTAs */
+  .actions{
+    order:1;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:6px;
+  }
+
+  .actions .btn.primary{
+    padding:6px 12px;
+    font-size:13px;
+  }
+
+  .actions .btn.phone{
+    display:inline-flex;
+    font-size:13px;
+  }
+
+  .actions .btn.phone::before{
+    width:28px;
+    height:28px;
+    margin-right:6px;
+  }
+
+  /* Row 2: tabs become a compact segmented control */
+  .left-tabs{
+    order:2;
+    flex:0 0 100%;
+    margin:4px calc(-1 * var(--edge-pad)) 0;
+    padding:4px var(--edge-pad) 2px;
+    border-top:1px solid var(--line);
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .left-tabs::-webkit-scrollbar{
+    display:none;
+  }
+
+  .tab{
+    height:36px;
+    padding:0 12px;
+    border-radius:999px;
+    background:#f4f4f4;
+    border-color:#dedede;
+    font-size:11px;
+    letter-spacing:.08em;
+  }
+
+  .menu:hover>.tab,
+  .tab.is-active{
+    background:#ffffff;
+    box-shadow:0 0 0 1px var(--brand);
+    margin-bottom:0;
+    border-bottom-color:var(--brand);
+  }
+
+  /* Hide the second header rail on tiny phones – tabs above cover navigation */
+  .row-2{
+    display:none;
+  }
+
+  /* Tiny phones: hero CTAs full-width under the card */
+  .hero .cta{
+    flex-direction:column;
+    align-items:stretch;
+    gap:8px;
+  }
+
+  .hero .cta .pill{
+    width:100%;
+    justify-content:center;
+  }
+}
+/* MOBILE: make header full-bleed / pushed left */
+@media (max-width: 900px){
+  header.site .container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/* PHONE: pull header + hero closer to the left edge */
+@media (max-width:480px){
+  :root{
+    --edge-pad:8px;   /* was clamp(16px,5vw,100px) → about 18–20px on iPhone 12 */
+  }
+
+  /* Let the hero card use the full width of that tighter gutter */
+  .hero-panel{
+    max-width:100%;
+  }
+}
+/* ───────── FIX: "keep it going in between visits" block on mobile ───────── */
+/* Let the products block sit UNDER the 4 steps instead of overlapping them */
+@media (max-width:959px){
+  .features{
+    position:static;        /* undo the relative + extra bottom padding */
+    padding-bottom:56px;    /* back to normal section padding */
+  }
+
+  .features-homecare{
+    position:static;        /* no absolute overlay */
+    left:auto;
+    right:auto;
+    bottom:auto;
+    margin-top:18px;        /* small gap below Step 4 cards */
+  }
+}
+/* ───────── FIX 1: hide Pricing block on ALL breakpoints ───────── */
+/* Desktop rule was trapped in a min-width media query – this forces it off everywhere */
+main section#details .card.span-4 h2:first-of-type,
+main section#details .card.span-4 h2:first-of-type + .bullets{
+  display:none !important;
+}
+
+/* MOBILE: shorten the "Related services" block on service pages */
+@media (max-width:900px){
+
+  /* The last details card in #details is the Related services rail */
+  main section#details .card.span-4:last-of-type{
+    padding-top:16px;
+    padding-bottom:16px;
+  }
+
+  /* Inner tiles/panels inside that block – kill tall min-heights */
+  main section#details .card.span-4:last-of-type .tile,
+  main section#details .card.span-4:last-of-type .card,
+  main section#details .card.span-4:last-of-type [class*="service"],
+  main section#details .card.span-4:last-of-type [class*="Service"]{
+    min-height:0;
+    height:auto;
+  }
+}
+/* MOBILE: shorten the "Related services" tiles inside service pages */
+@media (max-width: 900px){
+
+  /* Outer wrapper card stays as-is, just trim its inner tiles */
+  main section#details .card.span-4 .card,
+  main section#details .card.span-4 .tile{
+    min-height: 0;
+    height: auto;
+  }
+
+  /* Make the little thumbnail panels shallower */
+  main section#details .card.span-4 .card .img,
+  main section#details .card.span-4 .tile .thumb{
+    height: 50px;   /* tweak up/down if you want them taller/shorter */
+  }
+}
+/* ───────── SERVICE PAGES: compact Related services tiles + fix button hover ───────── */
+
+/* 1) Make the service-page "Related services" tiles shorter
+   (those sections are <section class="card"> with a .tiles grid). */
+main .card .tiles{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+main .card .tiles .tile{
+  min-height:0;
+  padding:12px 12px;
+}
+
+/* On small screens stack each tile into a 2-column layout
+   (thumb left, text right) so they’re not skyscrapers. */
+@media (max-width:600px){
+  main .card .tiles{
+    grid-template-columns:1fr;
+  }
+
+  main .card .tiles .tile{
+    display:grid;
+    grid-template-columns:96px minmax(0,1fr);
+    align-items:center;
+    column-gap:10px;
+  }
+
+  main .card .tiles .tile .thumb{
+    width:100%;
+    aspect-ratio:4/5;
+  }
+}
+
+/* 2) Service pages (they all use .mini-header) – turn off the big
+   global splash hover so buttons stay as clean pills and stop
+   flicking between square/rounded. */
+.mini-header ~ main .btn,
+.mini-header ~ main .pill{
+  position:static;
+  overflow:visible;
+}
+
+.mini-header ~ main .btn::before,
+.mini-header ~ main .pill::before{
+  content:none !important;
+}
+/* ───────── Service page: BeautiSoftware booking embed ───────── */
+/* Use a more specific selector than the per-page .embed-16x9
+   so this wins WITHOUT touching the HTML or using !important. */
+
+main section#book .embed-16x9{
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  max-width: 100%;
+}
+
+/* Desktop & tablets – keep the normal 16:9 card */
+@media (min-width: 900px){
+  main section#book .embed-16x9{
+    padding-bottom: 56.25%;   /* 16:9, same as now */
+  }
+}
+
+/* Phones – give the booking frame more vertical room */
+@media (max-width: 899.98px){
+  main section#book .embed-16x9{
+    padding-bottom: 130%;     /* taller; bump to 140–150% if you want even more */
+  }
+}
+/* ───────── TABLET / SMALL LAPTOP HEADER FIX ───────── */
+/* Pull the top tabs hard-left so they stop crowding the logo */
+@media (min-width: 769px) and (max-width: 1360px){
+  /* Let the left tab column shrink to its content instead of taking 1fr */
+  .row-1{
+    grid-template-columns: auto auto 1fr;
+    column-gap: 24px; /* a bit tighter gap between tabs and logo */
+  }
+
+  /* Cancel the container padding so tabs sit on the very left edge */
+  .left-tabs{
+    margin-left: calc(-1 * var(--edge-pad));
+  }
+
+  /* Tabs: tighter, smaller */
+  .left-tabs{
+    margin-left: calc(-1 * var(--edge-pad)); /* stay hard-left */
+    gap: 6px;                                /* less space between tabs */
+  }
+
+  .tab{
+    height: 46px;        /* was 64px */
+    padding: 0 7px;     /* was 16px */
+    font-size: 12px;     /* slightly smaller label text */
+  }
+}
+/* TABLET HEADER: push top tabs to the very left + tighten them */
+@media (min-width: 600px) and (max-width: 900px){
+
+  /* Make the header container full-bleed on the left */
+  header.site .container{
+    padding-left: 0;
+    padding-right: var(--edge-pad);
+  }
+
+  /* Let tabs take only the space they need, logo stays centre-ish, CTAs right */
+  .row-1{
+    grid-template-columns: auto 1fr auto;
+    column-gap: 24px;
+  }
+
+  /* Tabs sit hard against the left edge */
+  .left-tabs{
+    justify-self: flex-start;
+    margin-left: -20px;
+  }
+
+  /* Slightly smaller, tighter pills so they don’t feel massive */
+  .left-tabs .tab{
+    padding: 0 12px;
+    font-size: 13px;
+  }
+}
+/* ───────── TABLET HEADER FIX: tabs full-bleed, logo centre, CTAs centred under logo ───────── */
+@media (min-width: 700px) and (max-width: 1024px){
+
+  /* Let header go edge-to-edge */
+  header.site .container{
+    padding-left:0;
+    padding-right:0;
+  }
+
+  .row-1{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    padding:8px 0 10px;
     row-gap:8px;
+  }
+
+  /* Top: tabs – full bleed left/right */
+  .left-tabs{
+    order:1;
+    width:100vw;
+    margin:0 calc(-50vw + 50%);
+    padding:0 var(--edge-pad);
+    border-bottom:1px solid var(--line);
+  }
+
+  /* Middle: logo centred */
+  .logo{
+    order:2;
+    text-align:center;
+  }
+
+  /* Bottom: BOOK NOW + phone centred under logo */
+  .actions{
+    order:3;
+    align-self:center;         /* centre the whole block */
+    flex-direction:column;     /* stack button + phone */
+    align-items:center;
+    gap:6px;
   }
 }
