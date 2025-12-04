@@ -1450,21 +1450,22 @@ footer.sitefoot{
   }
 }
 /* ───────── FIX: "keep it going in between visits" block on mobile ───────── */
-/* Let the products block sit UNDER the 4 steps instead of overlapping them */
+/* Make the products & gifts card sit UNDER the 1–4 steps, just on mobile */
 @media (max-width:959px){
   .features{
-    position:static;        /* undo the relative + extra bottom padding */
-    padding-bottom:56px;    /* back to normal section padding */
+    position:relative;       /* anchor for the absolute card */
+    padding-bottom:700px;    /* reserve vertical space for the products card */
   }
 
   .features-homecare{
-    position:static;        /* no absolute overlay */
-    left:auto;
-    right:auto;
-    bottom:auto;
-    margin-top:18px;        /* small gap below Step 4 cards */
+    position:absolute;
+    left:var(--edge-pad);
+    right:var(--edge-pad);
+    bottom:32px;             /* sits just above the bottom of the section */
+    margin-top:0;
   }
 }
+
 /* ───────── FIX 1: hide Pricing block on ALL breakpoints ───────── */
 /* Desktop rule was trapped in a min-width media query – this forces it off everywhere */
 main section#details .card.span-4 h2:first-of-type,
