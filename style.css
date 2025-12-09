@@ -1673,3 +1673,10 @@ main section#book .embed-16x9{
     gap:6px;
   }
 }
+/* PHONE: stop header dropdowns opening on hover/tap */
+@media (max-width: 900px){
+  .menu:hover .dropdown,
+  .upper-menu:hover .dropdown{
+    display:none;
+  }
+}
