@@ -158,7 +158,7 @@ header.site{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--
   content:"";
   position:absolute;
   inset:0;
-  background-image:url("assets/fitskinlogo.png"); /* adjust path if needed */
+  background-image:url("assets/fitskinlogo.jpg"); /* adjust path if needed */
   background-repeat:no-repeat;
   background-position:calc(100% - 80px) 50%;
   background-size:clamp(220px,30vw,360px);
@@ -849,7 +849,7 @@ footer.sitefoot{border-top:1px solid var(--line);background:#fafafa;margin-left:
   height:32px;
   border-radius:999px;
   border:1px solid rgba(33,199,201,.55);
-  background:#fff url("assets/blue phone.png") center/16px 16px no-repeat;
+  background:#fff url("assets/blue phone.jpg") center/16px 16px no-repeat;
   position:static;
   inset:auto;
   transform:none;
@@ -860,7 +860,7 @@ footer.sitefoot{border-top:1px solid var(--line);background:#fafafa;margin-left:
   color:#666 !important;
 }
 .btn.phone:hover::before{
-  background:var(--brand) url("assets/blue phone.png") center/16px 16px no-repeat;
+  background:var(--brand) url("assets/blue phone.jpg") center/16px 16px no-repeat;
   border-color:var(--brandDark);
 }
 
@@ -1736,3 +1736,11 @@ main section#book .embed-16x9{
     transition:none;
   }
 }
+.card .body::before{
+  background:#ceedec !important; /* flat white instead of gradient */
+}
+
+.card{
+  box-shadow:0 6px 18px rgba(0,0,0,.05) !important; /* lighter shadow */
+}
+
