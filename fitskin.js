@@ -436,3 +436,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // If no card has .is-open in the HTML, they all start closed
   // until "Learn more" is clicked.
 })();
+
+// ===== "How we work with your skin" – one-time step reveal =====
+document.addEventListener('DOMContentLoaded', function () {
+  const steps = document.querySelectorAll('.features-rail__steps .features-step');
+  if (!steps.length) return;
+
+  // Older browsers: just show them, no animation
+  if (!('IntersectionObserver' in window)) {
+    steps.forEach(step => step.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target); // one-way reveal
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.2
+  });
+
+  steps.forEach(step => observer.observe(step));
+});

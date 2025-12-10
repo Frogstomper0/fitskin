@@ -1701,3 +1701,38 @@ main section#book .embed-16x9{
   transform:translateZ(0);
   backface-visibility:hidden;
 }
+/* ───────── "How we work with your skin" – step reveal on scroll ───────── */
+
+/* Start slightly to the right + faded out */
+.features-rail__steps .features-step{
+  opacity:0;
+  transform:translate3d(40px,0,0);  /* overrides earlier translateZ(0) */
+  transition:opacity .45s ease-out,transform .45s ease-out;
+}
+
+/* When JS adds .is-visible, slide in + fade in */
+.features-rail__steps .features-step.is-visible{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+
+/* Optional tiny stagger so they don't all pop at once */
+.features-rail__steps .features-step:nth-child(2){
+  transition-delay:.06s;
+}
+.features-rail__steps .features-step:nth-child(3){
+  transition-delay:.12s;
+}
+.features-rail__steps .features-step:nth-child(4){
+  transition-delay:.18s;
+}
+
+/* Respect prefers-reduced-motion: no animation for sensitive users */
+@media (prefers-reduced-motion: reduce){
+  .features-rail__steps .features-step,
+  .features-rail__steps .features-step.is-visible{
+    opacity:1;
+    transform:none;
+    transition:none;
+  }
+}
