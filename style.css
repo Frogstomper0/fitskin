@@ -1680,3 +1680,24 @@ main section#book .embed-16x9{
     display:none;
   }
 }
+/* ═══════════════════════════════════════════════════════════════
+   PERFORMANCE PATCH - Add this to the END of your existing CSS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* 1. CRITICAL FIX: Reset absolute positioning on desktop */
+@media (min-width:960px){
+  .features-homecare{
+    position:static !important;
+    margin-top:22px;
+  }
+  .features{
+    padding-bottom:56px !important;
+  }
+}
+
+
+/* 5. GPU acceleration hints for step cards */
+.features-step{
+  transform:translateZ(0);
+  backface-visibility:hidden;
+}
