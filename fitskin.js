@@ -37,11 +37,12 @@
       img: 'assets/salon.jpg'
     },
     { 
-      title: 'Microdermabrasion',
-      sub: 'instant polish, longer-term clarity',
-      copy: 'Buff away dull surface build-up for instantly brighter, softer skin.',
-      img: 'assets/microderm.jpg'
+     title: 'Skin Needling',
+     sub: 'collagen reboot for smoother, clearer skin',
+     copy: 'Trigger fresh collagen to soften scars, refine texture and boost overall glow over time.',
+     img: 'assets/microderm.jpg'
     }
+
   ];
 
   let i = 0;
@@ -323,7 +324,7 @@
       'signature facial': '/service-page-fit-skin-facial.html',
       'chemical peel treatment': '/service-page-chemical-peel.html',
       'salon services': '/services.html#salon',
-      'microdermabrasion': '/service-page-microdermabrasion-facial.html'
+      'Skin Needling': '/service-page-microdermabrasion-facial.html'
     };
     const panel = document.getElementById('heroPanel');
     if (!panel) return;
