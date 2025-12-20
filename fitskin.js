@@ -15,6 +15,23 @@
   });
 })();
 
+// PRODUCTS dropdown hover smoothing (keeps menu open across tiny gaps)
+(function(){
+  const menu = document.getElementById('productsMenu');
+  if(!menu) return;
+  const dropdown = menu.querySelector('.dropdown');
+  if(!dropdown) return;
+
+  let hideTimer;
+  const open = ()=>{ clearTimeout(hideTimer); menu.classList.add('is-open'); };
+  const close = ()=>{ hideTimer = setTimeout(()=>menu.classList.remove('is-open'), 120); };
+
+  menu.addEventListener('mouseenter', open);
+  menu.addEventListener('mouseleave', close);
+  dropdown.addEventListener('mouseenter', open);
+  dropdown.addEventListener('mouseleave', close);
+})();
+
 // Hero slider
 (function(){
   const slides = [
@@ -383,6 +400,9 @@ document.addEventListener('DOMContentLoaded', () => {
     box.onclick = () => window.open(b.href, '_blank', 'noopener');
   }
 
+  // Preload brand preview images to avoid first-hover flash
+  Object.values(BRANDS).forEach(b => { const img = new Image(); img.src = b.img; });
+
   document.querySelectorAll('.mega-products .brand').forEach(a => {
     a.addEventListener('mouseenter', () => show(a.dataset.brand));
     a.addEventListener('focus', () => show(a.dataset.brand));
@@ -454,6 +474,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-visible');
         obs.unobserve(entry.target); // one-way reveal
+
+        // After the reveal, drop the transform so hover doesn’t repaint layers
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          entry.target.style.transform = 'none';
+          entry.target.style.transition = 'opacity .45s ease-out';
+        }));
       }
     });
   }, {

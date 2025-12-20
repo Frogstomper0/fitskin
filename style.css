@@ -60,6 +60,7 @@ header.site{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--
   position:absolute;left:0;top:100%;display:none;background:#fff;border:1px solid var(--line);
   border-radius:14px;padding:10px;box-shadow:0 10px 40px rgba(0,0,0,.08);
 }
+.menu.is-open .dropdown{display:block}
 .row-1 .menu .dropdown,.row-1 .dropdown{z-index:1030}
 .menu:hover .dropdown{display:block}
 
@@ -1676,7 +1677,8 @@ main section#book .embed-16x9{
 /* PHONE: stop header dropdowns opening on hover/tap */
 @media (max-width: 900px){
   .menu:hover .dropdown,
-  .upper-menu:hover .dropdown{
+  .upper-menu:hover .dropdown,
+  .menu.is-open .dropdown{
     display:none;
   }
 }
@@ -1743,4 +1745,3 @@ main section#book .embed-16x9{
 .card{
   box-shadow:0 6px 18px rgba(0,0,0,.05) !important; /* lighter shadow */
 }
-

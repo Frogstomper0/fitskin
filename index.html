@@ -573,5 +573,57 @@
 
   <!-- Scripts -->
   <script src="fitskin.js"></script>
+  <script>
+    (function() {
+      if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+
+      function inferLocation(el) {
+        if (el.closest('header')) return 'header';
+        if (el.closest('.hero')) return 'hero';
+        if (el.closest('.location')) return 'location';
+        if (el.closest('.engage')) return 'engage';
+        if (el.closest('footer')) return 'footer';
+        return 'general';
+      }
+
+      function sendBookingClick(el) {
+        window.gtag('event', 'booking_click', {
+          cta_location: inferLocation(el),
+          provider: 'fresha'
+        });
+      }
+
+      function sendContactClick(el, type) {
+        window.gtag('event', 'contact_click', {
+          contact_type: type,
+          contact_location: inferLocation(el)
+        });
+      }
+
+      // Booking CTAs: any link that goes to a #book anchor
+      var bookingLinks = document.querySelectorAll('a[href*="#book"]');
+      bookingLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          sendBookingClick(link);
+        });
+      });
+
+      // Phone contact links
+      var phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+      phoneLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          sendContactClick(link, 'phone');
+        });
+      });
+
+      // Email contact links
+      var emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+      emailLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          sendContactClick(link, 'email');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

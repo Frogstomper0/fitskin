@@ -1,0 +1,120 @@
+:root{     
+  /* Brand & neutrals */
+  --brand:#21c7c9;
+  --brandDark:#17a5a7;
+  --accent:var(--brand);
+  --sand:#d7c3a1;
+  --ink:#171717;
+  --muted:#666;
+  --line:#e6e6e6;
+  --bg:#fff;
+  --radius:16px;
+  --maxw:1200px;
+  --elev-soft:0 18px 40px rgba(0,0,0,.06); /* soft card shadow */
+
+  /* spacing knobs */
+  --edge-pad:clamp(16px,5vw,100px);
+  --header-gap:clamp(24px,6vw,84px);
+  --upper-gap:44px;
+  --actions-gap:14px;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%;max-width:100%;overflow-x:hidden}
+body{
+  margin:0;color:var(--ink);background:#fff;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.45;
+}
+a{color:inherit;text-decoration:none}
+.container{max-width:100%;margin:0 auto;padding:0 var(--edge-pad)}
+
+/* Full-bleed helpers */
+.row-2 .container{max-width:100%;padding-left:var(--edge-pad);padding-right:var(--edge-pad)}
+.hero .container{max-width:100%;padding-left:0;padding-right:0}
+.hero-box{border-radius:0}
+
+/* ───────── Header ───────── */
+.topbar{display:none;border-bottom:1px solid var(--line);font-size:13px}
+.topbar .container{display:flex;gap:16px;justify-content:flex-end;padding:8px var(--edge-pad)}
+
+/* FINAL overlay order (prevents scroll-box/clipping) */
+header.site{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:1000;overflow:visible}
+.row-1{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:84px;column-gap:var(--header-gap);position:relative;z-index:1020}
+.row-2{border-top:1px solid var(--line);margin-left:calc(-1 * var(--edge-pad));margin-right:calc(-1 * var(--edge-pad));padding-left:var(--edge-pad);padding-right:var(--edge-pad);position:relative;z-index:1010;overflow:visible}
+.row-1 .container,.row-2 .container,.left-tabs,.upper{position:relative;overflow:visible !important}
+
+/* Row 1 tabs */
+.left-tabs{display:flex;gap:8px;align-items:stretch;align-self:end}
+.menu{position:relative}
+.tab{
+  height:64px;padding:0 16px;border:1px solid var(--line);
+  border-top-left-radius:0;border-top-right-radius:0;background:#ededed;
+  font-weight:600;letter-spacing:.02em;display:flex;align-items:center;position:relative;
+}
+.menu:hover>.tab,.tab.is-active{
+  background:#fff;margin-bottom:-1px;border-bottom-color:#fff;box-shadow:inset 0 -2px 0 var(--accent);
+}
+.menu .dropdown{
+  position:absolute;left:0;top:100%;display:none;background:#fff;border:1px solid var(--line);
+  border-radius:14px;padding:10px;box-shadow:0 10px 40px rgba(0,0,0,.08);
+}
+.menu.is-open .dropdown{display:block}
+.row-1 .menu .dropdown,.row-1 .dropdown{z-index:1030}
+.menu:hover .dropdown{display:block}
+
+.dropdown.simple{width:260px}
+.dropdown.simple ul{list-style:none;margin:0;padding:4px}
+.dropdown.simple a{display:flex;justify-content:space-between;padding:8px 10px;border-radius:10px;background:transparent}
+.dropdown.simple a:hover{background:#f6f6f6 !important;color:#222 !important}
+
+.dropdown.mega{width:720px;padding:12px}
+.mega-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:12px}
+.cats{list-style:none;margin:0;padding:0;border-right:1px solid var(--line);max-height:360px;overflow:auto}
+.cats li{padding:10px 12px;border-radius:10px;margin:2px 6px}
+.cats li:hover,.cats li.active{background:#f6f6f6}
+.panels{padding-left:4px}
+.panel{display:none;height:100%;border:1px solid var(--line);border-radius:12px;padding:12px}
+.panel.active{display:block}
+.panel h4{margin:0 0 8px 0;font-weight:600}
+.panel .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.panel .grid a{padding:8px 10px;border-radius:10px;border:1px solid transparent}
+.panel .grid a:hover{background:#f6f6f6;border-color:#eaeaea}
+
+/* Center logo */
+.logo{
+  font-family:"Playfair Display",Georgia,serif;text-transform:uppercase;letter-spacing:.18em;
+  font-weight:600;font-size:clamp(22px,2.4vw,40px);color:#3b3b3b;line-height:1.1;text-align:center;
+}
+.logo .wordmark{display:block}
+.logo .tagline{display:block;font-family:Inter,system-ui,sans-serif;font-size:12px;letter-spacing:.18em;margin-top:6px;color:#6b6b6b}
+.logo .plus{display:none}
+
+/* Right CTAs */
+.actions{display:flex;gap:var(--actions-gap);justify-content:flex-end;align-items:center;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid #d0d0d0;padding:8px 14px;border-radius:0;font-weight:600;font-size:14px}
+.btn.primary{background:var(--brand);border-color:var(--brandDark);color:#fff}
+
+/* PHONE header link: icon chip + text (no pill) */
+.btn.phone{
+  border:none;
+  background:transparent;
+  padding:0;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--brand);
+}
+
+.iconbtn{width:36px;height:36px;border-radius:999px;border:none;background:transparent}
+.iconbtn:hover{background:#f3f3f3}
+
+/* Row 2: upper tabs (simple underline turned off per patch) */
+.upper{display:flex;gap:var(--upper-gap);justify-content:center;align-items:center;height:48px;font-weight:320;letter-spacing:.02em;text-transform:uppercase}
+.upper a{color:#222;position:relative}
+.upper a::after{content:none}
+.upper a:hover{color:#6b6b6b}
+.upper-menu{position:relative;display:flex;align-items:center;height:100%}
