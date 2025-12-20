@@ -1,47 +1,96 @@
 {
-  "source": "Fit Skin Clinic website (client testimonials section)",
+  "source": "Google Business Profile (Fit Skin Clinic, Redhead)",
   "reviews": [
     {
-      "author": "Emily Walker",
+      "author": "L P",
       "rating": 5,
-      "text": "I’ve tried many facials in the past, but nothing compares to the customised chemical peel treatment at Fit Skin Clinic. My skin looks glowing and youthful. I’m definitely coming back!",
-      "service_mentions": ["Chemical Peel"],
-      "platform": "site"
+      "text": "Amanda is a wealth of knowledge and experience and my trusted person in the beauty industry. She has helped my son with his acne recently, after specialist dermatology treatment actually made it worse. I put my trust in her and she …More",
+      "service_mentions": ["Acne Treatment"],
+      "platform": "google"
     },
     {
-      "author": "Daisy Willson",
+      "author": "Simone Hollier",
       "rating": 5,
-      "text": "I was a bit unsure about LED therapy, but after just a few sessions, my acne cleared up, and my skin looks radiant. Highly recommend this clinic to anyone looking for quality skin care treatments.",
-      "service_mentions": ["LED Therapy"],
-      "platform": "site"
+      "text": "I’ve had a number of different treatments with Amanda and have always been super impressed with her knowledge and professionalism and extremely happy with my results! Her attention to detail is second to none, and her caring gentle approach …More",
+      "service_mentions": [],
+      "platform": "google"
     },
     {
-      "author": "Olivia Brown",
+      "author": "Paul Gilbert",
       "rating": 5,
-      "text": "The epidermal levelling treatment was fantastic! It removed the dead skin and peach fuzz, leaving my face feeling incredibly soft and smooth. Amanda’s expertise really shines through.",
-      "service_mentions": ["Epidermal Levelling"],
-      "platform": "site"
+      "text": "I have been a client of Amanda’s for 20 plus years. She is an expert in her field and always keeps up to date with the latest techniques & treatments in the salon as well as tailoring a home skincare routine using great products to keep my …More",
+      "service_mentions": ["Skincare Routine"],
+      "platform": "google"
     },
     {
-      "author": "Lia Harris",
+      "author": "Kylie Amos",
       "rating": 5,
-      "text": "I’ve struggled with uneven skin tone for years, but after my skin needling session at Fit Skin Clinic, I noticed a huge difference. My skin is finally smooth and radiant!",
-      "service_mentions": ["Skin Needling"],
-      "platform": "site"
+      "text": "I have had numerous treatments by Amanda and I always leave feeling amazing. Amanda has been in the industry for many years and her knowledge and expertise are very broad. I trust her wholeheartedly with my skin!",
+      "service_mentions": [],
+      "platform": "google"
     },
     {
-      "author": "Sarah Johnson",
+      "author": "mackayla baker",
       "rating": 5,
-      "text": "I had a wonderful experience at Fit Skin Clinic! Amanda’s expertise in skin needling transformed my skin, and I noticed a significant improvement in texture and brightness. I highly recommend this skin care clinic!",
-      "service_mentions": ["Skin Needling"],
-      "platform": "site"
+      "text": "I visited Fit Skin Clinic for a lash lift/ tint and facial. I would 100% recommend going to Fit Skin Clinic! Amanda was very professional, recommended many products that best suit my face but overall it was a very relaxing and pleasant …More",
+      "service_mentions": ["Lash Lift", "Tint", "Facial"],
+      "platform": "google"
     },
     {
-      "author": "Julia Stevens",
+      "author": "brittany barwise",
       "rating": 5,
-      "text": "The microdermabrasion treatment was amazing! My skin feels smoother and fresher than ever. The staff is friendly, and Amanda is an absolute professional. I’m so happy with my results!",
-      "service_mentions": ["Microdermabrasion"],
-      "platform": "site"
+      "text": "Amanda was great if she wasn't happy with the results she will fix them before you leave. Amanda make you feel comfortable and relaxed. She has great knowledge over skin and eye care. …More",
+      "service_mentions": ["Skin Care", "Eye Care"],
+      "platform": "google"
+    },
+    {
+      "author": "Kim Barrie",
+      "rating": 5,
+      "text": "I’m so glad Amanda has started Fit Skin Clinic at Redhead. Her knowledge and experience is demonstrated in the treatments she provides. I look forward to being an ongoing client and highly recommend having a consult with her for all ages and skin types.",
+      "service_mentions": ["Consultation"],
+      "platform": "google"
+    },
+    {
+      "author": "Stevie Corrigan",
+      "rating": 5,
+      "text": "I seen Amanda at Fit Skin firstly for a brow wax iam very fussy with my brows but she does them perfect and came highly recommended to me I have now been for spray tans & facials …More",
+      "service_mentions": ["Brow Wax", "Spray Tan", "Facial"],
+      "platform": "google"
+    },
+    {
+      "author": "JOHN DODDS",
+      "rating": 5,
+      "text": "Loved my visits to Fit Skin! Amanda's experince and genuine care shines through from your initial consultation to your follow up visits. I would thoroughly recommend a visit !!",
+      "service_mentions": ["Consultation"],
+      "platform": "google"
+    },
+    {
+      "author": "Stephen Smith",
+      "rating": 5,
+      "text": "Beautiful atmosphere, Amanda is caring & very professional, loved my experience with her 💥❤️",
+      "service_mentions": [],
+      "platform": "google"
+    },
+    {
+      "author": "Taylor Pisani",
+      "rating": 5,
+      "text": "Always have the best experience with Amanda, she makes sure I’m always comfortable and I always feel relaxed no matter what service I get. She’s very passionate in her work and very knowledgeable!",
+      "service_mentions": [],
+      "platform": "google"
+    },
+    {
+      "author": "Savanah Snowden",
+      "rating": 5,
+      "text": "Lash lift was amazing looks so good",
+      "service_mentions": ["Lash Lift"],
+      "platform": "google"
+    },
+    {
+      "author": "montana curry",
+      "rating": 5,
+      "text": "",
+      "service_mentions": [],
+      "platform": "google"
     }
   ]
 }
