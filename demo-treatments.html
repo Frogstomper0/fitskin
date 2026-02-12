@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treatments - Fit Skin Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #21C7C9;
+            --white: #ffffff;
+            --off-white: #fafafa;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #666666;
+            --text-dark: #333333;
+            --text-light: #777777;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 80px;
+        }
+
+        .mobile-menu-btn {
+            background: var(--turquoise);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .nav-list li {
+            margin-bottom: 15px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            position: relative;
+            height: 400px;
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-intro h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-intro p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        /* Package Cards */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .package-card {
+            background: var(--white);
+            border: 2px solid var(--medium-gray);
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: var(--turquoise);
+        }
+
+        .package-card.featured {
+            background: linear-gradient(135deg, var(--turquoise) 0%, #1ab5b7 100%);
+            color: var(--white);
+            border: none;
+        }
+
+        .package-card.featured h3,
+        .package-card.featured .package-price,
+        .package-card.featured p {
+            color: var(--white);
+        }
+
+        .package-tier {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--turquoise);
+        }
+
+        .package-card.featured .package-tier {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .package-card h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .package-price {
+            font-size: 48px;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            margin-bottom: 20px;
+            color: var(--turquoise);
+        }
+
+        .package-price span {
+            font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .package-description {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: var(--text-light);
+        }
+
+        .package-card.featured .package-description {
+            color: rgba(255,255,255,0.95);
+        }
+
+        .package-includes {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .package-includes li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .package-card.featured .package-includes li {
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .package-includes li:last-child {
+            border-bottom: none;
+        }
+
+        .package-includes li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--turquoise);
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .package-card.featured .package-includes li:before {
+            color: var(--white);
+        }
+
+        .package-card .btn {
+            margin-top: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--turquoise);
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1ab5b7;
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--turquoise);
+        }
+
+        .btn-white:hover {
+            background: var(--off-white);
+        }
+
+        /* Express Section */
+        .express-section {
+            background: var(--off-white);
+            padding: 60px 20px;
+            margin: 80px 0;
+            border-radius: 12px;
+        }
+
+        .express-section h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .express-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .express-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .express-item {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .express-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .express-info h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .express-info p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .express-price {
+            font-size: 32px;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--turquoise);
+            white-space: nowrap;
+        }
+
+        /* Individual Treatments */
+        .treatments-section {
+            margin: 80px 0;
+        }
+
+        .treatments-section h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .treatment-category {
+            margin: 60px 0;
+        }
+
+        .treatment-category h3 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--turquoise);
+            border-bottom: 2px solid var(--turquoise);
+            padding-bottom: 15px;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .treatment-card {
+            background: var(--off-white);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--turquoise);
+        }
+
+        .treatment-card h4 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .treatment-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .treatment-card p {
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .treatment-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .treatment-card ul li {
+            padding: 5px 0 5px 20px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .treatment-card ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--turquoise);
+            font-size: 18px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--turquoise) 0%, #1ab5b7 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+            margin: 80px 0;
+            border-radius: 12px;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c2c2c;
+            color: var(--white);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--turquoise);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--turquoise);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 64px;
+            }
+
+            .packages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .express-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .treatment-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: block;
+            }
+
+            .desktop-nav .nav-list {
+                display: flex;
+                gap: 30px;
+                padding: 0;
+            }
+
+            .desktop-nav .nav-list li {
+                margin-bottom: 0;
+            }
+
+            .packages-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="demo.html">
+                <img src="assets/fitskin.svg" alt="Fit Skin Clinic" class="logo">
+            </a>
+            
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-list">
+                    <li><a href="demo.html">Home</a></li>
+                    <li><a href="treatments.html">Treatments</a></li>
+                    <li><a href="new-clients.html">New Clients</a></li>
+                    <li><a href="demo.html#about">About</a></li>
+                    <li><a href="demo.html#contact">Contact</a></li>
+                    <li><a href="tel:0249553670" style="color: var(--turquoise);">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileNav">
+            <ul class="nav-list">
+                <li><a href="demo.html">Home</a></li>
+                <li><a href="treatments.html">Treatments</a></li>
+                <li><a href="new-clients.html">New Clients</a></li>
+                <li><a href="demo.html#about">About</a></li>
+                <li><a href="demo.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <img src="assets/services/chemical-peel-hero.jpg" alt="Treatments" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Our Treatments</h1>
+            <p>Advanced skin therapy for lasting results</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <!-- Intro -->
+        <div class="section-intro">
+            <h2>Choose Your Path to Clear Skin</h2>
+            <p>We've designed flexible treatment packs that fit your skin goals and budget. Purchase a pack of treatments and save while committing to your skin journey.</p>
+        </div>
+
+        <!-- Tiered Packages -->
+        <div class="packages-grid">
+            <!-- Tier 1 -->
+            <div class="package-card">
+                <div class="package-tier">Tier 1</div>
+                <h3>Foundation Pack</h3>
+                <div class="package-price">$150</div>
+                <p class="package-description">Perfect starter pack for maintaining healthy skin with consistent care and professional-grade products.</p>
+                <ul class="package-includes">
+                    <li>3 express treatments included</li>
+                    <li>10% off retail products</li>
+                    <li>Valid for 3 months</li>
+                    <li>Complimentary skin consultations</li>
+                </ul>
+                <a href="tel:0249553670" class="btn">BOOK NOW</a>
+            </div>
+
+            <!-- Tier 2 -->
+            <div class="package-card featured">
+                <div class="package-tier">Tier 2 — Most Popular</div>
+                <h3>Transformation Pack</h3>
+                <div class="package-price">$280</div>
+                <p class="package-description">Our most popular package for clients committed to achieving clear, healthy skin with advanced treatments.</p>
+                <ul class="package-includes">
+                    <li>6 treatments included</li>
+                    <li>Mix advanced & express treatments</li>
+                    <li>15% off retail products</li>
+                    <li>Free LED add-on with each treatment</li>
+                    <li>Valid for 6 months</li>
+                </ul>
+                <a href="tel:0249553670" class="btn btn-white">BOOK NOW</a>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="package-card">
+                <div class="package-tier">Tier 3</div>
+                <h3>Elite Care Pack</h3>
+                <div class="package-price">$450</div>
+                <p class="package-description">Maximum results with our most comprehensive package including advanced modalities and premium support.</p>
+                <ul class="package-includes">
+                    <li>10 treatments included</li>
+                    <li>All advanced treatments available</li>
+                    <li>20% off all retail products</li>
+                    <li>Free upgrades & add-ons</li>
+                    <li>Valid for 12 months</li>
+                    <li>Personalized homecare plan</li>
+                </ul>
+                <a href="tel:0249553670" class="btn">BOOK NOW</a>
+            </div>
+        </div>
+
+        <!-- FitSkin Express -->
+        <div class="express-section">
+            <h2>FitSkin Express</h2>
+            <p class="express-subtitle">Quick, effective treatments perfect for busy schedules or maintaining results between advanced treatments.</p>
+            <div class="express-grid">
+                <div class="express-item">
+                    <div class="express-info">
+                        <h4>Express LED Facial</h4>
+                        <p>30min · Rejuvenating light therapy for all skin types</p>
+                    </div>
+                    <div class="express-price">$65</div>
+                </div>
+                <div class="express-item">
+                    <div class="express-info">
+                        <h4>Express Enzyme Peel</h4>
+                        <p>30min · Gentle exfoliation for brighter skin</p>
+                    </div>
+                    <div class="express-price">$70</div>
+                </div>
+                <div class="express-item">
+                    <div class="express-info">
+                        <h4>Express Hydration Treatment</h4>
+                        <p>30min · Deep moisture boost for dehydrated skin</p>
+                    </div>
+                    <div class="express-price">$75</div>
+                </div>
+                <div class="express-item">
+                    <div class="express-info">
+                        <h4>Express Clarifying Treatment</h4>
+                        <p>30min · Quick solution for breakout-prone skin</p>
+                    </div>
+                    <div class="express-price">$75</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Individual Treatments -->
+        <div class="treatments-section">
+            <h2>Individual Treatments</h2>
+            <p class="express-subtitle">Browse our complete menu of advanced skin treatments. Not sure where to start? Book a complimentary consultation.</p>
+
+            <!-- Advanced Facials -->
+            <div class="treatment-category">
+                <h3>Advanced Facials</h3>
+                <div class="treatment-grid">
+                    <div class="treatment-card">
+                        <h4>Fit Skin Facial</h4>
+                        <div class="treatment-meta">
+                            <span>60 minutes</span>
+                            <span>$110</span>
+                        </div>
+                        <p>Our signature facial customized to your skin's needs. Includes deep cleanse, exfoliation, extractions, mask, and finishing products.</p>
+                        <ul>
+                            <li>Customized to your skin type</li>
+                            <li>Relaxing massage included</li>
+                            <li>Perfect for regular maintenance</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Hydrabrasion Facial</h4>
+                        <div class="treatment-meta">
+                            <span>60 minutes</span>
+                            <span>$140</span>
+                        </div>
+                        <p>Combines hydration with gentle exfoliation for instantly glowing skin. Uses water and oxygen to deeply cleanse and hydrate.</p>
+                        <ul>
+                            <li>No downtime</li>
+                            <li>Immediate glow</li>
+                            <li>All skin types</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Microdermabrasion Facial</h4>
+                        <div class="treatment-meta">
+                            <span>60 minutes</span>
+                            <span>$140</span>
+                        </div>
+                        <p>Physical exfoliation that removes dead skin cells and stimulates collagen production for smoother, more refined skin texture.</p>
+                        <ul>
+                            <li>Reduces fine lines</li>
+                            <li>Evens skin tone</li>
+                            <li>Minimizes pore appearance</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Acne Treatment Facial</h4>
+                        <div class="treatment-meta">
+                            <span>75 minutes</span>
+                            <span>$160</span>
+                        </div>
+                        <p>Specialized treatment targeting acne, congestion, and inflammation using medical-grade products and LED therapy.</p>
+                        <ul>
+                            <li>Reduces active breakouts</li>
+                            <li>Prevents future breakouts</li>
+                            <li>Includes LED therapy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemical Peels -->
+            <div class="treatment-category">
+                <h3>Chemical Peels</h3>
+                <div class="treatment-grid">
+                    <div class="treatment-card">
+                        <h4>Light Peel</h4>
+                        <div class="treatment-meta">
+                            <span>45 minutes</span>
+                            <span>$120</span>
+                        </div>
+                        <p>Gentle exfoliating peel perfect for first-timers or sensitive skin. Minimal to no downtime with immediate brightening results.</p>
+                        <ul>
+                            <li>Brightens complexion</li>
+                            <li>Minimal peeling</li>
+                            <li>No downtime</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Medium Peel</h4>
+                        <div class="treatment-meta">
+                            <span>60 minutes</span>
+                            <span>$180</span>
+                        </div>
+                        <p>Deeper exfoliation targeting pigmentation, acne scars, and sun damage. 3-5 days of visible peeling expected.</p>
+                        <ul>
+                            <li>Fades hyperpigmentation</li>
+                            <li>Improves texture</li>
+                            <li>Reduces acne scarring</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Advanced Peel</h4>
+                        <div class="treatment-meta">
+                            <span>60 minutes</span>
+                            <span>$220</span>
+                        </div>
+                        <p>Our strongest peel for significant skin concerns. Results in 5-7 days of peeling for dramatic improvements in tone and texture.</p>
+                        <ul>
+                            <li>Maximum exfoliation</li>
+                            <li>Significant results</li>
+                            <li>Consultation required</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Treatments -->
+            <div class="treatment-category">
+                <h3>Advanced Treatments</h3>
+                <div class="treatment-grid">
+                    <div class="treatment-card">
+                        <h4>Skin Needling</h4>
+                        <div class="treatment-meta">
+                            <span>90 minutes</span>
+                            <span>$280</span>
+                        </div>
+                        <p>Collagen induction therapy using micro-needling to improve scars, texture, and fine lines. Includes numbing cream and LED therapy.</p>
+                        <ul>
+                            <li>Reduces acne scarring</li>
+                            <li>Boosts collagen</li>
+                            <li>Improves texture</li>
+                            <li>24-48hr downtime</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>IPL Treatment</h4>
+                        <div class="treatment-meta">
+                            <span>45 minutes</span>
+                            <span>$200</span>
+                        </div>
+                        <p>Intense pulsed light therapy targets pigmentation, redness, and sun damage for clearer, more even-toned skin.</p>
+                        <ul>
+                            <li>Treats sun damage</li>
+                            <li>Reduces redness</li>
+                            <li>Fades pigmentation</li>
+                            <li>Minimal downtime</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>LED Light Therapy</h4>
+                        <div class="treatment-meta">
+                            <span>30 minutes</span>
+                            <span>$65</span>
+                        </div>
+                        <p>Medical-grade LED therapy using red and blue light to treat acne, reduce inflammation, and promote healing.</p>
+                        <ul>
+                            <li>Kills acne bacteria</li>
+                            <li>Reduces inflammation</li>
+                            <li>No downtime</li>
+                            <li>Perfect add-on</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Advanced Skin Consultation</h4>
+                        <div class="treatment-meta">
+                            <span>30 minutes</span>
+                            <span>$50</span>
+                        </div>
+                        <p>In-depth consultation with Amanda to assess your skin concerns and create a personalized treatment plan.</p>
+                        <ul>
+                            <li>Skin analysis</li>
+                            <li>Treatment plan</li>
+                            <li>Product recommendations</li>
+                            <li>Redeemable toward treatment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beauty Services -->
+            <div class="treatment-category">
+                <h3>Beauty Services</h3>
+                <div class="treatment-grid">
+                    <div class="treatment-card">
+                        <h4>Brow Shape & Tint</h4>
+                        <div class="treatment-meta">
+                            <span>30 minutes</span>
+                            <span>$45</span>
+                        </div>
+                        <p>Professional brow shaping with wax and tweezers, followed by customized tint for defined, polished brows.</p>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Lash Lift & Tint</h4>
+                        <div class="treatment-meta">
+                            <span>60 minutes</span>
+                            <span>$95</span>
+                        </div>
+                        <p>Semi-permanent lift and tint that creates the appearance of longer, fuller lashes. Lasts 6-8 weeks.</p>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Special Occasion Makeup</h4>
+                        <div class="treatment-meta">
+                            <span>60 minutes</span>
+                            <span>$120</span>
+                        </div>
+                        <p>Professional makeup application for weddings, events, or special occasions. Includes lashes and consultation.</p>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Deluxe Pedicure</h4>
+                        <div class="treatment-meta">
+                            <span>60 minutes</span>
+                            <span>$70</span>
+                        </div>
+                        <p>Relaxing pedicure including soak, exfoliation, massage, cuticle care, and polish. Perfect self-care treat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Not Sure Where to Start?</h2>
+            <p>Book a complimentary 15-minute skin consultation and we'll help you find the perfect treatment for your skin goals and budget.</p>
+            <a href="tel:0249553670" class="btn btn-white">BOOK A CONSULTATION</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>18 Steel St<br>Redhead NSW 2290<br>Australia</p>
+                <p style="margin-top: 15px;">
+                    <a href="tel:0249553670">0249 553 670</a><br>
+                    <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Fit-Skin-Clinic/61563414337123/" class="social-link" target="_blank">
+                        <span>f</span>
+                    </a>
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" class="social-link" target="_blank">
+                        <span>📷</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="demo.html">Home</a></p>
+                <p><a href="treatments.html">Treatments</a></p>
+                <p><a href="new-clients.html">New Clients</a></p>
+                <p><a href="demo.html#contact">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul class="hours-list">
+                    <li><span>Monday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Tuesday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Wednesday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Thursday</span> <span>9:30am – 7:30pm</span></li>
+                    <li><span>Friday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Saturday</span> <span>9:30am – 12:30pm</span></li>
+                    <li><span>Sunday</span> <span>Closed</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Fit Skin Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            menuBtn.textContent = mobileNav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                menuBtn.textContent = '☰';
+            });
+        });
+
+        // Header hide/show on scroll
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            // Don't hide header at the very top
+            if (currentScroll <= 100) {
+                header.classList.remove('hidden');
+                lastScroll = currentScroll;
+                return;
+            }
+            
+            // Scrolling down - hide header
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                header.classList.add('hidden');
+            } 
+            // Scrolling up - show header
+            else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                header.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>

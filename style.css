@@ -1451,19 +1451,10 @@ footer.sitefoot{
   }
 }
 /* ───────── FIX: "keep it going in between visits" block on mobile ───────── */
-/* Make the products & gifts card sit UNDER the 1–4 steps, just on mobile */
+/* Normal flow - no absolute positioning to avoid layout thrashing */
 @media (max-width:959px){
-  .features{
-    position:relative;       /* anchor for the absolute card */
-    padding-bottom:700px;    /* reserve vertical space for the products card */
-  }
-
   .features-homecare{
-    position:absolute;
-    left:var(--edge-pad);
-    right:var(--edge-pad);
-    bottom:32px;             /* sits just above the bottom of the section */
-    margin-top:0;
+    margin-top:32px;
   }
 }
 

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Clients - Fit Skin Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #21C7C9;
+            --white: #ffffff;
+            --off-white: #fafafa;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #666666;
+            --text-dark: #333333;
+            --text-light: #777777;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .mobile-menu-btn {
+            background: var(--turquoise);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .nav-list li {
+            margin-bottom: 15px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            position: relative;
+            height: 400px;
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 400;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .intro-text h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--turquoise);
+        }
+
+        .intro-text p {
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        /* Services Table */
+        .services-table {
+            max-width: 800px;
+            margin: 50px auto;
+            background: var(--white);
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .service-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 20px;
+            border-bottom: 1px solid var(--medium-gray);
+            align-items: center;
+        }
+
+        .service-row:last-child {
+            border-bottom: none;
+        }
+
+        .service-row:nth-child(even) {
+            background: var(--off-white);
+        }
+
+        .service-name {
+            font-weight: 500;
+        }
+
+        .service-duration,
+        .service-price {
+            text-align: right;
+            color: var(--text-light);
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: var(--turquoise);
+        }
+
+        /* Two Column Layout */
+        .two-col-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .col-content h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .col-content p {
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .col-content ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .col-content ul li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .col-content ul li:before {
+            content: "•";
+            color: var(--turquoise);
+            font-weight: bold;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+        }
+
+        .col-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .col-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Feature Box */
+        .feature-box {
+            background: var(--turquoise);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .feature-box h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .feature-box p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin: 60px 0;
+        }
+
+        .map-section h3 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .map-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            background: var(--medium-gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .map-info h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--turquoise);
+        }
+
+        .map-info p {
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* CTA Button */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--turquoise);
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1ab5b7;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--turquoise);
+            color: var(--turquoise);
+        }
+
+        .btn-outline:hover {
+            background: var(--turquoise);
+            color: var(--white);
+        }
+
+        .cta-center {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c2c2c;
+            color: var(--white);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--turquoise);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--turquoise);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 64px;
+            }
+
+            .two-col-section {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+
+            .map-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .service-row {
+                padding: 25px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: block;
+            }
+
+            .desktop-nav .nav-list {
+                display: flex;
+                gap: 30px;
+                padding: 0;
+            }
+
+            .desktop-nav .nav-list li {
+                margin-bottom: 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/">
+                <img src="assets/fitskin.svg" alt="Fit Skin Clinic" class="logo">
+            </a>
+            
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-list">
+                    <li><a href="demo.html">Home</a></li>
+                    <li><a href="#services">Treatments</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#approach">Our Approach</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="tel:0249553670" style="color: var(--turquoise);">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileNav">
+            <ul class="nav-list">
+                <li><a href="demo.html">Home</a></li>
+                <li><a href="#services">Treatments</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#approach">Our Approach</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <img src="assets/services/skin-consultation-hero.jpg" alt="New Clients" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>New Clients</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <!-- Intro -->
+        <div class="intro-text">
+            <h2>Is this your first time at Fit Skin Clinic?</h2>
+            <p>Welcome! We're so glad you're here. At Fit Skin Clinic, we offer advanced skin treatments from our New Clients Menu, designed to help you understand your skin's unique needs and kick-start your journey to clearer, healthier skin. We'll discuss your concerns, set your goals, and create the perfect plan for your skin and budget.</p>
+        </div>
+
+        <!-- Skin Consultation Box -->
+        <div class="feature-box">
+            <h3>Skin Consultation</h3>
+            <p>15 minutes · Complimentary</p>
+            <p style="margin-top: 20px; font-size: 16px;">All first-time clients are required to begin with our Skin Consultation where we'll discuss your unique concerns and desired results.</p>
+        </div>
+
+        <!-- First Time Services -->
+        <div class="intro-text" style="margin-top: 60px;">
+            <h2>First Time Services</h2>
+            <p>These express treatments are ideal as a first step to understanding your skin's needs. Each service includes a consultation with your therapist.</p>
+        </div>
+
+        <div class="services-table">
+            <div class="service-row">
+                <div class="service-name">Fit Skin Facial</div>
+                <div class="service-duration">60min</div>
+                <div class="service-price">$110</div>
+            </div>
+            <div class="service-row">
+                <div class="service-name">Hydrabrasion Facial with Consult</div>
+                <div class="service-duration">60min</div>
+                <div class="service-price">$140</div>
+            </div>
+            <div class="service-row">
+                <div class="service-name">Microdermabrasion Facial with Consult</div>
+                <div class="service-duration">60min</div>
+                <div class="service-price">$140</div>
+            </div>
+            <div class="service-row">
+                <div class="service-name">Advanced Skin Consultation</div>
+                <div class="service-duration">30min</div>
+                <div class="service-price">$50</div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="two-col-section">
+            <div class="col-image">
+                <img src="assets/DSC_0200_result.jpg" alt="Amanda and Sophie - Fit Skin Clinic Team">
+            </div>
+            <div class="col-content">
+                <h3>Our Team</h3>
+                <p>At Fit Skin Clinic, we're here to support you on your skin journey with personalized care and professional expertise.</p>
+                <p><strong>Amanda</strong> is our Clinic Owner and Dermal Therapist, specializing in skin needling, IPL, laser treatments, LED therapy, and chemical peels.</p>
+                <p><strong>Sophie</strong> is our Beauty Therapist, specializing in LED facials, lashes, brows, and special occasion makeup.</p>
+                <p>Following your consultation, your therapist will recommend a customized treatment plan and product recommendations tailored to your skin's needs, your budget, and your lifestyle.</p>
+                <p style="margin-top: 30px;"><strong>This initial consultation is the key to unlocking your FitSkin journey. Now, let's begin!</strong></p>
+            </div>
+        </div>
+
+        <!-- How Long to See Results -->
+        <div class="two-col-section" style="margin-top: 80px;">
+            <div class="col-content">
+                <h3>How long will it take to see results?</h3>
+                <p>Results from skin treatments depend on many factors: your skin condition, goals, lifestyle habits, and your consistency with homecare.</p>
+                <ul>
+                    <li>Visible improvements can begin within a couple of treatments</li>
+                    <li>Transformational results are often achieved over 6-12 months with consistency</li>
+                </ul>
+                <p>For long-term maintenance, we recommend visiting every 4-6 weeks, as skin cells take about 28 days to turn over. Consistency is key!</p>
+                <p>We also offer affordable weekly or fortnightly payment plan options to suit your budget.</p>
+            </div>
+            <div class="col-image">
+                <img src="assets/products.jpg" alt="Skin Care Products">
+            </div>
+        </div>
+
+        <!-- Location -->
+        <div class="map-section">
+            <h3>Where are you located?</h3>
+            <div class="map-grid">
+                <div class="map-info">
+                    <h4>Fit Skin Clinic</h4>
+                    <p>We are located at 18 Steel St, Redhead NSW 2290. We're conveniently close to Redhead Beach on the same corner as Villa and Seaview Mylasian and just a few minutes from Newcastle and Lake Macquarie.</p>
+                    <p>Come visit the clinic and experience our welcoming space designed for relaxation and rejuvenation.</p>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.3772642893973!2d151.70477631564382!3d-32.94494738092795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b731d8e8c3b8d4b%3A0x3f0a6c0c0a8a0a0a!2s18%20Steel%20St%2C%20Redhead%20NSW%202290%2C%20Australia!5e0!3m2!1sen!2sus!4v1644000000000!5m2!1sen!2sus"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contraindications -->
+        <div class="intro-text" style="margin-top: 80px;">
+            <h3 style="font-size: 32px; margin-bottom: 30px;">Contraindications</h3>
+            <p>For your safety and to ensure the best possible results, certain skin and health conditions may limit which treatments are available. Please let us know if you:</p>
+            <div class="col-content">
+                <ul style="margin: 30px 0;">
+                    <li>Are pregnant or breastfeeding</li>
+                    <li>Are currently taking Roaccutane such as Isotretinoin/Accutane</li>
+                    <li>Are taking blood-thinning medication</li>
+                    <li>Have recently undergone cosmetic surgery or anti-wrinkle treatments</li>
+                    <li>Have active skin conditions such as eczema or psoriasis in the treatment area</li>
+                </ul>
+            </div>
+            <p>If you're unsure whether a treatment is suitable for you, your therapist will guide you at your first appointment.</p>
+        </div>
+
+        <!-- How Do I Book -->
+        <div class="intro-text" style="margin-top: 80px;">
+            <h3 style="font-size: 32px; margin-bottom: 30px;">How do I book?</h3>
+            <p>Please visit our online booking portal to view available appointments.</p>
+            <p>If you need help choosing which service is right for you, or do not see your ideal time, please email us at <a href="mailto:thefitskinclinic@gmail.com" style="color: var(--turquoise);">thefitskinclinic@gmail.com</a> or give us a call at <a href="tel:0249553670" style="color: var(--turquoise);">0249 553 670</a> and we will get in touch!</p>
+            <p style="margin-top: 30px;"><strong>Please note that all bookings are by appointment only and we do not offer walk-in appointments. Please email or call us before calling in at the clinic. Your therapist will be ready to welcome you at the clinic as a fully booked, confirmed client.</strong></p>
+            <p style="margin-top: 20px;">We respectfully ask that all children do not accompany you to your appointment due to health & safety reasons.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-center">
+            <a href="tel:0249553670" class="btn">BOOK NOW</a>
+        </div>
+
+        <!-- Contact -->
+        <div class="intro-text" style="margin-top: 80px; padding: 50px 30px; background: var(--off-white); border-radius: 8px;">
+            <h3 style="font-size: 28px; margin-bottom: 20px;">Contact Us</h3>
+            <p>Don't know where to begin when it comes to your skin care? Have questions about a specific treatment, product, or scheduling?</p>
+            <p style="margin-top: 20px;">As we are an open plan clinic, we are unable to take calls while with our clients. If you would prefer to talk to us or email is not your preferred method of contact, please text us and we will get back to you at our earliest opportunity.</p>
+            <p style="margin-top: 30px;"><strong>Phone:</strong> <a href="tel:0249553670" style="color: var(--turquoise);">0249 553 670</a><br>
+            <strong>Email:</strong> <a href="mailto:thefitskinclinic@gmail.com" style="color: var(--turquoise);">thefitskinclinic@gmail.com</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>18 Steel St<br>Redhead NSW 2290<br>Australia</p>
+                <p style="margin-top: 15px;">
+                    <a href="tel:0249553670">0249 553 670</a><br>
+                    <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Fit-Skin-Clinic/61563414337123/" class="social-link" target="_blank">
+                        <span>f</span>
+                    </a>
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" class="social-link" target="_blank">
+                        <span>📷</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="demo.html">Home</a></p>
+                <p><a href="#services">Treatments</a></p>
+                <p><a href="new-clients.html">New Clients</a></p>
+                <p><a href="#contact">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul class="hours-list">
+                    <li><span>Monday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Tuesday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Wednesday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Thursday</span> <span>9:30am – 7:30pm</span></li>
+                    <li><span>Friday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Saturday</span> <span>9:30am – 12:30pm</span></li>
+                    <li><span>Sunday</span> <span>Closed</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Fit Skin Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            menuBtn.textContent = mobileNav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                menuBtn.textContent = '☰';
+            });
+        });
+
+        // Header hide/show on scroll
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            // Don't hide header at the very top
+            if (currentScroll <= 100) {
+                header.classList.remove('hidden');
+                lastScroll = currentScroll;
+                return;
+            }
+            
+            // Scrolling down - hide header
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                header.classList.add('hidden');
+            } 
+            // Scrolling up - show header
+            else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                header.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>

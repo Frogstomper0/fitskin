@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-label="FS monogram">
+  <defs>
+    <style>
+      :root { --ink:#111; }
+      .ink{ fill:var(--ink); }
+      .meta{
+        font-family: Montserrat, Arial, Helvetica, sans-serif;
+        font-size: 24px;   /* was 20 */
+        letter-spacing: 3px;
+      }
+      .mono{
+        font-family: "Playfair Display", "Times New Roman", serif;
+        font-size: 220px;
+        font-weight: 700;
+      }
+      .rule{
+        stroke:var(--ink);
+        stroke-width:8;
+        stroke-linecap:round;
+        opacity:.85;
+      }
+    </style>
+  </defs>
+
+  <!-- Divider -->
+  <line class="rule" x1="210" y1="80" x2="210" y2="285"/>
+
+  <!-- Monogram -->
+  <text class="ink mono" x="130" y="252" text-anchor="middle">F</text>
+  <text class="ink mono" x="290" y="252" text-anchor="middle">S</text>
+
+  <!-- Bottom info (bigger) -->
+  <text class="ink meta" x="210" y="338" text-anchor="middle">FIT • SKIN • CLINIC</text>
+  <text class="ink meta" x="210" y="372" text-anchor="middle">EST. 2023</text>
+</svg>

@@ -475,11 +475,6 @@ document.addEventListener('DOMContentLoaded', function () {
         entry.target.classList.add('is-visible');
         obs.unobserve(entry.target); // one-way reveal
 
-        // After the reveal, drop the transform so hover doesn’t repaint layers
-        requestAnimationFrame(()=>requestAnimationFrame(()=>{
-          entry.target.style.transform = 'none';
-          entry.target.style.transition = 'opacity .45s ease-out';
-        }));
       }
     });
   }, {

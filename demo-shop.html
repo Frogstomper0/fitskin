@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Fit Skin Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #21C7C9;
+            --white: #ffffff;
+            --off-white: #fafafa;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #666666;
+            --text-dark: #333333;
+            --text-light: #777777;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 80px;
+        }
+
+        .mobile-menu-btn {
+            background: var(--turquoise);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .nav-list li {
+            margin-bottom: 15px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            position: relative;
+            height: 400px;
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 400;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-intro h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-intro p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        /* Feature Box */
+        .feature-box {
+            background: linear-gradient(135deg, var(--turquoise) 0%, #1ab5b7 100%);
+            color: var(--white);
+            padding: 50px 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .feature-box h3 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .feature-box p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Brand Section */
+        .brands-section {
+            margin: 80px 0;
+        }
+
+        .brands-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .brands-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 50px;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .brand-card {
+            background: var(--off-white);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .brand-image {
+            height: 200px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .brand-image img {
+            max-height: 100%;
+            width: auto;
+            filter: grayscale(0%);
+        }
+
+        .brand-content {
+            padding: 30px;
+        }
+
+        .brand-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--turquoise);
+        }
+
+        .brand-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        /* Product Categories */
+        .categories-section {
+            margin: 80px 0;
+        }
+
+        .categories-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px;
+            color: var(--white);
+        }
+
+        .category-overlay h3 {
+            font-size: 28px;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .category-overlay p {
+            font-size: 14px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--off-white);
+            padding: 60px 40px;
+            text-align: center;
+            margin: 80px 0;
+            border-radius: 12px;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--turquoise);
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #1ab5b7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c2c2c;
+            color: var(--white);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--turquoise);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--turquoise);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .hero-content h1 {
+                font-size: 64px;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: block;
+            }
+
+            .desktop-nav .nav-list {
+                display: flex;
+                gap: 30px;
+                padding: 0;
+            }
+
+            .desktop-nav .nav-list li {
+                margin-bottom: 0;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .categories-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="demo.html">
+                <img src="assets/fitskin.svg" alt="Fit Skin Clinic" class="logo">
+            </a>
+            
+            <button class="mobile-menu-btn" id="menuBtn">☰</button>
+            
+            <nav class="desktop-nav">
+                <ul class="nav-list">
+                    <li><a href="demo.html">Home</a></li>
+                    <li><a href="treatments.html">Treatments</a></li>
+                    <li><a href="new-clients.html">New Clients</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="demo.html#contact">Contact</a></li>
+                    <li><a href="tel:0249553670" style="color: var(--turquoise);">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <nav class="mobile-nav" id="mobileNav">
+            <ul class="nav-list">
+                <li><a href="demo.html">Home</a></li>
+                <li><a href="treatments.html">Treatments</a></li>
+                <li><a href="new-clients.html">New Clients</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="demo.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="page-hero">
+        <img src="assets/products.jpg" alt="Shop" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Shop</h1>
+            <p>Professional-grade skincare</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <!-- Intro -->
+        <div class="section-intro">
+            <h2>Professional Skincare Products</h2>
+            <p>We carry a curated selection of medical-grade skincare products that complement your in-clinic treatments and support your skin's health at home.</p>
+            <p>All products are available for purchase in-store following a consultation with your therapist.</p>
+        </div>
+
+        <!-- In-Store Only Notice -->
+        <div class="feature-box">
+            <h3>Available In-Store Only</h3>
+            <p>Our professional-grade products are available exclusively in-clinic to ensure you receive the right products for your skin type and concerns. Book a consultation to discuss your personalized homecare routine.</p>
+        </div>
+
+        <!-- Brands -->
+        <div class="brands-section">
+            <h2>Our Brands</h2>
+            <p class="brands-subtitle">We exclusively stock medical-grade skincare lines backed by science and proven results.</p>
+            
+            <div class="brands-grid">
+                <div class="brand-card">
+                    <div class="brand-image">
+                        <img src="assets/brands/circadia.jpg" alt="Circadia">
+                    </div>
+                    <div class="brand-content">
+                        <h3>Circadia</h3>
+                        <p>Revolutionary chronobiology-based skincare that works with your skin's natural rhythms. Targets aging, acne, pigmentation, and rosacea with pharmaceutical-grade ingredients.</p>
+                    </div>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-image">
+                        <img src="assets/brands/pelactiv.jpg" alt="Pelactiv">
+                    </div>
+                    <div class="brand-content">
+                        <h3>Pelactiv</h3>
+                        <p>Australian-made cosmeceutical range combining advanced peptides and active ingredients. Perfect for anti-aging, hydration, and skin barrier repair.</p>
+                    </div>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-image">
+                        <img src="assets/fitskinlogo.jpg" alt="Dermaceuticals">
+                    </div>
+                    <div class="brand-content">
+                        <h3>Dermaceuticals</h3>
+                        <p>Clinical-strength formulations designed to deliver visible results. Specialized solutions for problematic skin, scarring, and advanced concerns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Categories -->
+        <div class="categories-section">
+            <h2>Product Categories</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="assets/homecare-dailycare.jpg" alt="Daily Care">
+                    <div class="category-overlay">
+                        <h3>Daily Care</h3>
+                        <p>Cleansers, toners, moisturizers for everyday use</p>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="assets/homecare-dermaceuticals.jpg" alt="Treatment Products">
+                    <div class="category-overlay">
+                        <h3>Treatment Products</h3>
+                        <p>Serums, peels, and targeted solutions</p>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="assets/homecare-circadia.jpg" alt="Advanced Care">
+                    <div class="category-overlay">
+                        <h3>Advanced Care</h3>
+                        <p>Medical-grade actives and correctives</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>Need Product Advice?</h2>
+            <p>Book a consultation with your therapist to discuss the perfect products for your skin type, concerns, and goals. We'll create a personalized homecare routine that works.</p>
+            <a href="tel:0249553670" class="btn">BOOK A CONSULTATION</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>18 Steel St<br>Redhead NSW 2290<br>Australia</p>
+                <p style="margin-top: 15px;">
+                    <a href="tel:0249553670">0249 553 670</a><br>
+                    <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Fit-Skin-Clinic/61563414337123/" class="social-link" target="_blank">
+                        <span>f</span>
+                    </a>
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" class="social-link" target="_blank">
+                        <span>📷</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="demo.html">Home</a></p>
+                <p><a href="treatments.html">Treatments</a></p>
+                <p><a href="new-clients.html">New Clients</a></p>
+                <p><a href="shop.html">Shop</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul class="hours-list">
+                    <li><span>Monday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Tuesday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Wednesday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Thursday</span> <span>9:30am – 7:30pm</span></li>
+                    <li><span>Friday</span> <span>9:30am – 5:00pm</span></li>
+                    <li><span>Saturday</span> <span>9:30am – 12:30pm</span></li>
+                    <li><span>Sunday</span> <span>Closed</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Fit Skin Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            menuBtn.textContent = mobileNav.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                menuBtn.textContent = '☰';
+            });
+        });
+
+        // Header hide/show on scroll
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            // Don't hide header at the very top
+            if (currentScroll <= 100) {
+                header.classList.remove('hidden');
+                lastScroll = currentScroll;
+                return;
+            }
+            
+            // Scrolling down - hide header
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                header.classList.add('hidden');
+            } 
+            // Scrolling up - show header
+            else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                header.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
