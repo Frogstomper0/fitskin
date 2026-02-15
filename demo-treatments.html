@@ -176,7 +176,7 @@
         .content-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 60px 20px 0 20px;
         }
 
         .section-intro {
@@ -197,14 +197,25 @@
             color: var(--text-light);
         }
 
-        /* Package Cards */
+        /* Carousel Container */
+        .carousel-section {
+            margin: 60px 0;
+            position: relative;
+        }
+
+        /* Mobile: Stack cards normally */
         .packages-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 30px;
-            margin: 60px 0;
         }
 
+        /* Desktop: Carousel wrapper */
+        .carousel-wrapper {
+            display: none;
+        }
+
+        /* Package Cards */
         .package-card {
             background: var(--white);
             border: 2px solid var(--medium-gray);
@@ -344,7 +355,7 @@
             background: var(--off-white);
         }
 
-        /* Express Section */
+        /* Pelactive Section (replaces FitSkin Express) */
         .express-section {
             background: var(--off-white);
             padding: 60px 20px;
@@ -491,9 +502,9 @@
         .cta-section {
             background: linear-gradient(135deg, var(--turquoise) 0%, #1ab5b7 100%);
             color: var(--white);
-            padding: 80px 20px;
+            padding: 60px 20px 60px 20px;
             text-align: center;
-            margin: 80px 0;
+            margin: 80px 0 60px 0;
             border-radius: 12px;
         }
 
@@ -515,20 +526,20 @@
         .footer {
             background: #2c2c2c;
             color: var(--white);
-            padding: 60px 20px 30px;
+            padding: 40px 20px 30px;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 30px;
             max-width: 1200px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
         }
 
         .footer-section h3 {
             font-size: 18px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 600;
         }
 
@@ -584,22 +595,14 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
-        /* Responsive */
+        /* Responsive - Tablet */
         @media (min-width: 768px) {
             .hero-content h1 {
                 font-size: 64px;
             }
 
-            .packages-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .express-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .treatment-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .cta-section {
+                padding: 80px 20px;
             }
 
             .footer-grid {
@@ -607,6 +610,7 @@
             }
         }
 
+        /* Desktop Carousel Styles */
         @media (min-width: 1024px) {
             .mobile-menu-btn {
                 display: none;
@@ -626,7 +630,98 @@
                 margin-bottom: 0;
             }
 
+            /* Hide mobile grid, show carousel */
             .packages-grid {
+                display: none;
+            }
+
+            .carousel-wrapper {
+                display: block;
+                position: relative;
+                padding: 0 80px;
+            }
+
+            .carousel-container {
+                overflow: hidden;
+            }
+
+            .carousel-track {
+                display: flex;
+                gap: 30px;
+                transition: transform 0.5s ease;
+            }
+
+            .carousel-track .package-card {
+                min-width: calc((100% - 60px) / 3);
+                max-width: calc((100% - 60px) / 3);
+                flex-shrink: 0;
+            }
+
+            .carousel-arrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: var(--white);
+                border: 2px solid var(--turquoise);
+                color: var(--turquoise);
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                font-size: 24px;
+                transition: all 0.3s ease;
+                z-index: 10;
+            }
+
+            .carousel-arrow:hover {
+                background: var(--turquoise);
+                color: var(--white);
+            }
+
+            .carousel-arrow.prev {
+                left: 10px;
+            }
+
+            .carousel-arrow.next {
+                right: 10px;
+            }
+
+            .carousel-arrow:disabled {
+                opacity: 0.3;
+                cursor: not-allowed;
+            }
+
+            .carousel-dots {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 40px;
+            }
+
+            .carousel-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: var(--medium-gray);
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .carousel-dot.active {
+                background: var(--turquoise);
+                width: 30px;
+                border-radius: 6px;
+            }
+
+            .packages-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .treatment-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
 
@@ -649,11 +744,12 @@
             <nav class="desktop-nav">
                 <ul class="nav-list">
                     <li><a href="demo.html">Home</a></li>
-                    <li><a href="treatments.html">Treatments</a></li>
-                    <li><a href="new-clients.html">New Clients</a></li>
-                    <li><a href="demo.html#about">About</a></li>
+                    <li><a href="demo-newclients.html">New Clients</a></li>
+                    <li><a href="demo-shop.html">Shop</a></li>
+                    <li><a href="demo.html#approach">Our Approach</a></li>
+                    <li><a href="demo.html#gifts">Gift Cards</a></li>
                     <li><a href="demo.html#contact">Contact</a></li>
-                    <li><a href="tel:0249553670" style="color: var(--turquoise);">BOOK NOW</a></li>
+                    <li><a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" style="color: var(--turquoise);">BOOK NOW</a></li>
                 </ul>
             </nav>
         </div>
@@ -661,9 +757,12 @@
         <nav class="mobile-nav" id="mobileNav">
             <ul class="nav-list">
                 <li><a href="demo.html">Home</a></li>
-                <li><a href="treatments.html">Treatments</a></li>
-                <li><a href="new-clients.html">New Clients</a></li>
+                <li><a href="demo-treatments.html">Treatments</a></li>
+                <li><a href="demo-newclients.html">New Clients</a></li>
                 <li><a href="demo.html#about">About</a></li>
+                <li><a href="demo-shop.html">Shop</a></li>
+                <li><a href="demo.html#approach">Our Approach</a></li>
+                <li><a href="demo.html#gifts">Gift Cards</a></li>
                 <li><a href="demo.html#contact">Contact</a></li>
             </ul>
         </nav>
@@ -684,92 +783,191 @@
         <!-- Intro -->
         <div class="section-intro">
             <h2>Choose Your Path to Clear Skin</h2>
-            <p>We've designed flexible treatment packs that fit your skin goals and budget. Purchase a pack of treatments and save while committing to your skin journey.</p>
+            <p>We've partnered with Circadia, a professional-grade skincare system designed for results. Explore our full range of treatments tailored to your skin goals.</p>
         </div>
 
-        <!-- Tiered Packages -->
-        <div class="packages-grid">
-            <!-- Tier 1 -->
-            <div class="package-card">
-                <div class="package-tier">Tier 1</div>
-                <h3>Foundation Pack</h3>
-                <div class="package-price">$150</div>
-                <p class="package-description">Perfect starter pack for maintaining healthy skin with consistent care and professional-grade products.</p>
-                <ul class="package-includes">
-                    <li>3 express treatments included</li>
-                    <li>10% off retail products</li>
-                    <li>Valid for 3 months</li>
-                    <li>Complimentary skin consultations</li>
-                </ul>
-                <a href="tel:0249553670" class="btn">BOOK NOW</a>
+        <!-- Circadia Facials Carousel (Desktop) / Stacked Grid (Mobile) -->
+        <div class="carousel-section">
+            <!-- Mobile: Stacked cards -->
+            <div class="packages-grid">
+                <!-- Card 1: Tier 1 -->
+                <div class="package-card">
+                    <div class="package-tier">Tier 1</div>
+                    <h3>Circadia Enzyme Mixology Facial</h3>
+                    <div class="package-price">$185 <span>/ 60 min</span></div>
+                    <p class="package-description">First step for congestion, dullness, uneven texture</p>
+                    <ul class="package-includes">
+                        <li>Deep cleanse + skin prep</li>
+                        <li>Circadia enzyme exfoliation</li>
+                        <li>Custom "mixology" mask/actives</li>
+                        <li>Hydration + barrier finish</li>
+                    </ul>
+                    <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn">BOOK NOW</a>
+                </div>
+
+                <!-- Card 2: Tier 2 - Most Popular -->
+                <div class="package-card featured">
+                    <div class="package-tier">Tier 2 — Most Popular</div>
+                    <h3>Circadia Signature + LED Facial</h3>
+                    <div class="package-price">$220 <span>/ 90 min</span></div>
+                    <p class="package-description">Full reset (acne/congestion + glow + calm)</p>
+                    <ul class="package-includes">
+                        <li>Tailored exfoliation (enzyme + optional gentle peel)</li>
+                        <li>Extractions (as needed)</li>
+                        <li>LED light therapy included</li>
+                        <li>Peptide mask + facial massage</li>
+                    </ul>
+                    <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn btn-white">BOOK NOW</a>
+                </div>
+
+                <!-- Card 3: Tier 3 -->
+                <div class="package-card">
+                    <div class="package-tier">Tier 3</div>
+                    <h3>Circadia Luxe Oxygen XR + Peptides</h3>
+                    <div class="package-price">$270 <span>/ 105 min</span></div>
+                    <p class="package-description">Best results session (repair + radiance + quality upgrade)</p>
+                    <ul class="package-includes">
+                        <li>Everything in Tier 2</li>
+                        <li>Upgraded peptide treatment/mask</li>
+                        <li>Oxygen XR finishing treatment</li>
+                        <li>Extended massage + high-performance finish</li>
+                    </ul>
+                    <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn">BOOK NOW</a>
+                </div>
+
+                <!-- Card 4: Gentlemen's Facial -->
+                <div class="package-card">
+                    <div class="package-tier">Circadia Special</div>
+                    <h3>Circadia Gentlemen's Facial</h3>
+                    <div class="package-price">$150 <span>/ 60 min</span></div>
+                    <p class="package-description">No-fuss, results-driven facial tailored for men's skin (congestion, dryness, irritation)</p>
+                    <ul class="package-includes">
+                        <li>Deep cleanse + exfoliation</li>
+                        <li>Extractions (if needed)</li>
+                        <li>Hydration + soothing finish</li>
+                    </ul>
+                    <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn">BOOK NOW</a>
+                </div>
+
+                <!-- Card 5: Skin Reset -->
+                <div class="package-card">
+                    <div class="package-tier">Circadia Special</div>
+                    <h3>Circadia Skin Reset</h3>
+                    <div class="package-price">$120 <span>/ 45 min</span></div>
+                    <p class="package-description">Quick reset when skin feels dull, congested, or reactive</p>
+                    <ul class="package-includes">
+                        <li>Gentle refresh + calming focus</li>
+                        <li>Hydration + barrier support</li>
+                        <li>Instant glow finish</li>
+                    </ul>
+                    <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn">BOOK NOW</a>
+                </div>
             </div>
 
-            <!-- Tier 2 -->
-            <div class="package-card featured">
-                <div class="package-tier">Tier 2 — Most Popular</div>
-                <h3>Transformation Pack</h3>
-                <div class="package-price">$280</div>
-                <p class="package-description">Our most popular package for clients committed to achieving clear, healthy skin with advanced treatments.</p>
-                <ul class="package-includes">
-                    <li>6 treatments included</li>
-                    <li>Mix advanced & express treatments</li>
-                    <li>15% off retail products</li>
-                    <li>Free LED add-on with each treatment</li>
-                    <li>Valid for 6 months</li>
-                </ul>
-                <a href="tel:0249553670" class="btn btn-white">BOOK NOW</a>
-            </div>
+            <!-- Desktop: Carousel wrapper -->
+            <div class="carousel-wrapper">
+                <button class="carousel-arrow prev" id="prevBtn">‹</button>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Card 1: Tier 1 -->
+                        <div class="package-card">
+                            <div class="package-tier">Tier 1</div>
+                            <h3>Circadia Enzyme Mixology Facial</h3>
+                            <div class="package-price">$185 <span>/ 60 min</span></div>
+                            <p class="package-description">First step for congestion, dullness, uneven texture</p>
+                            <ul class="package-includes">
+                                <li>Deep cleanse + skin prep</li>
+                                <li>Circadia enzyme exfoliation</li>
+                                <li>Custom "mixology" mask/actives</li>
+                                <li>Hydration + barrier finish</li>
+                            </ul>
+                            <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn">BOOK NOW</a>
+                        </div>
 
-            <!-- Tier 3 -->
-            <div class="package-card">
-                <div class="package-tier">Tier 3</div>
-                <h3>Elite Care Pack</h3>
-                <div class="package-price">$450</div>
-                <p class="package-description">Maximum results with our most comprehensive package including advanced modalities and premium support.</p>
-                <ul class="package-includes">
-                    <li>10 treatments included</li>
-                    <li>All advanced treatments available</li>
-                    <li>20% off all retail products</li>
-                    <li>Free upgrades & add-ons</li>
-                    <li>Valid for 12 months</li>
-                    <li>Personalized homecare plan</li>
-                </ul>
-                <a href="tel:0249553670" class="btn">BOOK NOW</a>
+                        <!-- Card 2: Tier 2 - Most Popular -->
+                        <div class="package-card featured">
+                            <div class="package-tier">Tier 2 — Most Popular</div>
+                            <h3>Circadia Signature + LED Facial</h3>
+                            <div class="package-price">$220 <span>/ 90 min</span></div>
+                            <p class="package-description">Full reset (acne/congestion + glow + calm)</p>
+                            <ul class="package-includes">
+                                <li>Tailored exfoliation (enzyme + optional gentle peel)</li>
+                                <li>Extractions (as needed)</li>
+                                <li>LED light therapy included</li>
+                                <li>Peptide mask + facial massage</li>
+                            </ul>
+                            <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn btn-white">BOOK NOW</a>
+                        </div>
+
+                        <!-- Card 3: Tier 3 -->
+                        <div class="package-card">
+                            <div class="package-tier">Tier 3</div>
+                            <h3>Circadia Luxe Oxygen XR + Peptides</h3>
+                            <div class="package-price">$270 <span>/ 105 min</span></div>
+                            <p class="package-description">Best results session (repair + radiance + quality upgrade)</p>
+                            <ul class="package-includes">
+                                <li>Everything in Tier 2</li>
+                                <li>Upgraded peptide treatment/mask</li>
+                                <li>Oxygen XR finishing treatment</li>
+                                <li>Extended massage + high-performance finish</li>
+                            </ul>
+                            <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn">BOOK NOW</a>
+                        </div>
+
+                        <!-- Card 4: Gentlemen's Facial -->
+                        <div class="package-card">
+                            <div class="package-tier">Circadia Special</div>
+                            <h3>Circadia Gentlemen's Facial</h3>
+                            <div class="package-price">$150 <span>/ 60 min</span></div>
+                            <p class="package-description">No-fuss, results-driven facial tailored for men's skin (congestion, dryness, irritation)</p>
+                            <ul class="package-includes">
+                                <li>Deep cleanse + exfoliation</li>
+                                <li>Extractions (if needed)</li>
+                                <li>Hydration + soothing finish</li>
+                            </ul>
+                            <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn">BOOK NOW</a>
+                        </div>
+
+                        <!-- Card 5: Skin Reset -->
+                        <div class="package-card">
+                            <div class="package-tier">Circadia Special</div>
+                            <h3>Circadia Skin Reset</h3>
+                            <div class="package-price">$120 <span>/ 45 min</span></div>
+                            <p class="package-description">Quick reset when skin feels dull, congested, or reactive</p>
+                            <ul class="package-includes">
+                                <li>Gentle refresh + calming focus</li>
+                                <li>Hydration + barrier support</li>
+                                <li>Instant glow finish</li>
+                            </ul>
+                            <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn">BOOK NOW</a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-arrow next" id="nextBtn">›</button>
+                
+                <!-- Carousel dots -->
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
 
-        <!-- FitSkin Express -->
+        <!-- Pelactive Section (replaces FitSkin Express) -->
         <div class="express-section">
-            <h2>FitSkin Express</h2>
-            <p class="express-subtitle">Quick, effective treatments perfect for busy schedules or maintaining results between advanced treatments.</p>
+            <h2>Pelactive</h2>
+            <p class="express-subtitle">Fast, targeted peel protocols for glow, texture and clarity.</p>
             <div class="express-grid">
                 <div class="express-item">
                     <div class="express-info">
-                        <h4>Express LED Facial</h4>
-                        <p>30min · Rejuvenating light therapy for all skin types</p>
+                        <h4>Pelactive Express</h4>
+                        <p>60 min · Quick peel refresh for brighter, smoother skin</p>
                     </div>
-                    <div class="express-price">$65</div>
+                    <div class="express-price">$110</div>
                 </div>
                 <div class="express-item">
                     <div class="express-info">
-                        <h4>Express Enzyme Peel</h4>
-                        <p>30min · Gentle exfoliation for brighter skin</p>
+                        <h4>Pelactive Signature</h4>
+                        <p>90 min · Full protocol with extended treatment + recovery guidance</p>
                     </div>
-                    <div class="express-price">$70</div>
-                </div>
-                <div class="express-item">
-                    <div class="express-info">
-                        <h4>Express Hydration Treatment</h4>
-                        <p>30min · Deep moisture boost for dehydrated skin</p>
-                    </div>
-                    <div class="express-price">$75</div>
-                </div>
-                <div class="express-item">
-                    <div class="express-info">
-                        <h4>Express Clarifying Treatment</h4>
-                        <p>30min · Quick solution for breakout-prone skin</p>
-                    </div>
-                    <div class="express-price">$75</div>
+                    <div class="express-price">$185</div>
                 </div>
             </div>
         </div>
@@ -779,29 +977,73 @@
             <h2>Individual Treatments</h2>
             <p class="express-subtitle">Browse our complete menu of advanced skin treatments. Not sure where to start? Book a complimentary consultation.</p>
 
-            <!-- Advanced Facials -->
+            <!-- Advanced Treatments (6 items) -->
             <div class="treatment-category">
-                <h3>Advanced Facials</h3>
+                <h3>Advanced Treatments</h3>
                 <div class="treatment-grid">
                     <div class="treatment-card">
-                        <h4>Fit Skin Facial</h4>
+                        <h4>LED Light Therapy</h4>
+                        <div class="treatment-meta">
+                            <span>30 minutes</span>
+                            <span>$90</span>
+                        </div>
+                        <p>Calms inflammation, supports acne and redness, boosts recovery. Can be standalone or add-on.</p>
+                        <ul>
+                            <li>Kills acne bacteria</li>
+                            <li>Reduces inflammation</li>
+                            <li>No downtime</li>
+                            <li>Perfect add-on</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Skin Needling</h4>
+                        <div class="treatment-meta">
+                            <span>75 minutes</span>
+                            <span>$250</span>
+                        </div>
+                        <p>Texture, scarring, fine lines, collagen support.</p>
+                        <ul>
+                            <li>Reduces acne scarring</li>
+                            <li>Boosts collagen</li>
+                            <li>Improves texture</li>
+                            <li>24-48hr downtime</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Microdermabrasion</h4>
+                        <div class="treatment-meta">
+                            <span>45 minutes</span>
+                            <span>$80</span>
+                        </div>
+                        <p>Resurfacing for congestion, brightness and smoother texture.</p>
+                        <ul>
+                            <li>Reduces fine lines</li>
+                            <li>Evens skin tone</li>
+                            <li>Minimizes pore appearance</li>
+                        </ul>
+                    </div>
+
+                    <div class="treatment-card">
+                        <h4>Epidermal Levelling</h4>
                         <div class="treatment-meta">
                             <span>60 minutes</span>
                             <span>$110</span>
                         </div>
-                        <p>Our signature facial customized to your skin's needs. Includes deep cleanse, exfoliation, extractions, mask, and finishing products.</p>
+                        <p>Surface polish + smoother finish (great pre-event / makeup sits better).</p>
                         <ul>
-                            <li>Customized to your skin type</li>
-                            <li>Relaxing massage included</li>
-                            <li>Perfect for regular maintenance</li>
+                            <li>Instant smoothness</li>
+                            <li>Perfect before events</li>
+                            <li>Makeup application improved</li>
                         </ul>
                     </div>
 
                     <div class="treatment-card">
                         <h4>Hydrabrasion Facial</h4>
                         <div class="treatment-meta">
-                            <span>60 minutes</span>
-                            <span>$140</span>
+                            <span>75 minutes</span>
+                            <span>$115</span>
                         </div>
                         <p>Combines hydration with gentle exfoliation for instantly glowing skin. Uses water and oxygen to deeply cleanse and hydrate.</p>
                         <ul>
@@ -812,107 +1054,9 @@
                     </div>
 
                     <div class="treatment-card">
-                        <h4>Microdermabrasion Facial</h4>
-                        <div class="treatment-meta">
-                            <span>60 minutes</span>
-                            <span>$140</span>
-                        </div>
-                        <p>Physical exfoliation that removes dead skin cells and stimulates collagen production for smoother, more refined skin texture.</p>
-                        <ul>
-                            <li>Reduces fine lines</li>
-                            <li>Evens skin tone</li>
-                            <li>Minimizes pore appearance</li>
-                        </ul>
-                    </div>
-
-                    <div class="treatment-card">
-                        <h4>Acne Treatment Facial</h4>
-                        <div class="treatment-meta">
-                            <span>75 minutes</span>
-                            <span>$160</span>
-                        </div>
-                        <p>Specialized treatment targeting acne, congestion, and inflammation using medical-grade products and LED therapy.</p>
-                        <ul>
-                            <li>Reduces active breakouts</li>
-                            <li>Prevents future breakouts</li>
-                            <li>Includes LED therapy</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chemical Peels -->
-            <div class="treatment-category">
-                <h3>Chemical Peels</h3>
-                <div class="treatment-grid">
-                    <div class="treatment-card">
-                        <h4>Light Peel</h4>
-                        <div class="treatment-meta">
-                            <span>45 minutes</span>
-                            <span>$120</span>
-                        </div>
-                        <p>Gentle exfoliating peel perfect for first-timers or sensitive skin. Minimal to no downtime with immediate brightening results.</p>
-                        <ul>
-                            <li>Brightens complexion</li>
-                            <li>Minimal peeling</li>
-                            <li>No downtime</li>
-                        </ul>
-                    </div>
-
-                    <div class="treatment-card">
-                        <h4>Medium Peel</h4>
-                        <div class="treatment-meta">
-                            <span>60 minutes</span>
-                            <span>$180</span>
-                        </div>
-                        <p>Deeper exfoliation targeting pigmentation, acne scars, and sun damage. 3-5 days of visible peeling expected.</p>
-                        <ul>
-                            <li>Fades hyperpigmentation</li>
-                            <li>Improves texture</li>
-                            <li>Reduces acne scarring</li>
-                        </ul>
-                    </div>
-
-                    <div class="treatment-card">
-                        <h4>Advanced Peel</h4>
-                        <div class="treatment-meta">
-                            <span>60 minutes</span>
-                            <span>$220</span>
-                        </div>
-                        <p>Our strongest peel for significant skin concerns. Results in 5-7 days of peeling for dramatic improvements in tone and texture.</p>
-                        <ul>
-                            <li>Maximum exfoliation</li>
-                            <li>Significant results</li>
-                            <li>Consultation required</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Advanced Treatments -->
-            <div class="treatment-category">
-                <h3>Advanced Treatments</h3>
-                <div class="treatment-grid">
-                    <div class="treatment-card">
-                        <h4>Skin Needling</h4>
-                        <div class="treatment-meta">
-                            <span>90 minutes</span>
-                            <span>$280</span>
-                        </div>
-                        <p>Collagen induction therapy using micro-needling to improve scars, texture, and fine lines. Includes numbing cream and LED therapy.</p>
-                        <ul>
-                            <li>Reduces acne scarring</li>
-                            <li>Boosts collagen</li>
-                            <li>Improves texture</li>
-                            <li>24-48hr downtime</li>
-                        </ul>
-                    </div>
-
-                    <div class="treatment-card">
                         <h4>IPL Treatment</h4>
                         <div class="treatment-meta">
-                            <span>45 minutes</span>
-                            <span>$200</span>
+                            <span>Contact for pricing</span>
                         </div>
                         <p>Intense pulsed light therapy targets pigmentation, redness, and sun damage for clearer, more even-toned skin.</p>
                         <ul>
@@ -922,40 +1066,10 @@
                             <li>Minimal downtime</li>
                         </ul>
                     </div>
-
-                    <div class="treatment-card">
-                        <h4>LED Light Therapy</h4>
-                        <div class="treatment-meta">
-                            <span>30 minutes</span>
-                            <span>$65</span>
-                        </div>
-                        <p>Medical-grade LED therapy using red and blue light to treat acne, reduce inflammation, and promote healing.</p>
-                        <ul>
-                            <li>Kills acne bacteria</li>
-                            <li>Reduces inflammation</li>
-                            <li>No downtime</li>
-                            <li>Perfect add-on</li>
-                        </ul>
-                    </div>
-
-                    <div class="treatment-card">
-                        <h4>Advanced Skin Consultation</h4>
-                        <div class="treatment-meta">
-                            <span>30 minutes</span>
-                            <span>$50</span>
-                        </div>
-                        <p>In-depth consultation with Amanda to assess your skin concerns and create a personalized treatment plan.</p>
-                        <ul>
-                            <li>Skin analysis</li>
-                            <li>Treatment plan</li>
-                            <li>Product recommendations</li>
-                            <li>Redeemable toward treatment</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
 
-            <!-- Beauty Services -->
+            <!-- Beauty Services (unchanged) -->
             <div class="treatment-category">
                 <h3>Beauty Services</h3>
                 <div class="treatment-grid">
@@ -1002,7 +1116,7 @@
         <div class="cta-section">
             <h2>Not Sure Where to Start?</h2>
             <p>Book a complimentary 15-minute skin consultation and we'll help you find the perfect treatment for your skin goals and budget.</p>
-            <a href="tel:0249553670" class="btn btn-white">BOOK A CONSULTATION</a>
+            <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn btn-white">BOOK A CONSULTATION</a>
         </div>
     </section>
 
@@ -1030,10 +1144,10 @@
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <p><a href="demo.html">Home</a></p>
-                <p><a href="treatments.html">Treatments</a></p>
-                <p><a href="new-clients.html">New Clients</a></p>
-                <p><a href="demo.html#contact">Contact</a></p>
+                <p><a href="demo-treatments.html">Treatments</a></p>
+                <p><a href="#products">Products</a></p>
+                <p><a href="#gifts">Gift Cards</a></p>
+                <p><a href="#contact">Contact</a></p>
             </div>
             <div class="footer-section">
                 <h3>Opening Hours</h3>
@@ -1078,24 +1192,87 @@
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
             
-            // Don't hide header at the very top
             if (currentScroll <= 100) {
                 header.classList.remove('hidden');
                 lastScroll = currentScroll;
                 return;
             }
             
-            // Scrolling down - hide header
             if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
                 header.classList.add('hidden');
             } 
-            // Scrolling up - show header
             else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
                 header.classList.remove('hidden');
             }
             
             lastScroll = currentScroll;
         });
+
+        // Carousel functionality (desktop only)
+        if (window.innerWidth >= 1024) {
+            const track = document.getElementById('carouselTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('carouselDots');
+            const cards = track.querySelectorAll('.package-card');
+            
+            let currentIndex = 0;
+            const totalSlides = 3; // 5 cards, showing 3 at a time = 3 slide positions
+            
+            // Create 3 dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            
+            function updateCarousel() {
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 30;
+                const offset = -(currentIndex * (cardWidth + gap));
+                track.style.transform = `translateX(${offset}px)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+                
+                // Update button states
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalSlides - 1;
+            }
+            
+            function goToSlide(index) {
+                currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+                updateCarousel();
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    goToSlide(currentIndex - 1);
+                }
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    goToSlide(currentIndex + 1);
+                }
+            });
+            
+            // Initial state
+            updateCarousel();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024) {
+                    updateCarousel();
+                }
+            });
+        }
     </script>
 </body>
 </html>
