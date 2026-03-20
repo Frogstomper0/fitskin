@@ -1,5 +1,15 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/demo", "destination": "/", "permanent": true },
+    { "source": "/demo-treatments", "destination": "/treatments", "permanent": true },
+    { "source": "/demo-newclients", "destination": "/new-clients", "permanent": true },
+    { "source": "/demo-shop", "destination": "/shop", "permanent": true },
+    { "source": "/services", "destination": "/treatments", "permanent": true },
+    { "source": "/products", "destination": "/shop", "permanent": true },
+    { "source": "/gifts", "destination": "/", "permanent": true },
+    { "source": "/service-page-:slug", "destination": "/treatments", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

@@ -129,10 +129,6 @@
 (function(){
   // 1) Configure links (replace with your real URLs)
   const byId = id => document.getElementById(id);
-  byId('consultLink').href = '#';     // TODO: booking URL for Consultation
-  byId('teamLink').href     = '#';    // TODO: team/about URL
-  byId('bookAmanda').href   = '#';    // TODO: booking URL preselecting Amanda
-
   // 2) Reviews: load JSON (fallback to 3 baked quotes if missing)
   const REV_FALLBACK = [
     { text:"The epidermal levelling treatment was fantastic—dead skin and peach fuzz gone, makeup glides on. Amanda’s expertise really shines.",
@@ -324,13 +320,6 @@
     const footBook = document.querySelector('.foot-brand .book');
     if (footBook) footBook.href = BOOK_URL;
 
-    // Engage strip quick links (existing placeholders)
-    const consult = document.getElementById('consultLink');
-    if (consult) consult.href = BOOK_URL;
-    const team = document.getElementById('teamLink');
-    if (team) team.href = '/#team';
-    const amanda = document.getElementById('bookAmanda');
-    if (amanda) amanda.href = BOOK_URL;
   }
 
   // 3) Hero secondary (“Find out more”) follows the current slide’s topic

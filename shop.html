@@ -57,7 +57,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
         }
-        
+
         .header.hidden {
             transform: translateY(-100%);
         }
@@ -504,36 +504,64 @@
             }
         }
     </style>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MCND7TM8N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6MCND7TM8N');
+    </script>
+
+    <!-- SEO Meta -->
+    <meta name="description" content="Professional skincare from Circadia, Pelactiv and DP Dermaceuticals. Available in-clinic at Fit Skin Clinic, Redhead, Lake Macquarie.">
+    <link rel="canonical" href="https://www.fitskinclinic.com.au/shop">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shop — Fit Skin Clinic">
+    <meta property="og:description" content="Professional skincare from Circadia, Pelactiv and DP Dermaceuticals. Available in-clinic at Fit Skin Clinic, Redhead.">
+    <meta property="og:url" content="https://www.fitskinclinic.com.au/shop">
+    <meta property="og:image" content="https://www.fitskinclinic.com.au/assets/og-image.jpg">
+    <meta property="og:locale" content="en_AU">
+    <meta property="og:site_name" content="Fit Skin Clinic">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shop — Fit Skin Clinic">
+    <meta name="twitter:description" content="Professional skincare from Circadia, Pelactiv and DP Dermaceuticals. In-clinic at Fit Skin Clinic, Redhead.">
+    <meta name="twitter:image" content="https://www.fitskinclinic.com.au/assets/og-image.jpg">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <a href="demo.html">
+            <a href="index.html">
                 <img src="assets/fitskin.svg" alt="Fit Skin Clinic" class="logo">
             </a>
-            
+
             <button class="mobile-menu-btn" id="menuBtn">☰</button>
-            
+
             <nav class="desktop-nav">
                 <ul class="nav-list">
-                    <li><a href="demo.html">Home</a></li>
-                    <li><a href="demo-newclients.html">New Clients</a></li>
-                    <li><a href="demo.html#approach">Our Approach</a></li>
-                    <li><a href="demo.html#gifts">Gift Cards</a></li>
-                    <li><a href="demo.html#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="new-clients.html">New Clients</a></li>
+                    <li><a href="index.html#approach">Our Approach</a></li>
+                    <li><a href="index.html#gifts">Gift Cards</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                     <li><a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" style="color: var(--turquoise);">BOOK NOW</a></li>
                 </ul>
             </nav>
         </div>
-        
+
         <nav class="mobile-nav" id="mobileNav">
             <ul class="nav-list">
-                <li><a href="demo.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="treatments.html">Treatments</a></li>
                 <li><a href="new-clients.html">New Clients</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <li><a href="demo.html#contact">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -567,11 +595,11 @@
         <div class="brands-section">
             <h2>Our Brands</h2>
             <p class="brands-subtitle">We exclusively stock medical-grade skincare lines backed by science and proven results.</p>
-            
+
             <div class="brands-grid">
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="assets/brands/circadia.jpg" alt="Circadia">
+                        <img src="assets/brands/circadia.jpg" alt="Circadia" loading="lazy">
                     </div>
                     <div class="brand-content">
                         <h3>Circadia</h3>
@@ -581,7 +609,7 @@
 
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="assets/brands/pelactiv.jpg" alt="Pelactiv">
+                        <img src="assets/brands/pelactiv.jpg" alt="Pelactiv" loading="lazy">
                     </div>
                     <div class="brand-content">
                         <h3>Pelactiv</h3>
@@ -591,7 +619,7 @@
 
                 <div class="brand-card">
                     <div class="brand-image">
-                        <img src="assets/fitskinlogo.jpg" alt="Dermaceuticals">
+                        <img src="assets/fitskinlogo.jpg" alt="Dermaceuticals" loading="lazy">
                     </div>
                     <div class="brand-content">
                         <h3>DP Dermaceuticals</h3>
@@ -605,10 +633,10 @@
         <!-- Product Categories -->
         <div class="categories-section">
             <h2>Product Categories</h2>
-            
+
             <div class="categories-grid">
                 <div class="category-card">
-                    <img src="assets/homecare-dailycare.jpg" alt="Daily Care">
+                    <img src="assets/homecare-dailycare.jpg" alt="Daily Care" loading="lazy">
                     <div class="category-overlay">
                         <h3>Daily Care</h3>
                         <p>Cleansers, toners, moisturizers for everyday use</p>
@@ -616,7 +644,7 @@
                 </div>
 
                 <div class="category-card">
-                    <img src="assets/homecare-dermaceuticals.jpg" alt="Treatment Products">
+                    <img src="assets/homecare-dermaceuticals.jpg" alt="Treatment Products" loading="lazy">
                     <div class="category-overlay">
                         <h3>Treatment Products</h3>
                         <p>Serums, peels, and targeted solutions</p>
@@ -624,7 +652,7 @@
                 </div>
 
                 <div class="category-card">
-                    <img src="assets/homecare-circadia.jpg" alt="Advanced Care">
+                    <img src="assets/homecare-circadia.jpg" alt="Advanced Care" loading="lazy">
                     <div class="category-overlay">
                         <h3>Advanced Care</h3>
                         <p>Medical-grade actives and correctives</p>
@@ -665,7 +693,7 @@
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <p><a href="demo.html">Home</a></p>
+                <p><a href="index.html">Home</a></p>
                 <p><a href="treatments.html">Treatments</a></p>
                 <p><a href="new-clients.html">New Clients</a></p>
                 <p><a href="shop.html">Shop</a></p>
@@ -709,26 +737,26 @@
         // Header hide/show on scroll
         let lastScroll = 0;
         const header = document.querySelector('.header');
-        
+
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
-            
+
             // Don't hide header at the very top
             if (currentScroll <= 100) {
                 header.classList.remove('hidden');
                 lastScroll = currentScroll;
                 return;
             }
-            
+
             // Scrolling down - hide header
             if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
                 header.classList.add('hidden');
-            } 
+            }
             // Scrolling up - show header
             else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
                 header.classList.remove('hidden');
             }
-            
+
             lastScroll = currentScroll;
         });
     </script>

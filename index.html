@@ -2,11 +2,1195 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=demo.html">
-    <title>Redirecting...</title>
-    <script>window.location.href = "demo.html";</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Skin Clinic Redhead — Strong skin starts here</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #21C7C9;
+            --white: #ffffff;
+            --off-white: #fafafa;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #666666;
+            --text-dark: #333333;
+            --text-light: #777777;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        section {
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 80px;
+        }
+
+        .mobile-menu-btn {
+            background: var(--turquoise);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: #1ab5b7;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .nav-list li {
+            margin-bottom: 15px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            margin-top: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--turquoise);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .section-centered {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* We're Raising The Bar Section */
+        .raising-bar {
+            background: var(--off-white);
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 30px 0;
+        }
+
+        .trust-logo {
+            height: 30px;
+            filter: grayscale(100%);
+            opacity: 0.6;
+        }
+
+        /* Empty Promises Section */
+        .empty-promises {
+            background: linear-gradient(135deg, var(--turquoise) 0%, #1ab5b7 100%);
+            color: var(--white);
+        }
+
+        .empty-promises .section-title {
+            color: var(--white);
+        }
+
+        /* Club Section */
+        .club-section {
+            background: var(--light-gray);
+            padding: 60px 20px;
+        }
+
+        .club-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .club-logo {
+            max-width: 400px;
+            margin: 0 auto 30px;
+        }
+
+        .club-description {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Split Content Section */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .split-item {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .split-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .split-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .split-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .split-content h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .split-content p {
+            font-size: 14px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--turquoise);
+            color: var(--white);
+        }
+
+        .reviews .section-title {
+            color: var(--white);
+        }
+
+        .review-stats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 24px;
+        }
+
+        .review-count {
+            font-size: 14px;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+        }
+
+        .review-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .review-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Approach Section */
+        .approach {
+            background: var(--off-white);
+        }
+
+        .approach-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .approach-item {
+            text-align: left;
+        }
+
+        .approach-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--turquoise);
+        }
+
+        .approach-item p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* Gift Card Section */
+        .gift-section {
+            background: #F9F3EB;
+            padding: 60px 20px;
+        }
+
+        .gift-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .gift-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .gift-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        .gift-card-preview {
+            max-width: 400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Instagram Section */
+        .instagram {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .instagram h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .instagram-widget {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 8px;
+        }
+
+        .instagram-feed {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .instagram-post {
+            aspect-ratio: 1;
+            background: var(--medium-gray);
+            overflow: hidden;
+        }
+
+        .instagram-post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instagram-post a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--off-white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: var(--turquoise);
+            color: var(--white);
+            padding: 15px 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #1ab5b7;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c2c2c;
+            color: var(--white);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--turquoise);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            background: var(--medium-gray);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--turquoise);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Tablet Styles */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 64px;
+            }
+
+            .section-title {
+                font-size: 48px;
+            }
+
+            .gift-section {
+                padding: 80px 20px;
+            }
+
+            .gift-text h2 {
+                font-size: 36px;
+            }
+
+            .split-section {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .review-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .approach-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gift-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: block;
+            }
+
+            .desktop-nav .nav-list {
+                display: flex;
+                gap: 30px;
+                padding: 0;
+            }
+
+            .desktop-nav .nav-list li {
+                margin-bottom: 0;
+            }
+
+            .hero h1 {
+                font-size: 72px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .approach-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MCND7TM8N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6MCND7TM8N');
+    </script>
+
+    <!-- SEO Meta -->
+    <meta name="description" content="Fit Skin Clinic in Redhead, Lake Macquarie. Advanced facials, laser &amp; IPL, skin needling, brows and lashes. Book online with Amanda today.">
+    <link rel="canonical" href="https://www.fitskinclinic.com.au/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fit Skin Clinic — Strong skin starts here">
+    <meta property="og:description" content="Fit Skin Clinic in Redhead, Lake Macquarie. Advanced facials, laser &amp; IPL, skin needling, brows and lashes. Book online with Amanda today.">
+    <meta property="og:url" content="https://www.fitskinclinic.com.au/">
+    <meta property="og:image" content="https://www.fitskinclinic.com.au/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_AU">
+    <meta property="og:site_name" content="Fit Skin Clinic">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fit Skin Clinic — Strong skin starts here">
+    <meta name="twitter:description" content="Fit Skin Clinic in Redhead, Lake Macquarie. Advanced facials, laser &amp; IPL, skin needling, brows and lashes.">
+    <meta name="twitter:image" content="https://www.fitskinclinic.com.au/assets/og-image.jpg">
+
+    <!-- Schema: LocalBusiness + AggregateRating -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
+      "name": "Fit Skin Clinic",
+      "url": "https://www.fitskinclinic.com.au",
+      "logo": "https://www.fitskinclinic.com.au/assets/fitskin.svg",
+      "image": "https://www.fitskinclinic.com.au/assets/hero.jpg",
+      "description": "Fit Skin Clinic is an advanced skin and beauty clinic in Redhead, Lake Macquarie, NSW. Treatments include facials, laser, IPL, skin needling, brows and lashes.",
+      "priceRange": "$$",
+      "telephone": "+61249553670",
+      "email": "thefitskinclinic@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "18 Steel St",
+        "addressLocality": "Redhead",
+        "addressRegion": "NSW",
+        "postalCode": "2290",
+        "addressCountry": "AU"
+      },
+      "areaServed": ["Redhead", "Lake Macquarie", "Newcastle", "NSW"],
+      "sameAs": [
+        "https://www.instagram.com/fitskinclinic",
+        "https://www.facebook.com/fitskinclinic"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "13",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+
+    <!-- Schema: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Fit Skin Clinic",
+      "url": "https://www.fitskinclinic.com.au"
+    }
+    </script>
 </head>
 <body>
-    <p>Redirecting to <a href="demo.html">Fit Skin Clinic</a>...</p>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="/">
+                <img src="assets/fitskin.svg" alt="Fit Skin Clinic" class="logo">
+            </a>
+
+            <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
+
+            <nav class="desktop-nav">
+                <ul class="nav-list">
+                    <li><a href="treatments.html">Treatments</a></li>
+                    <li><a href="new-clients.html">New Clients</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="#approach">Our Approach</a></li>
+                    <li><a href="#gifts">Gift Cards</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" style="color: var(--turquoise);">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <ul class="nav-list">
+                <li><a href="treatments.html">Treatments</a></li>
+                <li><a href="new-clients.html">New Clients</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="#approach">Our Approach</a></li>
+                <li><a href="#gifts">Gift Cards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="assets/skin-consultation-hero.jpg" alt="Strong skin starts here" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Strong skin starts here.</h1>
+            <p class="hero-tagline">MEDICAL-GRADE SKIN TREATMENTS, REDHEAD</p>
+            <div class="hero-buttons">
+                <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn btn-primary">BOOK ONLINE</a>
+                <a href="#gifts" class="btn btn-secondary">GIFT CARDS</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- We're Raising The Bar -->
+    <section class="section raising-bar">
+        <div class="section-centered">
+            <h2 class="section-title">Let's raise the bar.</h2>
+            <p class="section-subtitle">
+                At Fit Skin Clinic, we go beyond surface-level treatments. By understanding your skin at its source, we create tailored solutions that deliver visible, lasting results — setting a new standard in modern skin health.
+            </p>
+            <p class="section-subtitle">
+                Our small, dedicated team creates personalised treatment plans designed around your unique skin needs. Using expert guidance and premium products, we deliver results-driven care that supports your skin goals — all within a tailored, high-end experience made just for you.
+            </p>
+            <div class="trust-logos">
+                <img src="assets/brands/circadia.jpg" alt="Circadia" class="trust-logo" loading="lazy">
+                <img src="assets/brands/pelactiv.jpg" alt="Pelactiv" class="trust-logo" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Empty Promises Section -->
+    <section class="section empty-promises">
+        <div class="section-centered">
+            <h2 class="section-title">Sick of Spending Money on empty promises when it comes to your skin?</h2>
+            <img src="assets/fitskinlogo.jpg" alt="Fit Skin Clinic" style="max-width: 200px; margin: 30px auto;" loading="lazy">
+            <p style="font-size: 18px; margin-top: 20px;">IS YOUR SKIN GETTING THE ATTENTION IT DESERVES?</p>
+            <h3 style="font-size: 48px; font-family: 'Cormorant Garamond', serif; margin: 20px 0;">WELCOME TO<br>the<br>Strong Skin Club</h3>
+            <a href="#contact" class="btn btn-primary" style="margin-top: 30px;">LEARN MORE</a>
+        </div>
+    </section>
+
+    <!-- Split Content Section -->
+    <section class="split-section">
+        <div class="split-item">
+            <img src="assets/services/fit-skin-facial-hero.jpg" alt="Start Your Skin Journey" class="split-bg" loading="lazy">
+            <div class="split-overlay"></div>
+            <div class="split-content">
+                <h3>START YOUR SKIN JOURNEY</h3>
+                <p>START HERE WITH OUR CONSULTATION</p>
+                <a href="new-clients.html" class="btn btn-primary">NEW CLIENT?</a>
+            </div>
+        </div>
+        <div class="split-item">
+            <img src="assets/services/advanced-consultation-hero.jpg" alt="Advanced Menu" class="split-bg" loading="lazy">
+            <div class="split-overlay"></div>
+            <div class="split-content">
+                <h3>ADVANCED MENU</h3>
+                <p>Learn more about our skincare treatments</p>
+                <a href="treatments.html" class="btn btn-secondary">TREATMENT MENU</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section reviews" id="reviews">
+        <div class="section-centered">
+            <h2 class="section-title">See what our clients are saying!</h2>
+            <div class="review-stats">
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <span class="review-count">5.0 &middot; Reviews</span>
+            </div>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar"></div>
+                        <div>
+                            <div class="review-name">Sarah M.</div>
+                            <div class="stars" style="font-size: 14px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Amanda is absolutely amazing! She took the time to understand my skin concerns and created a personalized treatment plan. My skin has never looked better!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar"></div>
+                        <div>
+                            <div class="review-name">Jessica L.</div>
+                            <div class="stars" style="font-size: 14px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The clinic is so relaxing and professional. The treatments are tailored specifically to what my skin needs. I always leave feeling refreshed and confident."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar"></div>
+                        <div>
+                            <div class="review-name">Emma K.</div>
+                            <div class="stars" style="font-size: 14px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Best skin clinic in the area! The LED therapy and skin needling have completely transformed my skin. Highly recommend to anyone looking for real results."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Card Section -->
+    <section class="gift-section" id="gifts">
+        <div class="gift-content">
+            <div class="gift-text">
+                <h2>Looking to spoil that special someone?</h2>
+                <p>Give the gift of confidence and self-care. Our gift cards are perfect for birthdays, special occasions, or just because.</p>
+                <p>Treat them to a luxurious facial, advanced skin treatment, or let them choose their own skin journey with a Fit Skin Clinic gift card.</p>
+                <a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" class="btn" style="background: var(--turquoise); color: var(--white);">BUY A GIFT CARD</a>
+            </div>
+            <div>
+                <img src="assets/giftsets.jpg" alt="Gift Cards" class="gift-card-preview" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="section instagram">
+        <h2>Follow our journey on Instagram!</h2>
+        <div class="instagram-widget">
+            <p style="margin-bottom: 15px; font-weight: 600;">@the.fit.skin.clinic</p>
+            <a href="https://www.instagram.com/the.fit.skin.clinic" class="btn btn-primary" target="_blank">FOLLOW</a>
+        </div>
+        <div style="max-width: 1200px; margin: 30px auto; padding: 0 20px;">
+            <!-- Instagram Feed Embed -->
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer async></script>
+            <div class="elfsight-app-8a7b5d89-0e0e-4b3e-9f0e-3c3c3c3c3c3c" data-elfsight-app-lazy></div>
+
+            <!-- Fallback: Manual Instagram grid -->
+            <div class="instagram-feed" id="instagram-fallback">
+                <div class="instagram-post">
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" target="_blank">
+                        <img src="assets/home.jpg" alt="Skin treatment results at Fit Skin Clinic Redhead" loading="lazy">
+                    </a>
+                </div>
+                <div class="instagram-post">
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" target="_blank">
+                        <img src="assets/salon.jpg" alt="Advanced facial treatment at Fit Skin Clinic" loading="lazy">
+                    </a>
+                </div>
+                <div class="instagram-post">
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" target="_blank">
+                        <img src="assets/medspa.jpg" alt="IPL skin rejuvenation at Fit Skin Clinic Lake Macquarie" loading="lazy">
+                    </a>
+                </div>
+                <div class="instagram-post">
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" target="_blank">
+                        <img src="assets/spa.jpg" alt="Skin consultation at Fit Skin Clinic Redhead" loading="lazy">
+                    </a>
+                </div>
+                <div class="instagram-post">
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" target="_blank">
+                        <img src="assets/skincare.jpg" alt="Lash lift treatment at Fit Skin Clinic" loading="lazy">
+                    </a>
+                </div>
+                <div class="instagram-post">
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" target="_blank">
+                        <img src="assets/products.jpg" alt="Before and after skin treatment results" loading="lazy">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 50px;">Contact Us</h2>
+        <div class="contact-grid">
+            <div>
+                <form class="contact-form" action="https://formspree.io/f/thefitskinclinic@gmail.com" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="_replyto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" value="New contact from FitSkin Clinic website">
+                    <button type="submit" class="btn-submit">SEND</button>
+                </form>
+            </div>
+            <div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3349.3772642893973!2d151.70477631564382!3d-32.94494738092795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b731d8e8c3b8d4b%3A0x3f0a6c0c0a8a0a0a!2s18%20Steel%20St%2C%20Redhead%20NSW%202290%2C%20Australia!5e0!3m2!1sen!2sus!4v1644000000000!5m2!1sen!2sus"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>18 Steel St<br>Redhead NSW 2290<br>Australia</p>
+                <p style="margin-top: 15px;">
+                    <a href="tel:0249553670">0249 553 670</a><br>
+                    <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Fit-Skin-Clinic/61563414337123/" class="social-link" target="_blank">
+                        <span>f</span>
+                    </a>
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" class="social-link" target="_blank">
+                        <span>&#128247;</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="treatments.html">Treatments</a></p>
+                <p><a href="#products">Products</a></p>
+                <p><a href="#gifts">Gift Cards</a></p>
+                <p><a href="#contact">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul class="hours-list">
+                    <li><span>Monday</span> <span>9:30am &ndash; 5:00pm</span></li>
+                    <li><span>Tuesday</span> <span>9:30am &ndash; 5:00pm</span></li>
+                    <li><span>Wednesday</span> <span>9:30am &ndash; 5:00pm</span></li>
+                    <li><span>Thursday</span> <span>9:30am &ndash; 7:30pm</span></li>
+                    <li><span>Friday</span> <span>9:30am &ndash; 5:00pm</span></li>
+                    <li><span>Saturday</span> <span>9:30am &ndash; 12:30pm</span></li>
+                    <li><span>Sunday</span> <span>Closed</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Fit Skin Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            menuBtn.textContent = mobileNav.classList.contains('active') ? '\u2715' : '\u2630';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                menuBtn.textContent = '\u2630';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Header hide/show on scroll
+        let lastScroll = 0;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Don't hide header at the very top
+            if (currentScroll <= 100) {
+                header.classList.remove('hidden');
+                lastScroll = currentScroll;
+                return;
+            }
+
+            // Scrolling down - hide header
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                header.classList.add('hidden');
+            }
+            // Scrolling up - show header
+            else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                header.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
 </body>
 </html>

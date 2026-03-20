@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Fit Skin Clinic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MCND7TM8N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6MCND7TM8N');
+    </script>
+
+    <meta name="description" content="Privacy Policy for Fit Skin Clinic, Redhead. How we collect and use your information.">
+    <link rel="canonical" href="https://www.fitskinclinic.com.au/privacy-policy">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --turquoise: #21C7C9;
+            --white: #ffffff;
+            --off-white: #fafafa;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #666666;
+            --text-dark: #333333;
+            --text-light: #777777;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            height: 80px;
+        }
+
+        .mobile-menu-btn {
+            background: var(--turquoise);
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: #1ab5b7;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 20px;
+        }
+
+        .nav-list li {
+            margin-bottom: 15px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Privacy Policy Content */
+        .page-hero {
+            margin-top: 110px;
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: var(--light-gray);
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .page-hero h1 {
+            font-size: 48px;
+            font-weight: 300;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .page-hero p {
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        .privacy-content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 20px 80px;
+        }
+
+        .privacy-content h2 {
+            font-size: 32px;
+            font-weight: 500;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .privacy-content h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .privacy-content p {
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        .privacy-content ul {
+            margin: 0 0 16px 20px;
+            line-height: 1.8;
+        }
+
+        .privacy-content ul li {
+            margin-bottom: 6px;
+        }
+
+        .privacy-content a {
+            color: var(--turquoise);
+            text-decoration: none;
+        }
+
+        .privacy-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c2c2c;
+            color: var(--white);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--turquoise);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--turquoise);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Tablet */
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: block;
+            }
+
+            .desktop-nav .nav-list {
+                display: flex;
+                gap: 30px;
+                padding: 0;
+            }
+
+            .desktop-nav .nav-list li {
+                margin-bottom: 0;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .page-hero h1 {
+                font-size: 64px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html">
+                <img src="assets/fitskin.svg" alt="Fit Skin Clinic" class="logo">
+            </a>
+
+            <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
+
+            <nav class="desktop-nav">
+                <ul class="nav-list">
+                    <li><a href="treatments.html">Treatments</a></li>
+                    <li><a href="new-clients.html">New Clients</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="index.html#approach">Our Approach</a></li>
+                    <li><a href="index.html#gifts">Gift Cards</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://app.beautisoftware.com/booking/Fit_Skin_Clinic/175861762881909560?category=&service=&staff=" style="color: var(--turquoise);">BOOK NOW</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <ul class="nav-list">
+                <li><a href="treatments.html">Treatments</a></li>
+                <li><a href="new-clients.html">New Clients</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="index.html#approach">Our Approach</a></li>
+                <li><a href="index.html#gifts">Gift Cards</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <h1>Privacy Policy</h1>
+        <p>Effective date: 20 March 2026</p>
+    </div>
+
+    <!-- Privacy Policy Content -->
+    <main class="privacy-content">
+
+        <h2>Introduction</h2>
+        <p>This Privacy Policy explains how Fit Skin Clinic ("we", "us", or "our") collects, uses, and protects information gathered through this website. We are committed to handling your personal information responsibly and in accordance with Australian privacy law.</p>
+        <p>By using our website, you agree to the practices described in this policy. This policy was last updated on 20 March 2026.</p>
+
+        <h2>Information We Collect</h2>
+        <p>We may collect the following types of information when you interact with our website:</p>
+        <ul>
+            <li><strong>Contact form submissions</strong> — when you fill out our contact form, we collect your name, email address, and any message you choose to send us.</li>
+            <li><strong>Usage data</strong> — we use Google Analytics 4 to collect anonymised information about how visitors use our website, such as pages visited, time on site, and general geographic region. This data does not identify you personally.</li>
+        </ul>
+        <p>We do not collect sensitive information (such as health or financial data) through this website.</p>
+
+        <h2>How We Use Your Information</h2>
+        <p>Information collected through this website is used solely for the following purposes:</p>
+        <ul>
+            <li>To respond to enquiries submitted via our contact form.</li>
+            <li>To understand how our website is being used and to improve its content and user experience.</li>
+        </ul>
+        <p>We will never use your information to send unsolicited marketing communications without your consent.</p>
+
+        <h2>Third-Party Services</h2>
+        <p>Our website makes use of the following third-party services, each of which may process data independently under their own privacy policies:</p>
+        <ul>
+            <li>
+                <strong>Google Analytics 4</strong> — We use Google Analytics (measurement ID: G-6MCND7TM8N) to collect anonymised website usage statistics. Google may store and process this data in accordance with their privacy policy. Learn more at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a>.
+            </li>
+            <li>
+                <strong>Formspree</strong> — Our contact form is powered by Formspree, which processes and stores form submissions on our behalf. Formspree's privacy practices are described at <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a>.
+            </li>
+            <li>
+                <strong>Elfsight</strong> — We use an Elfsight widget to display our Instagram feed on this website. Elfsight may collect information as part of this functionality. Their privacy policy is available at <a href="https://elfsight.com/privacy-policy/" target="_blank" rel="noopener noreferrer">elfsight.com/privacy-policy</a>.
+            </li>
+        </ul>
+
+        <h2>Cookies</h2>
+        <p>Google Analytics 4 uses cookies — small text files stored in your browser — to distinguish unique visitors and track usage sessions. These cookies do not contain personally identifiable information.</p>
+        <p>You can disable or delete cookies at any time through your browser settings. Disabling cookies may affect the functionality of some parts of our website. For more information on managing cookies, visit <a href="https://www.aboutcookies.org" target="_blank" rel="noopener noreferrer">aboutcookies.org</a>.</p>
+
+        <h2>Data Storage &amp; Security</h2>
+        <p>Contact form submissions are stored by Formspree and delivered to us by email. We do not operate our own database of form submissions.</p>
+        <p>Anonymised analytics data is stored by Google in accordance with their data retention policies.</p>
+        <p>We do not sell, rent, or share your personal information with third parties for marketing purposes. Access to your information is limited to Fit Skin Clinic staff and necessary service providers.</p>
+        <p>While we take reasonable steps to protect your information, no method of transmission over the internet is completely secure. We cannot guarantee the absolute security of data transmitted to or from our website.</p>
+
+        <h2>Your Rights</h2>
+        <p>Under the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles, you have the right to:</p>
+        <ul>
+            <li>Request access to the personal information we hold about you.</li>
+            <li>Request correction of inaccurate or incomplete personal information.</li>
+            <li>Request deletion of your personal information, where applicable.</li>
+        </ul>
+        <p>To exercise any of these rights, please contact us using the details below. We will respond to your request within a reasonable timeframe.</p>
+
+        <h2>Contact</h2>
+        <p>If you have any questions about this Privacy Policy or wish to make a request regarding your personal information, please get in touch:</p>
+        <ul>
+            <li><strong>Fit Skin Clinic</strong> — 18 Steel St, Redhead NSW 2290, Australia</li>
+            <li><strong>Email:</strong> <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:0249553670">0249 553 670</a></li>
+        </ul>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>18 Steel St<br>Redhead NSW 2290<br>Australia</p>
+                <p style="margin-top: 15px;">
+                    <a href="tel:0249553670">0249 553 670</a><br>
+                    <a href="mailto:thefitskinclinic@gmail.com">thefitskinclinic@gmail.com</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/people/Fit-Skin-Clinic/61563414337123/" class="social-link" target="_blank">
+                        <span>f</span>
+                    </a>
+                    <a href="https://www.instagram.com/the.fit.skin.clinic" class="social-link" target="_blank">
+                        <span>&#128247;</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="treatments.html">Treatments</a></p>
+                <p><a href="index.html#products">Products</a></p>
+                <p><a href="index.html#gifts">Gift Cards</a></p>
+                <p><a href="index.html#contact">Contact</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul class="hours-list">
+                    <li><span>Monday</span> <span>9:30am &ndash; 5:00pm</span></li>
+                    <li><span>Tuesday</span> <span>9:30am &ndash; 5:00pm</span></li>
+                    <li><span>Wednesday</span> <span>9:30am &ndash; 5:00pm</span></li>
+                    <li><span>Thursday</span> <span>9:30am &ndash; 7:30pm</span></li>
+                    <li><span>Friday</span> <span>9:30am &ndash; 5:00pm</span></li>
+                    <li><span>Saturday</span> <span>9:30am &ndash; 12:30pm</span></li>
+                    <li><span>Sunday</span> <span>Closed</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Fit Skin Clinic. All rights reserved. | <a href="privacy-policy.html" style="color: rgba(255,255,255,0.6);">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            menuBtn.textContent = mobileNav.classList.contains('active') ? '\u2715' : '\u2630';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                menuBtn.textContent = '\u2630';
+            });
+        });
+
+        // Hide/show header on scroll
+        const header = document.querySelector('.header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll <= 0) {
+                header.classList.remove('hidden');
+                lastScroll = currentScroll;
+                return;
+            }
+
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                header.classList.add('hidden');
+            } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                header.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
+
+</body>
+</html>
