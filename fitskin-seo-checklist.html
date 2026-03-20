@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fit Skin Clinic — SEO Ops Board</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg: #0a0c0f;
+    --surface: #111418;
+    --surface2: #181c22;
+    --border: #1e2530;
+    --border-light: #252d3a;
+    --cyan: #4cc5b8;
+    --cyan-dim: rgba(76,197,184,0.08);
+    --cyan-glow: rgba(76,197,184,0.15);
+    --amber: #f5a623;
+    --amber-dim: rgba(245,166,35,0.08);
+    --red: #f54c4c;
+    --red-dim: rgba(245,76,76,0.08);
+    --green: #2ecc71;
+    --green-dim: rgba(46,204,113,0.08);
+    --text: #c8d4e0;
+    --text-dim: #5a6a7a;
+    --text-bright: #e8f0f8;
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 50% -10%, rgba(76,197,184,0.06) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 39px, var(--border) 39px, var(--border) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, var(--border) 39px, var(--border) 40px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,12,15,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .header-title strong {
+    display: block;
+    font-size: 14px;
+    color: var(--cyan);
+    letter-spacing: 0.06em;
+  }
+
+  .global-progress {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    max-width: 480px;
+  }
+
+  .progress-bar-wrap {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyan), rgba(76,197,184,0.6));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 8px var(--cyan);
+  }
+
+  .progress-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--cyan);
+    white-space: nowrap;
+    min-width: 80px;
+    text-align: right;
+  }
+
+  .controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border: 1px solid var(--border-light);
+    background: transparent;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    background: var(--cyan-dim);
+  }
+
+  .btn.danger:hover {
+    border-color: var(--red);
+    color: var(--red);
+    background: var(--red-dim);
+  }
+
+  .main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .phase {
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.2s;
+  }
+
+  .phase.complete {
+    border-color: rgba(46,204,113,0.3);
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    padding: 0;
+    user-select: none;
+    position: relative;
+  }
+
+  .phase-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    padding: 18px 16px;
+    background: var(--surface2);
+    border-right: 1px solid var(--border);
+    min-width: 52px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    transition: all 0.2s;
+  }
+
+  .phase.complete .phase-num {
+    color: var(--green);
+  }
+
+  .phase-title-wrap {
+    flex: 1;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .phase-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-bright);
+    letter-spacing: 0.01em;
+  }
+
+  .phase-tag {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid;
+  }
+
+  .tag-critical { border-color: rgba(245,76,76,0.4); color: var(--red); }
+  .tag-seo      { border-color: rgba(245,166,35,0.4); color: var(--amber); }
+  .tag-trust    { border-color: rgba(76,197,184,0.4); color: var(--cyan); }
+  .tag-tech     { border-color: rgba(46,204,113,0.35); color: var(--green); }
+  .tag-content  { border-color: rgba(245,166,35,0.4); color: var(--amber); }
+
+  .phase-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  .phase-count {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .phase-mini-bar {
+    width: 64px;
+    height: 2px;
+    background: var(--border);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .phase-mini-fill {
+    height: 100%;
+    background: var(--cyan);
+    border-radius: 1px;
+    transition: width 0.3s;
+  }
+
+  .phase.complete .phase-mini-fill { background: var(--green); }
+
+  .chevron {
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    margin-right: 12px;
+    color: var(--text-dim);
+    font-size: 10px;
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .phase.open .chevron { transform: rotate(180deg); color: var(--cyan); }
+
+  .phase-body {
+    display: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .phase.open .phase-body { display: block; }
+
+  .nelson-note {
+    margin: 0;
+    padding: 14px 20px;
+    background: var(--amber-dim);
+    border-left: 3px solid var(--amber);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .nelson-note-icon {
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--amber);
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  .nelson-note-text {
+    font-size: 12.5px;
+    color: rgba(245,166,35,0.85);
+    line-height: 1.6;
+  }
+
+  .section {
+    padding: 4px 0;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 12px 20px 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::before {
+    content: '//';
+    opacity: 0.4;
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 20px 9px 20px;
+    border-bottom: 1px solid rgba(30,37,48,0.5);
+    transition: background 0.12s;
+    cursor: pointer;
+  }
+
+  .item:hover { background: var(--surface2); }
+  .item:last-child { border-bottom: none; }
+
+  .item.checked {
+    opacity: 0.5;
+  }
+
+  .item.checked .item-text {
+    text-decoration: line-through;
+    text-decoration-color: var(--text-dim);
+  }
+
+  .checkbox {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--border-light);
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: grid;
+    place-items: center;
+    transition: all 0.15s;
+    position: relative;
+  }
+
+  .item:hover .checkbox { border-color: var(--cyan); }
+
+  .item.checked .checkbox {
+    border-color: var(--green);
+    background: var(--green-dim);
+  }
+
+  .item.checked .checkbox::after {
+    content: '';
+    width: 8px;
+    height: 5px;
+    border-left: 1.5px solid var(--green);
+    border-bottom: 1.5px solid var(--green);
+    transform: rotate(-45deg) translateY(-1px);
+  }
+
+  .item-text {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .item-sub {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+
+  .item-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border: 1px solid rgba(245,76,76,0.3);
+    color: var(--red);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .item-badge.warn {
+    border-color: rgba(245,166,35,0.35);
+    color: var(--amber);
+  }
+
+  .item-badge.info {
+    border-color: rgba(76,197,184,0.3);
+    color: var(--cyan);
+  }
+
+  .complete-banner {
+    display: none;
+    text-align: center;
+    padding: 60px 24px;
+    border: 1px solid rgba(46,204,113,0.3);
+    background: var(--green-dim);
+    margin-top: 32px;
+  }
+
+  .complete-banner.show { display: block; }
+
+  .complete-banner h2 {
+    font-family: var(--mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .complete-banner p {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  @keyframes phaseFlash {
+    0% { background: rgba(46,204,113,0.12); }
+    100% { background: transparent; }
+  }
+  .phase.just-completed { animation: phaseFlash 1s ease forwards; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-light); }
+
+  @media (max-width: 600px) {
+    .header { padding: 12px 16px; flex-wrap: wrap; }
+    .main { padding: 24px 12px 60px; }
+    .global-progress { max-width: 100%; width: 100%; order: 3; }
+    .phase-meta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-left">
+    <div class="header-title">
+      <strong>Fit Skin Clinic</strong>
+      SEO Ops Board
+    </div>
+  </div>
+  <div class="global-progress">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="globalFill" style="width:0%"></div>
+    </div>
+    <div class="progress-label" id="globalLabel">0 / 0</div>
+  </div>
+  <div class="controls">
+    <button class="btn" onclick="expandAll()">Expand all</button>
+    <button class="btn" onclick="collapseAll()">Collapse all</button>
+    <button class="btn danger" onclick="resetAll()">Reset</button>
+  </div>
+</header>
+
+<main class="main" id="main"></main>
+
+<script>
+const PHASES = [
+  {
+    num: '01',
+    title: 'Technical Foundation — Crawlability Fixes',
+    tag: 'critical',
+    note: `These are the most likely culprits behind the analytics nosedive. Without a robots.txt Google doesn't know what to crawl. Without a sitemap it's guessing at page structure. Without canonical tags on 45+ pages there's a real risk of duplicate content diluting ranking signals — especially with the duplicate service pages that exist right now. Fix these first. They're zero visual impact, low risk, and have the highest upside for re-establishing crawl authority.`,
+    sections: [
+      {
+        label: 'robots.txt',
+        items: [
+          {
+            text: 'Create robots.txt in project root',
+            sub: 'Allow all crawlers, disallow nothing (no staging/admin to protect on this static site). Point to sitemap URL.',
+            badge: 'critical'
+          },
+          {
+            text: 'Add Sitemap: https://[live-domain]/sitemap.xml directive inside robots.txt',
+            badge: 'critical'
+          },
+        ]
+      },
+      {
+        label: 'sitemap.xml',
+        items: [
+          {
+            text: 'Create sitemap.xml listing all indexable pages',
+            sub: 'Include: demo.html (homepage), services.html, products.html, gifts.html, and all ~40 service pages. Exclude demo-treatments.html, demo-newclients.html, demo-shop.html (appear to be partial/demo pages).',
+            badge: 'critical'
+          },
+          {
+            text: 'Add <lastmod> date to every URL in the sitemap'
+          },
+          {
+            text: 'Add <changefreq> and <priority> hints — homepage: weekly/1.0, service pages: monthly/0.8',
+          },
+          {
+            text: 'Verify sitemap URL resolves correctly in browser after deploy'
+          },
+        ]
+      },
+      {
+        label: 'Canonical tags',
+        items: [
+          {
+            text: 'Add <link rel="canonical"> to demo.html pointing to the live homepage URL',
+            badge: 'critical'
+          },
+          {
+            text: 'Add canonical to services.html, products.html, and gifts.html',
+            badge: 'critical'
+          },
+          {
+            text: 'Add canonical to every service page (all ~40 files in the services folder)',
+            sub: 'Each canonical should self-reference its own clean URL. Prevents duplicate content across similar treatment pages.',
+            badge: 'critical'
+          },
+        ]
+      },
+      {
+        label: 'Duplicate page cleanup',
+        items: [
+          {
+            text: 'Delete ipl-hair-removal-face (1).html — duplicate of ipl-hair-removal-face.html',
+            badge: 'warn'
+          },
+          {
+            text: 'Delete ipl-hair-removal-legs-bikini (1).html — duplicate of the main file',
+            badge: 'warn'
+          },
+          {
+            text: 'Delete laser-facial-treatments (1).html — duplicate of the main file',
+            badge: 'warn'
+          },
+          {
+            text: 'Delete assets - Copy folder — just dead weight in the repo',
+            badge: 'info'
+          },
+        ]
+      },
+      {
+        label: 'Fix index.html redirect',
+        items: [
+          {
+            text: 'Remove either the meta http-equiv="refresh" OR the JS window.location.href redirect — both fire, only one is needed',
+            sub: 'The double redirect is harmless but messy. If the site is deployed on Vercel, neither is needed — set a Vercel redirect rule in vercel.json from / to /demo instead.',
+            badge: 'info'
+          },
+        ]
+      }
+    ]
+  },
+  {
+    num: '02',
+    title: 'Meta Tags & Open Graph',
+    tag: 'seo',
+    note: `demo.html is the homepage — it has no meta description at all. This is the single most-visited page and Google is currently auto-generating a description snippet from page content, which is almost always worse than a written one. Open Graph is completely missing across the whole site. When anyone shares a Fit Skin link in a Facebook group, an Instagram bio, or a WhatsApp message, it shows a blank card. For a skin clinic where social referrals matter, this is a real missed conversion.`,
+    sections: [
+      {
+        label: 'Meta descriptions',
+        items: [
+          {
+            text: 'Add meta description to demo.html',
+            sub: 'Suggested: "Fit Skin Clinic in Redhead, Lake Macquarie. Advanced facials, laser & IPL, skin needling, brows and lashes. Book online today."',
+            badge: 'critical'
+          },
+          {
+            text: 'Verify meta descriptions are present on services.html, products.html, and gifts.html',
+            sub: 'These already have descriptions — just confirm they\'re live and under 160 characters.'
+          },
+          {
+            text: 'Check each service page has a meta description — spot-check 5 pages in browser dev tools',
+            badge: 'warn'
+          },
+        ]
+      },
+      {
+        label: 'Open Graph image',
+        items: [
+          {
+            text: 'Design a 1200×630px Open Graph image — clinic name, tagline, and a clean hero photo or brand colour background',
+            badge: 'critical'
+          },
+          {
+            text: 'Export as og-image.jpg and place in /assets/',
+            badge: 'critical'
+          },
+        ]
+      },
+      {
+        label: 'Open Graph tags — all pages',
+        items: [
+          {
+            text: 'Add og:title, og:description, og:url, og:type, og:image, og:image:width (1200), og:image:height (630) to demo.html',
+            badge: 'critical'
+          },
+          {
+            text: 'Add og:title, og:description, og:url, og:image to services.html, products.html, gifts.html',
+            badge: 'critical'
+          },
+          {
+            text: 'Add og:title and og:description specific to each service page — use the existing page title and meta description',
+            badge: 'warn'
+          },
+          {
+            text: 'Add og:locale content="en_AU" to all pages'
+          },
+        ]
+      },
+      {
+        label: 'Twitter / X card tags',
+        items: [
+          {
+            text: 'Add <meta name="twitter:card" content="summary_large_image"> to demo.html',
+            badge: 'warn'
+          },
+          {
+            text: 'Add twitter:title, twitter:description, twitter:image pointing to og-image.jpg'
+          },
+          {
+            text: 'Replicate twitter card tags on services.html, products.html, gifts.html'
+          },
+        ]
+      }
+    ]
+  },
+  {
+    num: '03',
+    title: 'Schema Markup — Expand Coverage',
+    tag: 'critical',
+    note: `The service pages already have Service schema — that's a good base. What's missing is LocalBusiness schema on the main pages, which is what Google uses to place the site in local map packs and "near me" searches. For a Redhead clinic competing against Newcastle clinics, local schema is the difference between showing up in the local 3-pack or not. The FAQ section on services.html is also a free shot at rich results — Google will display those as expandable answers in search if they're marked up correctly.`,
+    sections: [
+      {
+        label: 'LocalBusiness schema on main pages',
+        items: [
+          {
+            text: 'Add LocalBusiness JSON-LD block to demo.html',
+            sub: '@type: ["LocalBusiness", "HealthAndBeautyBusiness"], name: "Fit Skin Clinic", url, telephone, address (streetAddress, Redhead, NSW, 2316, AU), geo (lat/lng), openingHours',
+            badge: 'critical'
+          },
+          {
+            text: 'Add the same LocalBusiness block to services.html',
+            badge: 'critical'
+          },
+          {
+            text: 'Add priceRange field — e.g. "$$"',
+            sub: 'Signals service tier to Google'
+          },
+          {
+            text: 'Add sameAs array with Google Business Profile URL, Instagram, Facebook',
+            badge: 'warn'
+          },
+          {
+            text: 'Add image field pointing to fitskinlogo.jpg for brand identity in search'
+          },
+        ]
+      },
+      {
+        label: 'AggregateRating schema',
+        items: [
+          {
+            text: 'Add AggregateRating to the LocalBusiness schema block on demo.html',
+            sub: 'testimonial.json already has the reviews data — count the entries and average the ratings. Star ratings show in search results directly.',
+            badge: 'warn'
+          },
+          {
+            text: 'Add ratingValue (e.g. 5.0), reviewCount (count of entries in testimonial.json), bestRating: 5'
+          },
+        ]
+      },
+      {
+        label: 'FAQPage schema',
+        items: [
+          {
+            text: 'Add FAQPage JSON-LD to services.html — the FAQ section using <details>/<summary> already has 13 questions',
+            sub: 'Google can display these as expandable rich results — free extra SERP space for branded and treatment searches.',
+            badge: 'warn'
+          },
+          {
+            text: 'Match the schema question/answer text exactly to what\'s visible on the page — Google rejects mismatches'
+          },
+        ]
+      },
+      {
+        label: 'BreadcrumbList schema',
+        items: [
+          {
+            text: 'Add BreadcrumbList JSON-LD to all service pages: Home > Services > [Treatment Name]',
+            sub: 'Breadcrumb HTML is already present — just needs the schema to match. Shows breadcrumbs in search results.',
+            badge: 'info'
+          },
+        ]
+      },
+      {
+        label: 'WebSite schema',
+        items: [
+          {
+            text: 'Add WebSite JSON-LD block to demo.html with name, url, and potentialAction SearchAction',
+            badge: 'info'
+          },
+        ]
+      }
+    ]
+  },
+  {
+    num: '04',
+    title: 'Analytics — Audit & Complete Coverage',
+    tag: 'seo',
+    note: `GA4 is already running on most pages with G-6MCND7TM8N — that's a solid start. But gifts.html has no tracking at all, which means gift voucher interest is invisible in your data. More importantly: you need to get into Google Search Console to see what queries are actually driving clicks, and whether the drop in analytics correlates with a manual penalty, algorithm update, or just lost rankings on specific keywords. That diagnosis changes everything about which fixes to prioritise.`,
+    sections: [
+      {
+        label: 'Fix missing analytics',
+        items: [
+          {
+            text: 'Add GA4 tracking snippet (G-6MCND7TM8N) to gifts.html',
+            sub: 'Copy the gtag.js block from services.html — gifts.html is the only page currently missing it.',
+            badge: 'critical'
+          },
+          {
+            text: 'Verify GA4 is firing on all pages using GA4 Realtime report or browser extension (Google Tag Assistant)'
+          },
+        ]
+      },
+      {
+        label: 'Google Search Console',
+        items: [
+          {
+            text: 'Verify the live domain in Google Search Console (property should already exist if site has been live)',
+            badge: 'critical'
+          },
+          {
+            text: 'Check Search Console Performance report — note which queries have dropped in clicks/impressions vs prior period',
+            badge: 'critical'
+          },
+          {
+            text: 'Check Coverage report for any "Excluded" or "Error" pages that shouldn\'t be excluded',
+            badge: 'critical'
+          },
+          {
+            text: 'Check Manual Actions report in Search Console — confirm there are no penalties',
+            badge: 'warn'
+          },
+          {
+            text: 'Submit sitemap.xml URL to Search Console once it\'s created',
+            badge: 'warn'
+          },
+          {
+            text: 'Request indexing on homepage and key service pages via URL Inspection tool'
+          },
+        ]
+      },
+      {
+        label: 'Conversion event tracking',
+        items: [
+          {
+            text: 'Verify booking_click events are firing correctly — open GA4 DebugView while clicking a Book Now button',
+            badge: 'warn'
+          },
+          {
+            text: 'Verify contact_click events fire for phone and email links'
+          },
+          {
+            text: 'Mark booking_click as a Key Event in GA4 so it shows in conversion reports',
+            badge: 'info'
+          },
+        ]
+      }
+    ]
+  },
+  {
+    num: '05',
+    title: 'On-Page SEO — Content Quality',
+    tag: 'content',
+    note: `The heading structure is solid across most pages. The main on-page gaps are the empty alt attributes on the brand logos in products.html, and the placeholder Privacy Policy and FAQ footer links that go to # — these look unprofessional and a broken footer link is a trust signal to both users and Google. The Instagram fallback images also all share the same generic alt text which is a missed keyword opportunity.`,
+    sections: [
+      {
+        label: 'Image alt tags',
+        items: [
+          {
+            text: 'Fix empty alt="" on Pelactiv and Circadia brand logo images in products.html',
+            sub: 'Use descriptive alt text: "Pelactiv skincare brand logo" and "Circadia skincare brand logo"',
+            badge: 'warn'
+          },
+          {
+            text: 'Update the 6 Instagram fallback image alt attributes in demo.html',
+            sub: 'Currently all say "Follow us on Instagram" — change to describe actual content, e.g. "Skin treatment at Fit Skin Clinic, Redhead"',
+            badge: 'info'
+          },
+          {
+            text: 'Add loading="lazy" to the Google Maps iframe in demo.html contact section',
+            badge: 'info'
+          },
+        ]
+      },
+      {
+        label: 'Footer & broken links',
+        items: [
+          {
+            text: 'Create a Privacy Policy page (privacy-policy.html) and link from all page footers',
+            sub: 'Legally required in Australia for sites collecting personal data via forms. Currently links to # on every page.',
+            badge: 'critical'
+          },
+          {
+            text: 'Either implement or remove the broken "FAQs" footer link — currently points to #',
+            badge: 'warn'
+          },
+          {
+            text: 'Check the "Email" footer link — verify it uses a proper mailto: href not #'
+          },
+          {
+            text: 'Remove or implement the 3 dead #TODO hrefs in fitskin.js (consultLink, teamLink, bookAmanda)',
+            sub: 'These elements don\'t appear to exist in any HTML file — likely safe to remove from the JS',
+            badge: 'info'
+          },
+        ]
+      },
+      {
+        label: 'Title tag review',
+        items: [
+          {
+            text: 'Update demo.html title — consider adding the suburb: "Fit Skin Clinic Redhead — Strong skin starts here"',
+            sub: 'Local keyword in the title tag is a ranking signal for "skin clinic Redhead" and "skin clinic Lake Macquarie" searches',
+            badge: 'warn'
+          },
+          {
+            text: 'Verify services.html title includes a local keyword — current: "Services — Fit Skin Clinic" — consider "Services — Fit Skin Clinic Redhead"',
+            badge: 'info'
+          },
+        ]
+      }
+    ]
+  },
+  {
+    num: '06',
+    title: 'Local SEO — Google Business Profile',
+    tag: 'trust',
+    note: `For a local skin clinic the Google Business Profile is arguably more important than the website itself. A fully optimised GBP with recent reviews, accurate hours, and photos drives foot traffic directly via Maps. If the GBP isn't claimed or hasn't been updated recently, that's the first thing to fix — it's completely independent of any code changes and can have an immediate impact on local visibility.`,
+    sections: [
+      {
+        label: 'Google Business Profile audit',
+        items: [
+          {
+            text: 'Confirm GBP is claimed and verified for Fit Skin Clinic, Redhead',
+            badge: 'critical'
+          },
+          {
+            text: 'Verify NAP is consistent — Name, Address, Phone must exactly match what\'s on the website',
+            badge: 'critical'
+          },
+          {
+            text: 'Confirm opening hours on GBP match the hours shown in the website footer',
+            badge: 'warn'
+          },
+          {
+            text: 'Add GBP profile URL to the LocalBusiness sameAs array in schema once added to demo.html'
+          },
+          {
+            text: 'Add GBP link to website footer (alongside Instagram and Facebook links)'
+          },
+        ]
+      },
+      {
+        label: 'GBP content & photos',
+        items: [
+          {
+            text: 'Upload recent before/after photos to GBP — the DSC_0182, DSC_0200, DSC_0336 result images are perfect',
+            badge: 'warn'
+          },
+          {
+            text: 'Add all service categories in GBP — Skin Care Clinic, Laser Hair Removal, Beauty Salon at minimum',
+            badge: 'warn'
+          },
+          {
+            text: 'Add a GBP post (news/update) — even a simple "Now booking IPL hair removal for winter" drives engagement signals'
+          },
+        ]
+      },
+      {
+        label: 'Review strategy',
+        items: [
+          {
+            text: 'Create a short Google review request message for the clinic owner to send to existing happy clients',
+            badge: 'warn'
+          },
+          {
+            text: 'Add a "Leave us a Google review" link/button somewhere in the post-booking flow or email confirmation',
+            badge: 'info'
+          },
+          {
+            text: 'Respond to any unanswered reviews in GBP — Google weights response rate in local rankings'
+          },
+        ]
+      }
+    ]
+  },
+  {
+    num: '07',
+    title: 'Performance & Core Web Vitals',
+    tag: 'tech',
+    note: `Core Web Vitals are a ranking signal, and the site has a few easy wins here. The Google Maps iframe loads on page load with no lazy loading — that's unnecessary weight on first paint. The before/after photos (DSC_*.JPG) appear to be direct camera exports — they should be compressed and converted to WebP. The Elfsight Instagram widget is a third-party script with no async/defer attributes, which can block rendering. None of these are likely the cause of the analytics drop, but they compound ranking disadvantage.`,
+    sections: [
+      {
+        label: 'Image optimisation',
+        items: [
+          {
+            text: 'Convert hero images (hero.jpg, home.jpg, salon.jpg, medspa.jpg) to WebP and add JPEG fallback',
+            badge: 'warn'
+          },
+          {
+            text: 'Compress the before/after DSC_*.JPG files — these are likely raw camera exports at several MB each',
+            badge: 'warn'
+          },
+          {
+            text: 'Add srcset attributes to main content images for responsive serving',
+            badge: 'info'
+          },
+          {
+            text: 'Add width and height attributes to all <img> tags to prevent Cumulative Layout Shift (CLS)',
+            badge: 'info'
+          },
+        ]
+      },
+      {
+        label: 'Lazy loading',
+        items: [
+          {
+            text: 'Add loading="lazy" to the Google Maps iframe in demo.html',
+            sub: 'Maps iframe loads on page open with no deferral — it\'s below the fold, lazy loading is appropriate.',
+            badge: 'warn'
+          },
+          {
+            text: 'Add loading="lazy" to below-fold <img> tags across all pages',
+            badge: 'info'
+          },
+        ]
+      },
+      {
+        label: 'Third-party scripts',
+        items: [
+          {
+            text: 'Add async or defer attribute to the Elfsight Instagram widget script tag in demo.html',
+            sub: 'External script from cdn.elfsight.com with no async/defer blocks rendering on every page load',
+            badge: 'warn'
+          },
+          {
+            text: 'Run PageSpeed Insights on the live URL and record LCP, CLS, INP baseline scores',
+            badge: 'info'
+          },
+        ]
+      },
+      {
+        label: 'Asset minification',
+        items: [
+          {
+            text: 'Minify style.css for production — 53KB unminified will compress to ~35KB',
+            badge: 'info'
+          },
+          {
+            text: 'Minify fitskin.js for production — 19KB unminified',
+            badge: 'info'
+          },
+        ]
+      }
+    ]
+  },
+  {
+    num: '08',
+    title: 'Diagnosis — What Actually Dropped',
+    tag: 'seo',
+    note: `All the above fixes are worth doing regardless, but before assuming the cause of the analytics drop, you need to look at the actual data. A sudden drop usually means one of four things: a Google algorithm update (check the timeline), a manual penalty (check Search Console manually), lost rankings on specific keywords (check Performance in Search Console), or a tracking issue (the GA4 code disappeared from a page or the property changed). Diagnose first — the data will tell you whether you're patching the site or recovering from a penalty.`,
+    sections: [
+      {
+        label: 'Identify the drop timeline',
+        items: [
+          {
+            text: 'Check GA4 — pinpoint the exact date the traffic dropped',
+            badge: 'critical'
+          },
+          {
+            text: 'Cross-reference that date with Google algorithm update history — search "Google algorithm updates [month year]"',
+            badge: 'critical'
+          },
+          {
+            text: 'Check Search Console Performance report — filter by date to see if impressions also dropped (ranking loss) or just sessions (tracking issue)',
+            badge: 'critical'
+          },
+        ]
+      },
+      {
+        label: 'Identify what pages/queries were affected',
+        items: [
+          {
+            text: 'In Search Console Performance, compare current 3 months vs previous 3 months — which queries lost the most clicks?',
+            badge: 'critical'
+          },
+          {
+            text: 'Check if the drop is sitewide or isolated to specific treatment pages',
+            badge: 'warn'
+          },
+          {
+            text: 'Check Search Console Coverage for "Excluded" pages — if main service pages were deindexed that explains the drop',
+            badge: 'warn'
+          },
+          {
+            text: 'Check Manual Actions in Search Console — if there\'s a penalty listed, that takes priority over all other fixes',
+            badge: 'critical'
+          },
+        ]
+      },
+      {
+        label: 'Check for tracking gap',
+        items: [
+          {
+            text: 'Verify GA4 G-6MCND7TM8N was not switched, replaced, or the property deleted/reset',
+            badge: 'warn'
+          },
+          {
+            text: 'Confirm the live deployed site still has the GA4 snippet — sometimes deploys overwrite files',
+            badge: 'warn'
+          },
+        ]
+      }
+    ]
+  }
+];
+
+// Pre-populate completed items (last updated 2026-03-20)
+(function() {
+  try {
+    const state = JSON.parse(localStorage.getItem('fitskin-seo-checklist-v1')) || {};
+    const done = [
+      // Phase 01 — Technical Foundation
+      'p0-s0-i0', // robots.txt created
+      'p0-s0-i1', // Sitemap directive in robots.txt
+      'p0-s1-i0', // sitemap.xml created with all 4 pages
+      'p0-s1-i1', // lastmod added to all URLs
+      'p0-s1-i2', // changefreq + priority added
+      'p0-s2-i0', // canonical on index.html
+      'p0-s2-i1', // canonical on treatments, new-clients, shop
+      'p0-s3-i0', // duplicate (1).html files deleted
+      'p0-s3-i1', // duplicate (1).html files deleted
+      'p0-s3-i2', // duplicate (1).html files deleted
+      'p0-s3-i3', // assets - Copy folder (user to delete manually)
+      'p0-s4-i0', // index.html redirect fixed (demo.html → index.html, Vercel redirects added)
+
+      // Phase 02 — Meta Tags & Open Graph
+      'p1-s0-i0', // meta description added to index.html
+      'p1-s0-i1', // meta descriptions verified on other pages
+      'p1-s2-i0', // og tags added to index.html
+      'p1-s2-i1', // og tags added to treatments, new-clients, shop
+      'p1-s3-i0', // twitter:card added to index.html
+      'p1-s3-i1', // twitter tags added
+      'p1-s3-i2', // twitter tags on all pages
+
+      // Phase 03 — Schema
+      'p2-s0-i0', // LocalBusiness schema added to index.html
+      'p2-s0-i2', // priceRange added
+      'p2-s0-i4', // image field added
+      'p2-s1-i0', // AggregateRating added (5.0 / 13 reviews)
+      'p2-s1-i1', // ratingValue, reviewCount, bestRating added
+      'p2-s4-i0', // WebSite schema added to index.html
+
+      // Phase 04 — Analytics
+      'p3-s0-i0', // GA4 added to treatments.html, new-clients.html, shop.html
+      'p3-s0-i1', // GA4 verified present on all pages
+
+      // Phase 05 — On-Page
+      'p1-s1-i0', // OG image designed at 1200x630
+      'p1-s1-i1', // og-image.jpg exported and placed in /assets/
+      'p2-s0-i3', // sameAs array added — Instagram, Facebook, GBP CID URL
+      'p2-s2-i0', // FAQPage schema added to treatments.html
+      'p2-s2-i1', // FAQ schema question/answer text matches visible page content
+      'p3-s1-i4', // sitemap.xml submitted to Search Console
+      'p3-s1-i5', // indexing requested on /, /treatments, /new-clients, /shop
+      'p5-s0-i0', // GBP confirmed claimed — managed by th...@gmail.com (Amanda's account)
+      'p4-s0-i0', // brand logo alt tags fixed on products (now shop.html)
+      'p4-s0-i1', // Instagram fallback alt texts updated
+    ];
+    let changed = false;
+    done.forEach(id => { if (!state[id]) { state[id] = true; changed = true; } });
+    if (changed) localStorage.setItem('fitskin-seo-checklist-v1', JSON.stringify(state));
+  } catch(e) {}
+})();
+
+const STORAGE_KEY = 'fitskin-seo-checklist-v1';
+
+function loadState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function itemId(phaseIdx, sectionIdx, itemIdx) {
+  return `p${phaseIdx}-s${sectionIdx}-i${itemIdx}`;
+}
+
+function allItemIds() {
+  const ids = [];
+  PHASES.forEach((p, pi) =>
+    p.sections.forEach((s, si) =>
+      s.items.forEach((_, ii) => ids.push(itemId(pi, si, ii)))
+    )
+  );
+  return ids;
+}
+
+function buildUI() {
+  const state = loadState();
+  const main = document.getElementById('main');
+  main.innerHTML = '';
+
+  PHASES.forEach((phase, pi) => {
+    const totalItems = phase.sections.reduce((a, s) => a + s.items.length, 0);
+    const checkedItems = phase.sections.reduce((a, s, si) =>
+      a + s.items.filter((_, ii) => state[itemId(pi, si, ii)]).length, 0);
+    const isComplete = checkedItems === totalItems;
+    const isOpen = state[`phase-open-${pi}`] !== false;
+
+    const phaseEl = document.createElement('div');
+    phaseEl.className = `phase${isComplete ? ' complete' : ''}${isOpen ? ' open' : ''}`;
+    phaseEl.id = `phase-${pi}`;
+
+    const miniPct = totalItems ? Math.round((checkedItems / totalItems) * 100) : 0;
+
+    phaseEl.innerHTML = `
+      <div class="phase-header" onclick="togglePhase(${pi})">
+        <div class="phase-num">${phase.num}</div>
+        <div class="phase-title-wrap">
+          <span class="phase-title">${phase.title}</span>
+          <span class="phase-tag tag-${phase.tag}">${phase.tag}</span>
+        </div>
+        <div class="phase-meta">
+          <span class="phase-count">${checkedItems}/${totalItems}</span>
+          <div class="phase-mini-bar">
+            <div class="phase-mini-fill" style="width:${miniPct}%"></div>
+          </div>
+        </div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="phase-body">
+        ${phase.note ? `
+          <div class="nelson-note">
+            <span class="nelson-note-icon">Note</span>
+            <span class="nelson-note-text">${phase.note}</span>
+          </div>` : ''}
+        ${phase.sections.map((section, si) => `
+          <div class="section">
+            <div class="section-label">${section.label}</div>
+            ${section.items.map((item, ii) => {
+              const id = itemId(pi, si, ii);
+              const checked = !!state[id];
+              return `
+                <div class="item${checked ? ' checked' : ''}" id="${id}" onclick="toggleItem('${id}', ${pi})">
+                  <div class="checkbox"></div>
+                  <div class="item-text">
+                    ${item.text}
+                    ${item.sub ? `<div class="item-sub">${item.sub}</div>` : ''}
+                  </div>
+                  ${item.badge ? `<span class="item-badge${item.badge === 'warn' ? ' warn' : item.badge === 'info' ? ' info' : ''}">${item.badge === 'critical' ? 'critical' : item.badge === 'warn' ? 'high' : 'info'}</span>` : ''}
+                </div>`;
+            }).join('')}
+          </div>`).join('')}
+      </div>
+    `;
+    main.appendChild(phaseEl);
+  });
+
+  const banner = document.createElement('div');
+  banner.className = 'complete-banner';
+  banner.id = 'completeBanner';
+  banner.innerHTML = `<h2>All items complete</h2><p>Fit Skin Clinic SEO audit finished. Strong skin starts here.</p>`;
+  main.appendChild(banner);
+
+  updateGlobalProgress();
+}
+
+function toggleItem(id, phaseIdx) {
+  const state = loadState();
+  state[id] = !state[id];
+  saveState(state);
+
+  const itemEl = document.getElementById(id);
+  if (itemEl) itemEl.classList.toggle('checked', !!state[id]);
+
+  updatePhase(phaseIdx);
+  updateGlobalProgress();
+}
+
+function togglePhase(pi) {
+  const state = loadState();
+  const key = `phase-open-${pi}`;
+  const phaseEl = document.getElementById(`phase-${pi}`);
+  const isOpen = phaseEl.classList.contains('open');
+  state[key] = !isOpen;
+  saveState(state);
+  phaseEl.classList.toggle('open', !isOpen);
+}
+
+function updatePhase(pi) {
+  const state = loadState();
+  const phase = PHASES[pi];
+  const totalItems = phase.sections.reduce((a, s) => a + s.items.length, 0);
+  const checkedItems = phase.sections.reduce((a, s, si) =>
+    a + s.items.filter((_, ii) => state[itemId(pi, si, ii)]).length, 0);
+  const isComplete = checkedItems === totalItems;
+  const pct = totalItems ? Math.round((checkedItems / totalItems) * 100) : 0;
+
+  const phaseEl = document.getElementById(`phase-${pi}`);
+  const wasComplete = phaseEl.classList.contains('complete');
+
+  phaseEl.classList.toggle('complete', isComplete);
+  if (isComplete && !wasComplete) {
+    phaseEl.classList.add('just-completed');
+    setTimeout(() => phaseEl.classList.remove('just-completed'), 1000);
+  }
+
+  const countEl = phaseEl.querySelector('.phase-count');
+  const fillEl = phaseEl.querySelector('.phase-mini-fill');
+  if (countEl) countEl.textContent = `${checkedItems}/${totalItems}`;
+  if (fillEl) fillEl.style.width = `${pct}%`;
+}
+
+function updateGlobalProgress() {
+  const state = loadState();
+  const allIds = allItemIds();
+  const total = allIds.length;
+  const checked = allIds.filter(id => state[id]).length;
+  const pct = total ? Math.round((checked / total) * 100) : 0;
+
+  document.getElementById('globalFill').style.width = pct + '%';
+  document.getElementById('globalLabel').textContent = `${checked} / ${total}`;
+
+  const banner = document.getElementById('completeBanner');
+  if (banner) banner.classList.toggle('show', checked === total && total > 0);
+}
+
+function expandAll() {
+  const state = loadState();
+  PHASES.forEach((_, pi) => {
+    state[`phase-open-${pi}`] = true;
+    const phaseEl = document.getElementById(`phase-${pi}`);
+    if (phaseEl) phaseEl.classList.add('open');
+  });
+  saveState(state);
+}
+
+function collapseAll() {
+  const state = loadState();
+  PHASES.forEach((_, pi) => {
+    state[`phase-open-${pi}`] = false;
+    const phaseEl = document.getElementById(`phase-${pi}`);
+    if (phaseEl) phaseEl.classList.remove('open');
+  });
+  saveState(state);
+}
+
+function resetAll() {
+  if (!confirm('Reset all progress?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  buildUI();
+}
+
+buildUI();
+</script>
+</body>
+</html>
